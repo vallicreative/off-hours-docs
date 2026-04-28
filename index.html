@@ -1679,7 +1679,7 @@ function fbSubmit(pid) {
   const wrap = document.getElementById('fb-'+pid);
   wrap.querySelector('#fb-form-'+pid).style.display='none';
   wrap.querySelector('.feedback-thanks').style.display='block';
-  wrap.querySelector('.feedback-thanks').textContent='Thanks — we'll use this to improve the docs.';
+  wrap.querySelector('.feedback-thanks').textContent="Thanks — we'll use this to improve the docs.";
   // In production: POST to your feedback endpoint
   console.log('Feedback for', pid, ':', text);
 }
