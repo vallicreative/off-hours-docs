@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Off Hours Docs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F1E8;--cream-deep:#EDE6D5;--paper:#FAF7EE;
+  --ink:#0F2A1E;--ink-soft:#3D5448;--ink-faint:#6B7E73;
+  --line:rgba(15,42,30,0.08);--line-mid:rgba(15,42,30,0.14);--line-strong:rgba(15,42,30,0.22);
+  --moss:#1a4d3a;--moss-bright:#2C6E52;--moss-tint:rgba(26,77,58,0.08);
+  --butter:#F5E6A8;--butter-deep:#EAD173;--sky:#CDE1E8;--sky-deep:#A9CBD6;
+  --coral:#FF8A66;--mint:#C9E2B8;--mint-deep:#A8CE8F;--lilac:#D4C8E8;
+  --peach:#FFD4B8;--peach-deep:#F7B894;
+  --rainbow:linear-gradient(90deg,#FF8A66 0%,#F7B894 20%,#EAD173 40%,#A8CE8F 62%,#A9CBD6 82%,#D4C8E8 100%);
+  --sidebar-w:260px;--nav-h:56px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at 70% 10%,rgba(0,0,0,0.4),transparent 80%);}
+.pb{position:fixed;top:0;left:0;height:2px;background:var(--rainbow);z-index:200;transition:width 0.1s;pointer-events:none;}
+
+/* NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);background:rgba(245,241,232,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-mid);display:flex;align-items:center;}
+.nav-brand{width:var(--sidebar-w);display:flex;align-items:center;gap:10px;padding:0 20px;text-decoration:none;color:var(--ink);border-right:1px solid var(--line);height:100%;flex-shrink:0;cursor:pointer;background:none;border-top:none;border-bottom:none;font-family:inherit;}
+.bm{width:26px;height:26px;border-radius:6px;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;letter-spacing:-0.04em;position:relative;overflow:hidden;flex-shrink:0;}
+.bm::after{content:"";position:absolute;top:5px;right:5px;width:4px;height:4px;border-radius:50%;background:var(--butter-deep);}
+.bn{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px;letter-spacing:-0.03em;}
+.bb{font-family:'Space Mono',monospace;font-size:9px;padding:2px 6px;border-radius:4px;background:var(--moss-tint);color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;}
+.nav-mid{flex:1;display:flex;align-items:center;padding:0 24px;gap:16px;}
+.nav-search{display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:8px;background:var(--paper);border:1px solid var(--line-mid);font-size:12.5px;color:var(--ink-faint);cursor:pointer;min-width:220px;transition:border-color 0.2s;}
+.nav-search:hover{border-color:var(--line-strong);}
+.nav-search svg{width:13px;height:13px;flex-shrink:0;}
+.nav-search .kbd{margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;}
+.ntab{font-size:12.5px;color:var(--ink-soft);padding:5px 10px;border-radius:6px;cursor:pointer;border:none;background:transparent;font-family:'Inter',sans-serif;transition:background 0.2s;}
+.ntab:hover{background:var(--moss-tint);color:var(--ink);}
+.ntab.active{background:var(--moss-tint);color:var(--moss);font-weight:500;}
+.nav-right{display:flex;align-items:center;gap:8px;padding:0 20px;}
+.nlink{font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 10px;border-radius:6px;transition:background 0.2s;}
+.nlink:hover{background:var(--moss-tint);color:var(--ink);}
+.ncta{display:inline-flex;align-items:center;gap:8px;padding:7px 8px 7px 14px;border-radius:999px;background:var(--moss);color:var(--cream);font-size:12.5px;font-weight:500;text-decoration:none;transition:background 0.2s;}
+.ncta:hover{background:var(--ink);}
+.ncta .arr{width:20px;height:20px;border-radius:50%;background:var(--cream);color:var(--moss);display:grid;place-items:center;font-size:10px;}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:var(--sidebar-w) 1fr;min-height:100vh;padding-top:var(--nav-h);position:relative;z-index:1;}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));overflow-y:auto;border-right:1px solid var(--line);padding:16px 0 40px;background:rgba(245,241,232,0.5);}
+.sidebar::-webkit-scrollbar{width:3px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--line-mid);border-radius:2px;}
+.sl{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;padding:12px 16px 5px;display:block;}
+.si{display:flex;align-items:center;gap:9px;padding:6px 12px 6px 16px;color:var(--ink-soft);cursor:pointer;font-size:13px;transition:background 0.15s,color 0.15s;position:relative;border:none;background:transparent;width:100%;text-align:left;font-family:'Inter',sans-serif;}
+.si:hover{background:var(--moss-tint);color:var(--ink);}
+.si.active{color:var(--moss);font-weight:500;}
+.si.active::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2.5px;background:var(--moss);border-radius:999px;}
+.si svg{width:14px;height:14px;opacity:0.55;flex-shrink:0;}
+.si.active svg{opacity:1;}
+.sbadge{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:var(--moss-tint);color:var(--moss);font-weight:700;}
+.snew{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:var(--butter);color:#6b4e00;font-weight:700;}
+.sdiv{height:1px;background:var(--line);margin:8px 16px;}
+
+/* CONTENT */
+.cwrap{display:flex;min-width:0;}
+.content{flex:1;padding:48px 56px 120px;min-width:0;max-width:820px;}
+.doc-page{display:none;}
+.doc-page.active{display:block;animation:pageIn 0.22s ease;}
+@keyframes pageIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+
+/* TYPOGRAPHY */
+.bc{display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:24px;}
+.bc .sep{opacity:0.4;}
+.bc .cur{color:var(--ink);}
+.ptag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--moss);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-bottom:12px;}
+.ptag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 6px rgba(44,110,82,0.5);}
+.ptitle{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:30px;line-height:1.1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:10px;}
+.pdesc{font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:580px;letter-spacing:-0.005em;margin-bottom:24px;}
+.rr{height:3px;background:var(--rainbow);border-radius:999px;width:100px;margin-bottom:32px;}
+.h2{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;letter-spacing:-0.025em;color:var(--ink);margin:40px 0 10px;padding-top:40px;border-top:1px solid var(--line);}
+.h2.f{border-top:none;padding-top:0;margin-top:0;}
+.h3{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:15px;letter-spacing:-0.02em;color:var(--ink);margin:22px 0 8px;}
+.p{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:14px;letter-spacing:-0.005em;}
+.p a,.dl{color:var(--moss);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;cursor:pointer;background:none;border:none;font-size:14px;font-family:'Inter',sans-serif;padding:0;line-height:inherit;}
+.ul{list-style:none;margin:10px 0 16px;display:flex;flex-direction:column;gap:6px;}
+.ul li{font-size:14px;color:var(--ink-soft);line-height:1.6;padding-left:18px;position:relative;letter-spacing:-0.005em;}
+.ul li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--mint-deep);}
+code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-deep);border:1px solid var(--line-mid);padding:1px 5px;border-radius:4px;color:var(--moss);}
+
+/* CALLOUTS */
+.ca{border-radius:12px;padding:14px 16px;margin:18px 0;display:flex;gap:12px;align-items:flex-start;}
+.ca.info{background:rgba(169,203,214,0.2);border:1px solid rgba(169,203,214,0.5);}
+.ca.tip{background:rgba(168,206,143,0.18);border:1px solid rgba(168,206,143,0.4);}
+.ca.warn{background:rgba(234,209,115,0.25);border:1px solid rgba(234,209,115,0.6);}
+.ca svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;}
+.ca.info svg{color:#2c5866;}.ca.tip svg{color:var(--moss);}.ca.warn svg{color:#7a5c00;}
+.ca-t{font-size:13px;font-weight:600;margin-bottom:3px;}
+.ca.info .ca-t{color:#2c5866;}.ca.tip .ca-t{color:var(--moss);}.ca.warn .ca-t{color:#7a5c00;}
+.ca-x{font-size:13px;color:var(--ink-soft);line-height:1.5;}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;margin:18px 0;}
+.step{display:flex;gap:16px;padding:18px 0;border-bottom:1px dashed var(--line);}
+.step:last-child{border-bottom:none;}
+.snum{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;margin-top:1px;}
+.stitle{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:-0.005em;}
+.sdesc{font-size:13.5px;color:var(--ink-soft);line-height:1.65;letter-spacing:-0.005em;}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;}
+.tbl th{text-align:left;padding:9px 14px;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line-mid);font-weight:400;}
+.tbl td{padding:10px 14px;border-bottom:1px dashed var(--line);color:var(--ink-soft);vertical-align:top;}
+.tbl tr:last-child td{border-bottom:none;}
+.tbl td:first-child{color:var(--ink);font-weight:500;}
+
+/* DEMO FRAMES */
+.demo{border-radius:14px;overflow:hidden;border:1px solid var(--line-mid);box-shadow:0 16px 48px rgba(15,42,30,0.08);margin:20px 0;position:relative;background:var(--cream);}
+.demo::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--rainbow);z-index:2;}
+.demo-bar{background:var(--paper);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;align-items:center;gap:8px;}
+.dots{display:flex;gap:5px;}
+.dot{width:10px;height:10px;border-radius:50%;}
+.dot.r{background:#FF6B6B;}.dot.y{background:#FFD93D;}.dot.g{background:#6BCB77;}
+.demo-url{flex:1;text-align:center;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);}
+.demo-body{padding:20px;}
+
+/* MINI DASH */
+.dm{background:var(--cream);font-size:11px;}
+.dm-top{background:var(--ink);color:var(--cream);padding:14px 18px;position:relative;overflow:hidden;}
+.dm-top::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);}
+.dm-status{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:999px;background:rgba(168,206,143,0.18);font-family:'Space Mono',monospace;font-size:9px;color:#A8CE8F;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.dm-pulse{width:5px;height:5px;border-radius:50%;background:#A8CE8F;box-shadow:0 0 6px rgba(168,206,143,0.8);animation:pulse 2.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.dm-hl{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;}
+.dm-hl .num{color:var(--butter-deep);}
+.dm-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(245,241,232,0.1);margin-top:10px;padding-top:10px;}
+.dm-cell{padding:0 10px;border-right:1px solid rgba(245,241,232,0.08);}
+.dm-cell:first-child{padding-left:0;}.dm-cell:last-child{border-right:none;}
+.dm-lbl{font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,241,232,0.4);text-transform:uppercase;letter-spacing:0.08em;}
+.dm-val{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:500;margin-top:2px;}
+.dm-val .g{color:#A8CE8F;}.dm-val .a{color:#EAD173;}
+.dm-body{padding:12px;}
+.dm-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;}
+.dmc{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px;position:relative;overflow:hidden;}
+.dmc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;}
+.dmc.c1::before{background:#F7B894;}.dmc.c2::before{background:#EAD173;}.dmc.c3::before{background:#A9CBD6;}.dmc.c4::before{background:#A8CE8F;}
+.dmc-l{font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);text-transform:uppercase;}
+.dmc-v{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;margin-top:2px;}
+
+/* HEATMAP */
+.hg{display:grid;grid-template-columns:24px repeat(24,1fr);gap:1.5px;}
+.hh{text-align:center;font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);}
+.hday{display:flex;align-items:center;font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-soft);text-transform:uppercase;}
+.hcell{aspect-ratio:1.8/1;border-radius:2px;background:rgba(15,42,30,0.05);transition:transform 0.2s;cursor:pointer;}
+.hcell:hover{transform:scale(1.4);z-index:2;position:relative;}
+.hcell.l1{background:#D4C8E8;opacity:0.6;}.hcell.l2{background:#A9CBD6;opacity:0.75;}.hcell.l3{background:#A8CE8F;opacity:0.85;}.hcell.l4{background:#EAD173;opacity:0.92;}.hcell.l5{background:#FF8A66;}
+.hcell.now{outline:1.5px solid var(--ink);outline-offset:1px;}
+.h-legend{display:flex;gap:12px;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;flex-wrap:wrap;}
+.hs{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* AI BUILDER */
+.rb{background:var(--paper);border:1px solid var(--line-mid);border-radius:12px;padding:16px;margin:16px 0;}
+.rb-lbl{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.rb-you{background:rgba(201,226,184,0.4);border:1px solid #A8CE8F;border-radius:12px 12px 2px 12px;padding:10px 14px;margin-left:40px;margin-bottom:8px;font-size:13px;color:var(--ink);line-height:1.5;}
+.rb-oh{background:var(--cream);border:1px solid var(--line-mid);border-radius:12px 12px 12px 2px;padding:10px 14px;margin-right:40px;margin-bottom:8px;font-size:13px;color:var(--ink-soft);line-height:1.5;}
+.rb-tag{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.rb-dot{width:5px;height:5px;border-radius:50%;background:var(--moss);}
+.rb-acts{display:flex;gap:6px;margin-top:10px;}
+.rb-p{padding:7px 14px;border-radius:999px;background:var(--moss);color:var(--cream);font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.rb-g{padding:7px 14px;border-radius:999px;background:transparent;color:var(--ink-soft);border:1px solid var(--line-mid);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;}
+
+/* ACTIVITY FEED */
+.feed-row{display:grid;grid-template-columns:54px 20px 1fr auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line);font-size:12px;}
+.feed-row:last-child{border-bottom:none;}
+.ft{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;}
+.fi{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;}
+.fi.on{background:rgba(168,206,143,0.3);color:var(--moss);}
+.fi.off{background:rgba(15,42,30,0.08);color:var(--ink-soft);}
+.fi.bud{background:rgba(234,209,115,0.35);color:#7a5c00;}
+.fi.alt{background:rgba(255,138,102,0.25);color:#C24A2A;}
+.fi svg{width:9px;height:9px;}
+.fx{color:var(--ink);letter-spacing:-0.005em;}
+.fx b{font-weight:500;}
+.ftag{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;margin-left:4px;}
+.fc{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);}
+.fc.g{color:var(--moss);}.fc.w{color:#C24A2A;}
+
+/* CONNECT VISUAL */
+.cv{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;margin:20px 0;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;}
+.cv-logos{display:flex;align-items:center;gap:16px;}
+.cv-logo{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13px;}
+.cv-logo.oh{background:var(--moss);color:var(--cream);}
+.cv-logo.az{background:#FF9900;color:white;}
+.cv-arrow{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.cv-line{width:48px;height:2px;background:var(--rainbow);border-radius:999px;}
+.cv-lbl{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
+.cv-desc{font-size:12.5px;color:var(--ink-soft);max-width:340px;line-height:1.5;}
+
+/* INSIGHTS CARD */
+.ic{background:white;border:1px solid var(--line-mid);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(15,42,30,0.06);}
+.ic-head{background:var(--paper);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.ic-title{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:-0.02em;}
+.ic-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;}
+.ic-row{display:flex;gap:10px;padding:12px 16px;border-bottom:1px dashed var(--line);align-items:flex-start;}
+.ic-row:last-child{border-bottom:none;}
+.ic-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.ic-text{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
+.ic-text b{color:var(--ink);font-weight:500;}
+.ic-cta{font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-top:3px;}
+
+/* RULE CARDS */
+.rcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;}
+.rcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;cursor:pointer;transition:transform 0.2s,border-color 0.2s;text-align:left;border-top:none;}
+.rcard:hover{transform:translateY(-2px);border-color:var(--line-strong);}
+.rcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;}
+.rcard.c1::before{background:#F7B894;}.rcard.c2::before{background:#EAD173;}.rcard.c3::before{background:#A9CBD6;}.rcard.c4::before{background:#A8CE8F;}
+.rc-lbl{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+.rc-title{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.02em;color:var(--ink);margin-bottom:4px;}
+.rc-desc{font-size:12px;color:var(--ink-soft);line-height:1.4;}
+
+/* PAGE NAV */
+.pnav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px;padding-top:28px;border-top:1px solid var(--line);}
+.pnc{background:var(--paper);border:1px solid var(--line-mid);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:3px;font-family:'Inter',sans-serif;}
+.pnc:hover{border-color:var(--line-strong);transform:translateY(-1px);}
+.pnc.r{text-align:right;}
+.pnc-dir{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;}
+.pnc-title{font-size:13.5px;font-weight:500;color:var(--ink);letter-spacing:-0.005em;}
+
+/* OTP */
+.otp{position:sticky;top:calc(var(--nav-h) + 24px);padding:0 0 0 28px;width:180px;flex-shrink:0;display:none;}
+@media(min-width:1280px){.otp{display:block;}}
+.otp-lbl{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.otp-item{display:block;font-size:12px;color:var(--ink-faint);padding:4px 0 4px 10px;border-left:2px solid transparent;transition:color 0.2s,border-color 0.2s;cursor:pointer;border-right:none;border-top:none;border-bottom:none;background:transparent;width:100%;text-align:left;font-family:'Inter',sans-serif;}
+.otp-item:hover{color:var(--ink);border-left-color:var(--line-strong);}
+.otp-item.active{color:var(--moss);border-left-color:var(--moss);}
+
+/* FOOT */
+.pfoot{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.pfoot-c{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
+.pfoot-l{display:flex;gap:14px;}
+.pfoot-l a{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-decoration:none;text-transform:uppercase;letter-spacing:0.06em;}
+
+@keyframes barUp{from{height:0!important;opacity:0;}to{opacity:1;}}
+@keyframes pulseEvent{0%,100%{box-shadow:0 0 10px rgba(255,138,102,0.6);}50%{box-shadow:0 0 20px rgba(255,138,102,0.9);}}
+@keyframes fillTimeline{from{width:0%;}to{width:75%;}}
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .content{padding:24px 20px 80px;}
+  .rcards,.dm-cards,.dm-strip{grid-template-columns:1fr 1fr;}
+  .pnav{grid-template-columns:1fr;}
+}
+
+/* SEARCH OVERLAY */
+.search-overlay{position:fixed;inset:0;z-index:500;background:rgba(15,42,30,0.5);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding:80px 20px 20px;}
+.search-overlay.open{display:flex;animation:fadeIn 0.18s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.search-box{background:var(--paper);border:1px solid var(--line-mid);border-radius:16px;width:100%;max-width:600px;overflow:hidden;box-shadow:0 30px 80px rgba(15,42,30,0.3);position:relative;}
+.search-box::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--rainbow);border-radius:16px 16px 0 0;}
+.search-input-wrap{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);}
+.search-input-wrap svg{width:16px;height:16px;color:var(--ink-faint);flex-shrink:0;}
+.search-input-wrap input{flex:1;border:none;outline:none;background:transparent;font-family:'Inter',sans-serif;font-size:15px;color:var(--ink);}
+.search-input-wrap input::placeholder{color:var(--ink-faint);}
+.search-esc{font-family:'Space Mono',monospace;font-size:10px;padding:2px 7px;border-radius:4px;background:var(--cream-deep);border:1px solid var(--line);color:var(--ink-faint);cursor:pointer;}
+.search-results{max-height:400px;overflow-y:auto;padding:6px;}
+.search-result{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:8px;cursor:pointer;transition:background 0.15s;}
+.search-result:hover,.search-result.focused{background:var(--moss-tint);}
+.sr-page{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;}
+.sr-title{font-size:13.5px;font-weight:500;color:var(--ink);letter-spacing:-0.005em;}
+.sr-preview{font-size:12px;color:var(--ink-soft);line-height:1.4;margin-top:2px;}
+.sr-preview mark{background:rgba(234,209,115,0.5);color:var(--ink);border-radius:2px;padding:0 2px;}
+.search-empty{padding:32px 20px;text-align:center;color:var(--ink-faint);font-size:13px;}
+.search-footer{padding:10px 16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;}
+
+/* LIVE AI BUILDER */
+.ai-live{background:var(--paper);border:1px solid var(--line-mid);border-radius:14px;overflow:hidden;margin:20px 0;}
+.ai-live-head{background:var(--ink);padding:14px 18px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;}
+.ai-live-head::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);}
+.ai-live-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--cream);letter-spacing:-0.02em;}
+.ai-live-badge{font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:999px;background:rgba(168,206,143,0.2);color:#A8CE8F;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;}
+.ai-live-body{padding:16px;}
+.ai-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.ai-chip{padding:5px 11px;border-radius:999px;background:var(--cream);border:1px solid var(--line-mid);font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;}
+.ai-chip:hover{background:var(--moss-tint);color:var(--moss);border-color:var(--moss-tint);}
+.ai-input-row{display:flex;gap:8px;align-items:flex-end;}
+.ai-input{flex:1;padding:10px 14px;border-radius:10px;border:1px solid var(--line-mid);background:var(--cream);font-family:'Inter',sans-serif;font-size:13.5px;color:var(--ink);resize:none;min-height:48px;max-height:100px;outline:none;transition:border-color 0.2s;line-height:1.5;}
+.ai-input:focus{border-color:var(--moss);}
+.ai-input::placeholder{color:var(--ink-faint);}
+.ai-send{padding:10px 18px;border-radius:999px;background:var(--moss);color:var(--cream);font-family:'Inter',sans-serif;font-size:13px;font-weight:500;border:none;cursor:pointer;transition:background 0.2s,transform 0.2s;white-space:nowrap;flex-shrink:0;}
+.ai-send:hover{background:var(--ink);transform:translateY(-1px);}
+.ai-send:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.ai-convo{display:flex;flex-direction:column;gap:8px;margin-top:12px;min-height:0;}
+.ai-bubble-you{background:rgba(201,226,184,0.4);border:1px solid #A8CE8F;border-radius:12px 12px 2px 12px;padding:10px 14px;margin-left:48px;font-size:13px;color:var(--ink);line-height:1.5;animation:bubbleIn 0.25s ease;}
+.ai-bubble-oh{background:var(--cream);border:1px solid var(--line-mid);border-radius:12px 12px 12px 2px;padding:10px 14px;margin-right:48px;font-size:13px;color:var(--ink-soft);line-height:1.5;animation:bubbleIn 0.25s ease;}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.ai-oh-tag{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.ai-oh-dot{width:5px;height:5px;border-radius:50%;background:var(--moss);}
+.ai-typing{display:flex;align-items:center;gap:4px;padding:8px 0;}
+.ai-typing span{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);animation:typing 1.2s ease-in-out infinite;}
+.ai-typing span:nth-child(2){animation-delay:0.2s;}
+.ai-typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes typing{0%,60%,100%{transform:translateY(0);opacity:0.4;}30%{transform:translateY(-4px);opacity:1;}}
+.ai-confirm-row{display:flex;gap:6px;margin-top:8px;}
+.ai-confirm-btn{padding:6px 12px;border-radius:999px;font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.ai-confirm-btn.p{background:var(--moss);color:var(--cream);}
+.ai-confirm-btn.g{background:transparent;color:var(--ink-soft);border:1px solid var(--line-mid);}
+.ai-reset{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;margin-top:10px;display:inline-block;border:none;background:none;padding:0;}
+.ai-reset:hover{color:var(--ink);}
+
+/* FAQ ACCORDION */
+.faq-group{margin:18px 0;display:flex;flex-direction:column;gap:4px;}
+.faq-item{border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color 0.2s;}
+.faq-item.open{border-color:var(--line-strong);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;font-size:14px;font-weight:500;color:var(--ink);letter-spacing:-0.005em;background:var(--paper);border:none;width:100%;text-align:left;font-family:'Inter',sans-serif;transition:background 0.15s;gap:12px;}
+.faq-q:hover{background:var(--cream-deep);}
+.faq-item.open .faq-q{background:var(--cream-deep);}
+.faq-icon{width:20px;height:20px;border-radius:50%;background:var(--line);display:grid;place-items:center;flex-shrink:0;transition:transform 0.25s,background 0.2s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--moss-tint);}
+.faq-icon svg{width:10px;height:10px;color:var(--ink-faint);}
+.faq-item.open .faq-icon svg{color:var(--moss);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s cubic-bezier(0.2,0.8,0.2,1),padding 0.25s;}
+.faq-item.open .faq-a{max-height:400px;padding:0 16px 14px;}
+.faq-a-inner{font-size:13.5px;color:var(--ink-soft);line-height:1.7;letter-spacing:-0.005em;border-top:1px dashed var(--line);padding-top:12px;}
+
+/* FEEDBACK WIDGET */
+.feedback{margin-top:48px;padding:20px;border-radius:12px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+.feedback-q{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;}
+.feedback-btns{display:flex;gap:8px;}
+.feedback-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;}
+.feedback-btn:hover{border-color:var(--line-strong);color:var(--ink);}
+.feedback-btn.yes:hover{background:rgba(168,206,143,0.2);border-color:var(--mint-deep);color:var(--moss);}
+.feedback-btn.no:hover{background:rgba(255,138,102,0.1);border-color:var(--coral);color:#C24A2A;}
+.feedback-btn svg{width:14px;height:14px;}
+.feedback-thanks{font-size:13px;color:var(--moss);font-weight:500;display:none;}
+.feedback-form{display:none;flex-direction:column;gap:8px;width:100%;max-width:400px;}
+.feedback-textarea{padding:10px 12px;border-radius:8px;border:1px solid var(--line-mid);background:var(--cream);font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);resize:none;height:80px;outline:none;transition:border-color 0.2s;}
+.feedback-textarea:focus{border-color:var(--moss);}
+.feedback-submit{padding:8px 16px;border-radius:999px;background:var(--moss);color:var(--cream);font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;border:none;cursor:pointer;align-self:flex-end;}
+
+/* RELATED PAGES */
+.related{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);}
+.related-label{font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+.related-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:3px;border:none;text-align:left;font-family:'Inter',sans-serif;}
+.related-card:hover{border-color:var(--line-strong);transform:translateY(-1px);}
+.related-card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
+.rc-tag{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;}
+.rc-name{font-size:13px;font-weight:500;color:var(--ink);letter-spacing:-0.005em;}
+.rc-arr{font-size:11px;color:var(--ink-faint);margin-top:2px;}
+
+/* STATUS PILL in nav */
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:rgba(168,206,143,0.15);border:1px solid rgba(168,206,143,0.3);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;}
+.status-pill .sdot{width:5px;height:5px;border-radius:50%;background:var(--mint-deep);box-shadow:0 0 5px rgba(168,206,143,0.7);animation:pulse 2.2s ease-in-out infinite;}
+
+/* COPY BUTTON */
+.code-wrap{position:relative;display:inline-block;}
+.code-wrap code{padding-right:32px;}
+.copy-btn{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:4px;background:transparent;border:none;cursor:pointer;display:grid;place-items:center;color:var(--ink-faint);transition:background 0.2s,color 0.2s;}
+.copy-btn:hover{background:var(--line);color:var(--ink);}
+.copy-btn svg{width:11px;height:11px;}
+
+/* LAYERING DIAGRAM */
+.layer-diagram{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin:20px 0;overflow:hidden;}
+.layer-title{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;}
+.layer-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;position:relative;}
+.layer-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;width:80px;flex-shrink:0;text-align:right;}
+.layer-track{flex:1;height:28px;border-radius:6px;position:relative;overflow:hidden;display:flex;}
+.layer-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;transition:opacity 0.3s;}
+.layer-seg.on{opacity:1;}.layer-seg.off{opacity:0.25;}
+.layer-override{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;color:white;letter-spacing:0.06em;}
+.layer-hours{flex:1;display:flex;}
+.layer-hour-lbl{display:flex;justify-content:space-between;margin-top:4px;padding:0 0 0 90px;}
+.layer-hour-lbl span{font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);}
+
+/* DARK MODE TOGGLE */
+.dm-toggle{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);transition:all 0.2s;}
+.dm-toggle:hover{background:var(--cream-deep);color:var(--ink);}
+.dm-toggle svg{width:12px;height:12px;}
+
+body.dark{
+  --cream:#141a14;--cream-deep:#1c241c;--paper:#111911;
+  --ink:#E8F0E8;--ink-soft:#A8C4A8;--ink-faint:#6B8A6B;
+  --line:rgba(168,206,143,0.1);--line-mid:rgba(168,206,143,0.15);--line-strong:rgba(168,206,143,0.25);
+  --moss-tint:rgba(168,206,143,0.08);
+}
+
+/* ESTIMATED TIME badges in sidebar */
+.stime{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);opacity:0.7;}
+
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search docs…" autocomplete="off">
+      <span class="search-esc" onclick="closeSearch()">esc</span>
+    </div>
+    <div id="searchResults" class="search-results">
+      <div class="search-empty">Type to search across all docs…</div>
+    </div>
+    <div class="search-footer"><span>Off Hours Docs</span><span>↑↓ navigate · ↵ open · esc close</span></div>
+  </div>
+</div>
+
+<div class="pb" id="pb"></div>
+
+<nav class="top-nav">
+  <button class="nav-brand" onclick="nav('intro')">
+    <span class="bm">OH</span>
+    <span class="bn">Off Hours</span>
+    <span class="bb">Docs</span>
+  </button>
+  <div class="nav-mid">
+    <div class="nav-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Search docs…<span class="kbd">⌘K</span>
+    </div>
+    <button class="ntab active" id="tab-user" onclick="switchTab('user')">User Guide</button>
+    <button class="ntab" id="tab-api" onclick="switchTab('api')">API Reference</button>
+  </div>
+  <div class="nav-right">
+    <div class="status-pill"><span class="sdot"></span>All systems operational</div>
+    <a href="https://off-hours.app" class="nlink">← Marketing site</a>
+    <button class="dm-toggle" onclick="toggleDark()" title="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <a href="https://dashboard.off-hours.app" class="ncta">Go to dashboard <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <span class="sl">Getting started</span>
+  <button class="si active" id="si-intro" onclick="nav('intro')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>Introduction<span class="stime">2 min</span></button>
+  <button class="si" id="si-quickstart" onclick="nav('quickstart')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Quick start<span class="snew">5 min</span></button>
+  <button class="si" id="si-connect" onclick="nav('connect')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>Connect Amazon account<span class="stime">3 min</span></button>
+  <div class="sdiv"></div>
+  <span class="sl">Rule types</span>
+  <button class="si" id="si-dayparting" onclick="nav('dayparting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>Dayparting<span class="stime">4 min</span></button>
+  <button class="si" id="si-budget" onclick="nav('budget')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M8 15h4"/></svg>Budget rules<span class="stime">3 min</span></button>
+  <button class="si" id="si-event" onclick="nav('event')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Event rules<span class="stime">3 min</span></button>
+  <button class="si" id="si-performance" onclick="nav('performance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>Performance rules<span class="stime">3 min</span></button>
+  <div class="sdiv"></div>
+  <span class="sl">Features</span>
+  <button class="si" id="si-aibuilder" onclick="nav('aibuilder')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>AI rule builder<span class="stime">3 min</span></button>
+  <button class="si" id="si-dashboard" onclick="nav('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dashboard<span class="stime">4 min</span></button>
+  <button class="si" id="si-insights" onclick="nav('insights')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Weekly insights<span class="stime">3 min</span></button>
+  <button class="si" id="si-changelog" onclick="nav('changelog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">2 min</span></button>
+  <button class="si" id="si-team" onclick="nav('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Team access<span class="sbadge">Agency</span></button>
+  <div class="sdiv"></div>
+  <span class="sl">Account</span>
+  <button class="si" id="si-billing" onclick="nav('billing')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Billing and plans<span class="stime">3 min</span></button>
+  <button class="si" id="si-faq" onclick="nav('faq')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</button>
+</aside>
+
+<div class="cwrap">
+<main class="content" id="mc">
+
+<!-- ========== INTRO ========== -->
+<div class="doc-page active" id="page-intro">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Introduction</span></div>
+  <div class="ptag">Getting started</div>
+  <h1 class="ptitle">Welcome to Off Hours</h1>
+  <p class="pdesc">Off Hours schedules and automates your Amazon Ads campaigns — hour by hour, across every account. From signup to your first running rule in under five minutes.</p>
+  <div class="rr"></div>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div class="dm">
+        <div class="dm-top">
+          <div class="dm-status"><span class="dm-pulse"></span>All systems healthy</div>
+          <div class="dm-hl">Your rules executed <span class="num">142 actions</span> across 4 accounts overnight. Nothing to review.</div>
+          <div class="dm-strip">
+            <div class="dm-cell"><div class="dm-lbl">Last 24 hrs</div><div class="dm-val"><span class="g">142</span> <span style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,241,232,0.4);">executed</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Accounts</div><div class="dm-val"><span class="g">4</span> <span style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,241,232,0.4);">healthy</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Attention</div><div class="dm-val"><span class="a">3</span> <span style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,241,232,0.4);">items</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Active rules</div><div class="dm-val">8</div></div>
+          </div>
+        </div>
+        <div class="dm-body"><div class="dm-cards"><div class="dmc c1"><div class="dmc-l">Dayparting</div><div class="dmc-v">5</div></div><div class="dmc c2"><div class="dmc-l">Budget</div><div class="dmc-v">2</div></div><div class="dmc c3"><div class="dmc-l">Event</div><div class="dmc-v">1</div></div><div class="dmc c4"><div class="dmc-l">Performance</div><div class="dmc-v">0</div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">14-day free trial, no credit card</div><div class="ca-x">Every account starts with full access to all four rule types. No payment required to get started.</div></div></div>
+  <h2 class="h2 f" id="what">What Off Hours does</h2>
+  <p class="p">Off Hours connects to your Amazon Ads account via the official Amazon Advertising API and executes scheduling and automation rules — every hour, around the clock. You define the rules. Off Hours makes sure they run.</p>
+  <div class="rcards">
+    <button class="rcard c1" onclick="nav('dayparting')"><div class="rc-lbl">Most popular</div><div class="rc-title">Dayparting</div><div class="rc-desc">Run campaigns when customers shop. Pause when they don't. Hour by hour, day by day.</div></button>
+    <button class="rcard c2" onclick="nav('budget')"><div class="rc-lbl">Budget</div><div class="rc-title">Budget rules</div><div class="rc-desc">Increase or decrease daily budgets on a recurring schedule.</div></button>
+    <button class="rcard c3" onclick="nav('event')"><div class="rc-lbl">Events</div><div class="rc-title">Event rules</div><div class="rc-desc">Handle Prime Day, Black Friday, and product launches. Rules restore automatically.</div></button>
+    <button class="rcard c4" onclick="nav('performance')"><div class="rc-lbl">Performance</div><div class="rc-title">Performance rules</div><div class="rc-desc">Alert or act when ACOS or budget thresholds are crossed.</div></button>
+  </div>
+
+  <h2 class="h2" id="layering">How rules layer</h2>
+  <p class="p">Multiple rules can apply to the same campaigns at the same time. This is how they interact across a typical week:</p>
+  <div class="layer-diagram">
+    <div class="layer-title">Rule layering · Tue–Sun · all times shown in MST</div>
+    <div class="layer-row">
+      <div class="layer-label">Dayparting</div>
+      <div class="layer-track">
+        <div class="layer-seg off" style="width:25%;background:rgba(15,42,30,0.08);color:var(--ink-faint);font-size:8px;">Off</div>
+        <div class="layer-seg on" style="width:75%;background:rgba(168,206,143,0.3);color:var(--moss);">On · 6AM–midnight</div>
+      </div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-label">Budget +30%</div>
+      <div class="layer-track">
+        <div class="layer-seg off" style="width:72%;background:rgba(15,42,30,0.04);"></div>
+        <div class="layer-seg on" style="width:28%;background:rgba(234,209,115,0.4);color:#7a5c00;">Fri 5PM → Sun</div>
+      </div>
+    </div>
+    <div class="layer-row">
+      <div class="layer-label">Event</div>
+      <div class="layer-track" style="position:relative;">
+        <div class="layer-seg off" style="width:100%;background:rgba(15,42,30,0.04);color:var(--ink-faint);font-size:8px;">Not active this week</div>
+      </div>
+    </div>
+    <div style="margin-top:4px;padding-left:90px;display:flex;justify-content:space-between;font-family:Space Mono,monospace;font-size:8px;color:var(--ink-faint);">
+      <span>12AM</span><span>6AM</span><span>12PM</span><span>6PM</span><span>12AM</span>
+    </div>
+    <div style="margin-top:12px;padding:10px 12px;background:rgba(168,206,143,0.1);border-radius:8px;border:1px solid rgba(168,206,143,0.25);font-size:12.5px;color:var(--ink-soft);line-height:1.5;">
+      <strong style="color:var(--ink);">This week:</strong> Campaigns pause midnight to 6AM every day. On Friday evening the budget also increases 30% and stays elevated through Sunday — layered on top of the dayparting schedule automatically.
+    </div>
+  </div>
+  <h2 class="h2" id="concepts">Key concepts</h2>
+  <table class="tbl"><thead><tr><th>Concept</th><th>What it means</th></tr></thead><tbody>
+    <tr><td>Hourly check</td><td>Off Hours evaluates all active rules at the top of every hour. Maximum execution lag is 60 minutes.</td></tr>
+    <tr><td>Rule layering</td><td>Multiple rules can apply to the same campaigns. Event rules override dayparting during their window, then restore cleanly.</td></tr>
+    <tr><td>Change log</td><td>Every automated action is logged with timestamp, rule name, campaign, and account. Full audit trail, always.</td></tr>
+    <tr><td>Weekly insights</td><td>Every Monday, Off Hours emails a performance summary with deferred spend estimates and actionable observations.</td></tr>
+    <tr><td>Global pause</td><td>Suspend all automation for 24 hours from the avatar menu. Campaigns stay exactly as they were last set.</td></tr>
+  </tbody></table>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Off Hours manages campaigns, not bids</div><div class="ca-x">Off Hours enables, pauses, and adjusts daily budgets only. Keyword bids, match types, and targeting settings are never touched.</div></div></div>
+
+  <h2 class="h2" id="try-it">Try the AI rule builder</h2>
+  <p class="p">Every rule page has the AI builder built in. Describe what you want and Off Hours configures the rule — try it here before you even sign up.</p>
+  <div class="ai-live">
+    <div class="ai-live-head">
+      <span class="ai-live-title">AI rule builder</span>
+      <span class="ai-live-badge">Live demo</span>
+    </div>
+    <div class="ai-live-body">
+      <div class="ai-chips" id="aiChips">
+        <span class="ai-chip" onclick="fillPrompt(this)">Pause campaigns midnight to 6am on weekdays</span>
+        <span class="ai-chip" onclick="fillPrompt(this)">Boost budgets 30% every weekend</span>
+        <span class="ai-chip" onclick="fillPrompt(this)">Alert me if ACOS exceeds 60% two days in a row</span>
+        <span class="ai-chip" onclick="fillPrompt(this)">Run everything 24 hours during Prime Day</span>
+      </div>
+      <div class="ai-input-row">
+        <textarea class="ai-input" id="aiInput" placeholder="Describe the rule you want in plain English…" rows="2" onkeydown="handleAiKey(event)"></textarea>
+        <button class="ai-send" id="aiSend" onclick="sendAiPrompt()">Build rule →</button>
+      </div>
+      <div class="ai-convo" id="aiConvo"></div>
+      <button class="ai-reset" id="aiReset" style="display:none;" onclick="resetAi()">← Start over</button>
+    </div>
+  </div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('quickstart')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Getting started</div><div class="rc-name">Quick start →</div></button>
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-intro">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('intro','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('intro','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-intro">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-intro">
+      <textarea class="feedback-textarea" id="fb-text-intro" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('intro')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><div class="pnc" style="opacity:0.35;pointer-events:none;"><div class="pnc-dir">Previous</div><div class="pnc-title">—</div></div><button class="pnc r" onclick="nav('quickstart')"><div class="pnc-dir">Next →</div><div class="pnc-title">Quick start</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a><a href="mailto:hello@off-hours.app">hello@off-hours.app</a></div></div>
+</div>
+
+<!-- ========== QUICK START ========== -->
+<div class="doc-page" id="page-quickstart">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Quick start</span></div>
+  <div class="ptag">Getting started</div>
+  <h1 class="ptitle">Quick start</h1>
+  <p class="pdesc">From signup to your first running rule in under five minutes.</p>
+  <div class="rr"></div>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><div><div class="ca-t">You will need</div><div class="ca-x">An Amazon Advertising account with at least one active Sponsored Products campaign. No API keys required — Off Hours connects via your Amazon Ads login.</div></div></div>
+  <h2 class="h2 f" id="steps">Steps</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Create your Off Hours account</div><div class="sdesc">Go to <strong>dashboard.off-hours.app/signup</strong>. Enter your email and set a password. No credit card required — you start immediately on a 14-day free trial with full access to all four rule types.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Connect your Amazon Ads account</div><div class="sdesc">From the sidebar, click <strong>Amazon Accounts</strong> then <strong>Connect account</strong>. You will be redirected to Amazon to authorize Off Hours. Off Hours imports all active campaigns automatically — no manual setup.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Build your first rule</div><div class="sdesc">Go to <strong>Dayparting</strong> in the sidebar and click <strong>Create rule</strong>. Type what you want in the AI rule builder — for example: "Pause all campaigns midnight to 6am on weekdays." Off Hours configures the rule and shows you a plain-English summary to confirm before anything goes live.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Activate and watch it run</div><div class="sdesc">Click <strong>Confirm and activate</strong>. Off Hours will execute the rule on its next hourly check. Watch every action in the Activity feed on your dashboard.</div></div></div>
+  </div>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Good first rule for most accounts</div><div class="ca-x">Pause all campaigns midnight to 6am on weekdays. Conservative, low risk, and for most categories immediately profitable. Tighten the schedule after reviewing your first week of data.</div></div></div>
+  <h2 class="h2" id="next">What to do next</h2>
+  <p class="p">Once your first dayparting rule is running, the logical next steps in order:</p>
+  <ul class="ul">
+    <li>Add a <button class="dl" onclick="nav('budget')">budget rule</button> for weekend boosts or seasonal pullbacks</li>
+    <li>Set up an <button class="dl" onclick="nav('event')">event rule</button> for the next major shopping event on your calendar</li>
+    <li>Configure a <button class="dl" onclick="nav('performance')">performance rule</button> to alert you if ACOS exceeds your threshold</li>
+    <li>Review your first <button class="dl" onclick="nav('insights')">weekly insights</button> email the following Monday</li>
+  </ul>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('connect')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Getting started</div><div class="rc-name">Connect Amazon account →</div></button>
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-quickstart">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('quickstart','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('quickstart','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-quickstart">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-quickstart">
+      <textarea class="feedback-textarea" id="fb-text-quickstart" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('quickstart')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('intro')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Introduction</div></button><button class="pnc r" onclick="nav('connect')"><div class="pnc-dir">Next →</div><div class="pnc-title">Connect Amazon account</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== CONNECT ========== -->
+<div class="doc-page" id="page-connect">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Connect Amazon account</span></div>
+  <div class="ptag">Getting started</div>
+  <h1 class="ptitle">Connect your Amazon Ads account</h1>
+  <p class="pdesc">No API keys, no manual setup. Authorize with your Amazon login and your campaigns import automatically.</p>
+  <div class="rr"></div>
+  <div class="cv">
+    <div class="cv-logos">
+      <div class="cv-logo oh">OH</div>
+      <div class="cv-arrow"><div class="cv-line"></div><div class="cv-lbl">Amazon Ads API</div></div>
+      <div class="cv-logo az">az</div>
+    </div>
+    <div class="cv-desc">Off Hours connects using Amazon's official OAuth authorization flow. You grant access — Off Hours never sees your Amazon password.</div>
+  </div>
+  <h2 class="h2 f" id="how">How to connect</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Amazon Accounts in the sidebar</div><div class="sdesc">Click <strong>Amazon Accounts</strong> in the left sidebar. This shows all currently connected profiles and a button to add a new one.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Click Connect account</div><div class="sdesc">You will be redirected to Amazon's authorization page. Log in with the Amazon account that has access to your advertising profiles. If you manage multiple brands, log in as the account with access to all of them.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Campaigns import automatically</div><div class="sdesc">Off Hours imports all advertising profiles associated with your account. All active Sponsored Products campaigns are available immediately.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Set profiles to active</div><div class="sdesc">Each imported profile has an <strong>Active</strong> toggle. Turn on the profiles you want Off Hours to manage. Inactive profiles are visible but no rules execute against them.</div></div></div>
+  </div>
+  <h2 class="h2" id="access">What access Off Hours requests</h2>
+  <p class="p">Off Hours requests the <span class="code-wrap"><code>advertising::campaign_management</code><button class="copy-btn" onclick="copyCode('advertising::campaign_management',this)" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span> scope — read and write access to your Sponsored Products campaigns. This is the minimum scope needed to enable, pause, and adjust daily budgets.</p>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Off Hours does not touch bids, keywords, or targeting</div><div class="ca-x">Your keyword bids, match types, and targeting settings are never modified. Off Hours only touches campaign status and daily budget amounts.</div></div></div>
+  <h2 class="h2" id="reconnect">Reconnecting an expired account</h2>
+  <p class="p">Amazon OAuth tokens expire periodically. When a token expires, Off Hours shows an alert on your dashboard and sends you an email. Go to <strong>Amazon Accounts</strong>, find the expired profile, and click <strong>Reconnect</strong>. Campaigns resume on the next hourly check.</p>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Rules do not execute on expired accounts</div><div class="ca-x">If a token expires, Off Hours suspends all rule execution for that profile until reconnected. No changes are made to campaigns during the gap. The Change log notes missed executions.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('quickstart')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Getting started</div><div class="rc-name">Quick start →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-connect">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('connect','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('connect','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-connect">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-connect">
+      <textarea class="feedback-textarea" id="fb-text-connect" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('connect')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('quickstart')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Quick start</div></button><button class="pnc r" onclick="nav('dayparting')"><div class="pnc-dir">Next →</div><div class="pnc-title">Dayparting</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== DAYPARTING ========== -->
+<div class="doc-page" id="page-dayparting">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Rule types</span><span class="sep">/</span><span class="cur">Dayparting</span></div>
+  <div class="ptag">Rule types</div>
+  <h1 class="ptitle">Dayparting</h1>
+  <p class="pdesc">Schedule campaigns to run and pause on an hourly schedule — automatically, every day. Run when customers are shopping. Pause when they aren't.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="what">What dayparting does</h2>
+  <p class="p">A dayparting rule defines which hours of the week campaigns should run and which they should pause. The schedule is built on a 7-by-24 grid — 168 total cells. Active hours run campaigns. Paused hours don't. Off Hours checks the schedule every hour and enables or pauses accordingly.</p>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → When campaigns run</div></div>
+    <div class="demo-body"><div id="heatContainer"></div><div class="h-legend"><span><span class="hs" style="background:rgba(15,42,30,0.05)"></span>Paused</span><span><span class="hs" style="background:#D4C8E8;opacity:0.7"></span>Low</span><span><span class="hs" style="background:#A8CE8F;opacity:0.85"></span>Active</span><span><span class="hs" style="background:#EAD173;opacity:0.95"></span>Strong</span><span><span class="hs" style="background:#FF8A66"></span>Peak</span></div></div>
+  </div>
+  <h2 class="h2" id="creating">Creating a dayparting rule</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Dayparting in the sidebar</div><div class="sdesc">Click <strong>Create rule</strong>. Use the AI rule builder to describe your schedule in plain English, or configure it manually using the schedule grid.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Select your campaigns</div><div class="sdesc">Choose which campaigns this rule applies to — all campaigns in an account, a specific subset, or campaigns matching a naming pattern.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Set your schedule</div><div class="sdesc">Toggle hours on or off in the grid. Green hours run campaigns. Empty hours pause them. Use weekday/weekend preset buttons as a starting point, then fine-tune individual hours.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Confirm and activate</div><div class="sdesc">Review the plain-English rule summary and click <strong>Activate</strong>. The rule executes on the next hourly check.</div></div></div>
+  </div>
+  <h2 class="h2" id="schedule">Recommended starting schedule</h2>
+  <p class="p">If you don't yet have hourly data for your account, this works as a conservative default for most general merchandise categories:</p>
+  <ul class="ul">
+    <li><strong>Weekdays:</strong> Run 6 AM to midnight. Pause midnight to 6 AM.</li>
+    <li><strong>Weekends:</strong> Run 7 AM to 11 PM. Pause 11 PM to 7 AM.</li>
+  </ul>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Pull 30 days of hourly data first</div><div class="ca-x">Amazon Advertising reports include hourly breakdowns. Chart conversion rate by hour and day — your dead zones will be obvious. The patterns are usually more pronounced than expected.</div></div></div>
+  <h2 class="h2" id="events">How dayparting interacts with event rules</h2>
+  <p class="p">Event rules can override your dayparting schedule during their active window. A Prime Day event rule can suspend your overnight pause so campaigns run 24 hours, then restore your normal dayparting schedule automatically when the event ends. You do not need to manually disable dayparting rules for events.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('budget')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Budget rules →</div></button>
+      <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
+      <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-dayparting">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('dayparting','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('dayparting','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-dayparting">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-dayparting">
+      <textarea class="feedback-textarea" id="fb-text-dayparting" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('dayparting')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('connect')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Connect Amazon account</div></button><button class="pnc r" onclick="nav('budget')"><div class="pnc-dir">Next →</div><div class="pnc-title">Budget rules</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== BUDGET ========== -->
+<div class="doc-page" id="page-budget">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Rule types</span><span class="sep">/</span><span class="cur">Budget rules</span></div>
+  <div class="ptag">Rule types</div>
+  <h1 class="ptitle">Budget rules</h1>
+  <p class="pdesc">Increase or decrease campaign daily budgets on a recurring schedule. Weekend boosts, seasonal pullbacks, any cadence you need.</p>
+  <div class="rr"></div>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Budget Rules</div></div>
+    <div class="demo-body">
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Daily budget · This week</div>
+        <div id="budgetViz" style="display:flex;flex-direction:column;gap:6px;"></div>
+        <div style="display:flex;gap:16px;margin-top:10px;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--mint-deep);margin-right:4px;vertical-align:middle;opacity:0.85;"></span>Baseline</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:var(--butter-deep);margin-right:4px;vertical-align:middle;"></span>Weekend boost active</span>
+        </div>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">Weekend boost rule</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">+30% every Fri 5 PM → Sun 11 PM</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(168,206,143,0.2);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;font-weight:700;">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--moss);display:inline-block;"></span>Active
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2 f" id="what">What budget rules do</h2>
+  <p class="p">A budget rule adjusts the daily budget of one or more campaigns by a set amount or percentage at a scheduled time, then optionally restores the original budget later. The adjustment recurs on the schedule you define — daily, weekly, or on specific days.</p>
+  <p class="p">Budget rules are the natural companion to dayparting. Dayparting controls when campaigns run. Budget rules control how much they spend while running.</p>
+  <h2 class="h2" id="uses">Common use cases</h2>
+  <ul class="ul">
+    <li><strong>Weekend boost.</strong> Increase daily budgets by 25 to 40 percent on Friday evening, reset Sunday night. Captures stronger weekend shopping traffic without manual campaign edits.</li>
+    <li><strong>Weekday pullback.</strong> Reduce budgets on low-converting morning hours to preserve spend for evenings and lunch windows.</li>
+    <li><strong>Seasonal scaling.</strong> Gradually increase budgets over a multi-week ramp into Q4, then step back down after the holiday peak.</li>
+    <li><strong>Budget pacing.</strong> Reduce budgets on days that historically overspend early, preserving spend for high-converting windows later in the day.</li>
+  </ul>
+  <h2 class="h2" id="creating">Creating a budget rule</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Budget Rules in the sidebar</div><div class="sdesc">Click <strong>Create rule</strong>. Describe the adjustment in the AI rule builder or configure it manually.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Set the adjustment</div><div class="sdesc">Choose increase or decrease, and set the amount as a percentage or fixed daily budget value. Percentage adjustments are applied relative to the campaign's current daily budget when the rule fires.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Set the schedule</div><div class="sdesc">Choose when the adjustment fires and when it restores. A weekend boost fires Friday at 5 PM and restores Sunday at 11 PM. Restoration is automatic.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Activate</div><div class="sdesc">Confirm the rule summary and activate. The first execution happens at the next scheduled time.</div></div></div>
+  </div>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Percentage adjustments compound if layered</div><div class="ca-x">If two budget rules both apply a percentage increase to the same campaign, each is calculated relative to the budget at the time it fires — not the original baseline. Be intentional when layering budget rules on the same campaigns.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
+      <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-budget">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('budget','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('budget','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-budget">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-budget">
+      <textarea class="feedback-textarea" id="fb-text-budget" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('budget')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('dayparting')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dayparting</div></button><button class="pnc r" onclick="nav('event')"><div class="pnc-dir">Next →</div><div class="pnc-title">Event rules</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== EVENT ========== -->
+<div class="doc-page" id="page-event">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Rule types</span><span class="sep">/</span><span class="cur">Event rules</span></div>
+  <div class="ptag">Rule types</div>
+  <h1 class="ptitle">Event rules</h1>
+  <p class="pdesc">Handle Prime Day, Black Friday, product launches, and any date-range event. Rules activate automatically, run for the event window, and restore your baseline when they end.</p>
+  <div class="rr"></div>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Event Rules → Prime Day</div></div>
+    <div class="demo-body">
+      <div style="margin-bottom:16px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">Event timeline · Prime Day</div>
+        <div style="position:relative;padding:0 8px;">
+          <div style="height:3px;background:var(--line-mid);border-radius:999px;margin:24px 0;position:relative;">
+            <div id="timelineFill" style="height:100%;width:0%;background:var(--rainbow);border-radius:999px;transition:width 1.2s cubic-bezier(0.2,0.8,0.2,1);"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:-36px;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--ink);border:2px solid var(--cream);z-index:1;position:relative;"></div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);text-transform:uppercase;margin-top:20px;">T-14</div>
+              <div style="font-size:10px;color:var(--ink-soft);">Audit</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--ink);border:2px solid var(--cream);z-index:1;position:relative;"></div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);text-transform:uppercase;margin-top:20px;">T-7</div>
+              <div style="font-size:10px;color:var(--ink-soft);">Stage</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:14px;height:14px;border-radius:50%;background:var(--coral);border:2px solid var(--cream);z-index:1;position:relative;box-shadow:0 0 10px rgba(255,138,102,0.6);animation:pulseEvent 1.8s ease-in-out infinite;"></div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--coral);text-transform:uppercase;font-weight:700;margin-top:18px;">T-0</div>
+              <div style="font-size:10px;color:var(--coral);font-weight:500;">Event</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--mint-deep);border:2px solid var(--cream);z-index:1;position:relative;"></div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--mint-deep);text-transform:uppercase;margin-top:20px;">T+1</div>
+              <div style="font-size:10px;color:var(--moss);">Restore</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--line-strong);border:2px solid var(--cream);z-index:1;position:relative;"></div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);text-transform:uppercase;margin-top:20px;">T+7</div>
+              <div style="font-size:10px;color:var(--ink-soft);">Normal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Event window</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">Jul 8 12:00 AM → Jul 10 12:00 AM</div>
+        </div>
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">During event</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">24hr schedule · 2× budget · auto-restore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2 f" id="what">What event rules do</h2>
+  <p class="p">An event rule defines a specific date range and applies changes to your campaigns for exactly that window. When the window ends, Off Hours automatically restores everything to its pre-event state. Event rules can override your dayparting schedule, increase budgets, or both.</p>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Set up event rules at least 7 days in advance</div><div class="ca-x">Give yourself time to review the rule, confirm the date range, and make adjustments before it fires. Last-minute setup is where mistakes happen.</div></div></div>
+  <h2 class="h2" id="uses">Common use cases</h2>
+  <ul class="ul">
+    <li><strong>Prime Day.</strong> Suspend dayparting so campaigns run 24 hours. Double daily budgets. Restore everything at the end of the 48-hour window.</li>
+    <li><strong>Black Friday and Cyber Monday.</strong> Configure the exact start and end datetime to match your promotion window.</li>
+    <li><strong>Product launch.</strong> Run specific campaigns at elevated budget for a defined window, then return to normal.</li>
+    <li><strong>Seasonal windows.</strong> Back-to-school, holiday lead-up, or any multi-day period where you want different behavior without changing baseline rules.</li>
+  </ul>
+  <h2 class="h2" id="creating">Creating an event rule</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Event Rules in the sidebar</div><div class="sdesc">Click <strong>Create rule</strong>. Use the AI rule builder or manual configuration.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Set the event window</div><div class="sdesc">Enter the start and end datetime. Times are in your account's timezone. For a 48-hour Prime Day starting July 8 at midnight, set start to July 8 12:00 AM and end to July 10 12:00 AM.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Define event behavior</div><div class="sdesc">Choose what the rule does: suspend dayparting (run campaigns 24 hours), increase daily budgets by a percentage, or both. Off Hours snapshots your pre-event state for accurate restoration.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Activate and verify</div><div class="sdesc">Activate and confirm the rule appears in your Upcoming section on the dashboard. Do a final walkthrough one day before the event — confirm the rule is active, date range is correct, and campaigns are the right ones.</div></div></div>
+  </div>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Verify restoration the morning after</div><div class="ca-x">Log in the morning after a major event and confirm your dashboard looks like it did before — normal budgets, normal dayparting. The Change log shows the restoration actions Off Hours took at midnight.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('budget')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Budget rules →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-event">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('event','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('event','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-event">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-event">
+      <textarea class="feedback-textarea" id="fb-text-event" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('event')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('budget')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Budget rules</div></button><button class="pnc r" onclick="nav('performance')"><div class="pnc-dir">Next →</div><div class="pnc-title">Performance rules</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== PERFORMANCE ========== -->
+<div class="doc-page" id="page-performance">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Rule types</span><span class="sep">/</span><span class="cur">Performance rules</span></div>
+  <div class="ptag">Rule types</div>
+  <h1 class="ptitle">Performance rules</h1>
+  <p class="pdesc">Alert or act when ACOS or budget thresholds are crossed. Guardrails that keep your automation honest — not a replacement for your judgment.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="what">What performance rules do</h2>
+  <p class="p">A performance rule monitors prior-day campaign data and triggers an alert or a defined action when a threshold is met. They are reactive, not predictive, and they do not make strategic decisions on your behalf.</p>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Performance rules use prior-day data</div><div class="ca-x">Off Hours checks metrics from the previous day, not real-time data. A rule alerting when ACOS exceeds 50 percent fires the morning after a day where ACOS crossed that threshold, not during it.</div></div></div>
+  <h2 class="h2" id="types">Alert vs action rules</h2>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Performance Rules</div></div>
+    <div class="demo-body">
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">ACOS · Last 7 days · Harbor Kitchen</div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:80px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding:0 4px 0 8px;">
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--mint-deep);border-radius:3px 3px 0 0;opacity:0.8;height:38%;animation:barUp 0.5s 0.1s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">M</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--mint-deep);border-radius:3px 3px 0 0;opacity:0.8;height:40%;animation:barUp 0.5s 0.2s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">T</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--mint-deep);border-radius:3px 3px 0 0;opacity:0.8;height:36%;animation:barUp 0.5s 0.3s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">W</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--butter-deep);border-radius:3px 3px 0 0;height:55%;animation:barUp 0.5s 0.4s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">T</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:71%;animation:barUp 0.5s 0.5s both;position:relative;">
+              <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:Space Mono,monospace;font-size:8px;font-weight:700;color:var(--coral);white-space:nowrap;">71%</div>
+            </div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">F</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:68%;animation:barUp 0.5s 0.6s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">S</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
+            <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:64%;animation:barUp 0.5s 0.7s both;"></div>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">S</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-family:'Space Mono',monospace;font-size:9px;">
+          <div style="width:20px;height:1px;border-top:1.5px dashed var(--coral);"></div>
+          <span style="color:var(--coral);">50% threshold — performance rule alert fires above this line</span>
+        </div>
+      </div>
+      <div style="background:rgba(255,138,102,0.08);border:1px solid rgba(255,138,102,0.3);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C24A2A" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Alert triggered · Harbor Kitchen ACOS exceeded 50% for 2 days</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;">Today · 6:00 AM · Performance rule fired</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="tbl"><thead><tr><th>Type</th><th>What happens</th><th>When to use</th></tr></thead><tbody>
+    <tr><td>Alert only</td><td>Off Hours sends an email when the threshold is crossed. No campaign changes are made.</td><td>For monitoring without intervention. Recommended during events or volatile periods.</td></tr>
+    <tr><td>Alert + pause</td><td>Sends an alert and pauses the affected campaigns until you manually re-enable them or a configured restore time.</td><td>For clear runaway spend scenarios where automatic pausing makes sense.</td></tr>
+  </tbody></table>
+  <h2 class="h2" id="config">Recommended configuration</h2>
+  <p class="p">Start with alert-only rules. Automatic pausing should be reserved for thresholds you are very confident about — an unexpected pause during a high-traffic window can cost more than the spend it saves.</p>
+  <ul class="ul">
+    <li>Set ACOS alert thresholds at 1.5x to 2x your target, not right at your target</li>
+    <li>Do not configure auto-pause rules for Prime Day or major events — abnormal traffic produces false positives</li>
+    <li>Review alert history weekly to calibrate thresholds over time</li>
+  </ul>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-performance">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('performance','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('performance','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-performance">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-performance">
+      <textarea class="feedback-textarea" id="fb-text-performance" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('performance')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('event')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Event rules</div></button><button class="pnc r" onclick="nav('aibuilder')"><div class="pnc-dir">Next →</div><div class="pnc-title">AI rule builder</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== AI BUILDER ========== -->
+<div class="doc-page" id="page-aibuilder">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">AI rule builder</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">AI rule builder</h1>
+  <p class="pdesc">Describe a rule in plain English. Off Hours figures out the type, configures all parameters, and shows you a summary before anything goes live.</p>
+  <div class="rr"></div>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Budget Rules → New rule</div></div>
+    <div class="demo-body">
+      <div class="rb">
+        <div class="rb-lbl">AI rule builder</div>
+        <div class="rb-you">Every Friday at 5pm, increase all Sponsored Products budgets by 25 percent and reset them Sunday night.</div>
+        <div class="rb-oh"><div class="rb-tag"><span class="rb-dot"></span>Off Hours · Parsed</div>Budget rule created — all Sponsored Products daily budgets increase by 25 percent every Friday at 5:00 PM and reset to baseline every Sunday at 11:00 PM. Runs automatically each week. Confirm to go live.</div>
+        <div class="rb-acts"><button class="rb-p">Confirm and activate</button><button class="rb-g">Edit fields</button><button class="rb-g">Try again</button></div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2 f" id="how">How it works</h2>
+  <p class="p">The AI rule builder is available on every rule page. Type what you want in the prompt field and Off Hours will identify the rule type, configure all parameters, show you a plain-English summary, and wait for your confirmation before creating anything.</p>
+  <h2 class="h2" id="examples">What to say</h2>
+  <p class="p">Write it the way you would say it to a colleague. You don't need specific terminology — the builder understands intent.</p>
+  <table class="tbl"><thead><tr><th>What you type</th><th>What gets created</th></tr></thead><tbody>
+    <tr><td>"Pause all campaigns midnight to 6am on weekdays"</td><td>Dayparting rule, weeknight pause, 12 AM to 6 AM Mon–Fri</td></tr>
+    <tr><td>"Boost Sponsored Products budgets 30% every weekend"</td><td>Budget rule, +30% Friday 5 PM, reset Sunday 11 PM</td></tr>
+    <tr><td>"Run everything 24 hours during Prime Day"</td><td>Event rule, dayparting suspended for Prime Day window</td></tr>
+    <tr><td>"Alert me if any campaign hits 60% ACOS two days in a row"</td><td>Performance rule, ACOS alert 60%, 2-day consecutive trigger</td></tr>
+  </tbody></table>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">You can always edit after</div><div class="ca-x">The AI creates a starting point. Every field is editable before and after activation — campaigns, hours, percentages, dates, all of it.</div></div></div>
+  <h2 class="h2" id="clarify">When the AI needs more context</h2>
+  <p class="p">If your prompt is ambiguous, Off Hours will ask a clarifying question before generating the rule. If you ask for something Off Hours doesn't support, the builder will say so and suggest what it can do instead.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
+      <button class="related-card" onclick="nav('budget')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Budget rules →</div></button>
+      <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-aibuilder">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('aibuilder','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('aibuilder','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-aibuilder">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-aibuilder">
+      <textarea class="feedback-textarea" id="fb-text-aibuilder" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('aibuilder')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('performance')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Performance rules</div></button><button class="pnc r" onclick="nav('dashboard')"><div class="pnc-dir">Next →</div><div class="pnc-title">Dashboard</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== DASHBOARD ========== -->
+<div class="doc-page" id="page-dashboard">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Dashboard</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Dashboard</h1>
+  <p class="pdesc">Your automation control room. System health, active rules, recent activity, and anything that needs your attention — all in one place.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="health">Health hero</h2>
+  <p class="p">The top section shows your current system status at a glance. When everything is running normally it shows a summary of overnight execution. When something needs attention — an expired token, a missed execution, a performance alert — the status changes to surface the issue directly.</p>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div class="dm">
+        <div class="dm-top">
+          <div class="dm-status"><span class="dm-pulse"></span>All systems healthy</div>
+          <div class="dm-hl">Your rules executed <span class="num">142 actions</span> across 4 accounts overnight. Nothing to review.</div>
+          <div class="dm-strip">
+            <div class="dm-cell"><div class="dm-lbl">Last 24 hrs</div><div class="dm-val"><span class="g">142</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Accounts</div><div class="dm-val"><span class="g">4</span> <span style="font-family:'Space Mono',monospace;font-size:8px;color:rgba(245,241,232,0.4);">healthy</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Attention</div><div class="dm-val"><span class="a">3</span></div></div>
+            <div class="dm-cell"><div class="dm-lbl">Active rules</div><div class="dm-val">8</div></div>
+          </div>
+        </div>
+        <div class="dm-body"><div class="dm-cards"><div class="dmc c1"><div class="dmc-l">Dayparting</div><div class="dmc-v">5</div></div><div class="dmc c2"><div class="dmc-l">Budget</div><div class="dmc-v">2</div></div><div class="dmc c3"><div class="dmc-l">Event</div><div class="dmc-v">1</div></div><div class="dmc c4"><div class="dmc-l">Performance</div><div class="dmc-v">0</div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2" id="attention">Needs your attention</h2>
+  <p class="p">This panel surfaces items Off Hours cannot handle automatically — things requiring a human decision. Examples: an expired Amazon account connection, a Prime Day approaching with no event rule configured, or an ACOS spike exceeding your threshold. Items are ranked by urgency.</p>
+  <h2 class="h2" id="activity">Activity feed</h2>
+  <p class="p">The activity feed shows every automated action Off Hours took in the last 24 hours. Each entry shows the time, action, campaign group, and which rule triggered it.</p>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Activity feed</div></div>
+    <div class="demo-body">
+      <div class="feed-row"><span class="ft">11:00 AM</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Enabled 24 campaigns</b> · Parkway Home <span class="ftag">Weekday morning</span></span><span class="fc g">+24</span></div>
+      <div class="feed-row"><span class="ft">10:00 AM</span><span class="fi bud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="fx"><b>Raised daily budget</b> on 6 campaigns <span class="ftag">Weekend boost</span></span><span class="fc">+30%</span></div>
+      <div class="feed-row"><span class="ft">6:00 AM</span><span class="fi off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></span><span class="fx"><b>Paused 18 campaigns</b> <span class="ftag">Overnight pause</span></span><span class="fc">-18</span></div>
+      <div class="feed-row"><span class="ft">6:00 AM</span><span class="fi alt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="fx"><b>ACOS alert triggered</b> <span class="ftag">Performance</span></span><span class="fc w">Alert</span></div>
+    </div>
+  </div>
+  <h2 class="h2" id="heatmap">When campaigns run heatmap</h2>
+  <p class="p">The heatmap shows a layered view of your active dayparting and budget rules across all 168 hours of the current week. Hover any cell to see the day, hour, and activity level. It updates as rules change.</p>
+  <h2 class="h2" id="upcoming">Upcoming events</h2>
+  <p class="p">The upcoming panel shows scheduled events and rule changes for the next 7 days — event rules about to fire, budget boosts for the weekend, weekly insights due Monday. A forward-looking view of what Off Hours is about to do.</p>
+  <h2 class="h2" id="pause">Global pause</h2>
+  <p class="p">The global pause toggle is in the avatar menu at the top right. Turning it on suspends all rule execution for 24 hours. Campaigns stay exactly as they were last set. A banner confirms the pause is active and when it expires. Use global pause when making manual campaign changes and you want to prevent Off Hours from interfering.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('performance')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Performance rules →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-dashboard">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('dashboard','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('dashboard','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-dashboard">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-dashboard">
+      <textarea class="feedback-textarea" id="fb-text-dashboard" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('dashboard')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('aibuilder')"><div class="pnc-dir">← Previous</div><div class="pnc-title">AI rule builder</div></button><button class="pnc r" onclick="nav('insights')"><div class="pnc-dir">Next →</div><div class="pnc-title">Weekly insights</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== INSIGHTS ========== -->
+<div class="doc-page" id="page-insights">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Weekly insights</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Weekly insights</h1>
+  <p class="pdesc">Every Monday morning, Off Hours reviews last week's performance and surfaces specific, actionable observations — so you start the week knowing exactly where the leverage is.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="what">What you get</h2>
+  <ul class="ul">
+    <li><strong>Budget exhaustion patterns.</strong> Campaigns that ran out of budget before peak hours, with a recommendation for a budget boost rule.</li>
+    <li><strong>ACOS anomalies.</strong> Accounts or campaigns where ACOS moved significantly week over week.</li>
+    <li><strong>Upcoming events.</strong> Major shopping events in the next 14 days with no event rule configured yet.</li>
+    <li><strong>Automation impact.</strong> An estimate of deferred spend from your rules last week, calculated from your actual hourly spend rates.</li>
+  </ul>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Weekly insights</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div class="ic">
+        <div class="ic-head"><div class="ic-title">This week's insights</div><div class="ic-date">Week of Apr 7, 2026</div></div>
+        <div class="ic-row"><div class="ic-dot" style="background:var(--butter-deep)"></div><div><div class="ic-text"><b>Northlane Goods</b> ran out of budget before 6pm on 5 of 7 days last week. Consider a budget boost rule to stretch spend into the evening.</div><div class="ic-cta">Create rule →</div></div></div>
+        <div class="ic-row"><div class="ic-dot" style="background:var(--coral)"></div><div><div class="ic-text"><b>Prime Day is 12 days away.</b> You don't have an event rule set up yet for any of your accounts.</div><div class="ic-cta">Set up event →</div></div></div>
+        <div class="ic-row"><div class="ic-dot" style="background:var(--mint-deep)"></div><div><div class="ic-text">Your weeknight pause rule saved an estimated <b>$340 in off-hours spend</b> last week across Parkway Home campaigns.</div></div></div>
+        <div class="ic-row"><div class="ic-dot" style="background:var(--sky-deep)"></div><div><div class="ic-text"><b>Harbor Kitchen</b> had 71 percent ACOS last week, up from 38 percent the prior week. Consider a performance rule to flag if ACOS exceeds 50 percent.</div><div class="ic-cta">Create rule →</div></div></div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2" id="calc">How the deferred spend estimate is calculated</h2>
+  <p class="p">Deferred spend is calculated as: hours paused multiplied by your average hourly spend per campaign over the prior 30 days. It represents spend that did not happen during your paused windows.</p>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Conservative by design</div><div class="ca-x">Off Hours uses a flat 30-day average rather than hour-specific rates. Hour-specific overnight rates tend to be lower, which would produce a higher estimate. We use the conservative number to avoid overstating impact.</div></div></div>
+  <h2 class="h2" id="delivery">Delivery and settings</h2>
+  <p class="p">Insights are sent every Monday at 6:00 AM in your account's timezone to all team members with email notifications enabled. You can view the current week's insights at any time from the Recommendations page in the sidebar. To adjust notification preferences, go to <strong>Settings</strong> then <strong>Notifications</strong>.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dashboard')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Dashboard →</div></button>
+      <button class="related-card" onclick="nav('performance')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Performance rules →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-insights">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('insights','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('insights','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-insights">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-insights">
+      <textarea class="feedback-textarea" id="fb-text-insights" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('insights')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('dashboard')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dashboard</div></button><button class="pnc r" onclick="nav('changelog')"><div class="pnc-dir">Next →</div><div class="pnc-title">Change log</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== CHANGE LOG ========== -->
+<div class="doc-page" id="page-changelog">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Change log</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Change log</h1>
+  <p class="pdesc">A permanent, timestamped record of every automated action Off Hours has taken across your accounts. Full audit trail, always.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="what">What is logged</h2>
+  <table class="tbl"><thead><tr><th>Field</th><th>What it contains</th></tr></thead><tbody>
+    <tr><td>Timestamp</td><td>The exact time the action was executed, in your account timezone.</td></tr>
+    <tr><td>Action type</td><td>Enable, pause, budget increase, budget decrease, or alert triggered.</td></tr>
+    <tr><td>Campaign</td><td>The name of the campaign affected.</td></tr>
+    <tr><td>Account</td><td>Which Amazon Ads profile the campaign belongs to.</td></tr>
+    <tr><td>Rule</td><td>Which rule triggered the action, with a link to the rule configuration.</td></tr>
+    <tr><td>Previous value</td><td>For budget changes: the budget before the change.</td></tr>
+    <tr><td>New value</td><td>For budget changes: the budget after the change.</td></tr>
+  </tbody></table>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Change log</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div style="padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--paper);">
+        <div style="flex:1;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);">Search campaigns, rules, accounts…</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">All types ↓</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">Last 7 days ↓</div>
+      </div>
+      <div style="padding:0 16px;">
+        <div class="feed-row"><span class="ft">Today 11:00</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Enabled 24 campaigns</b> · Parkway Home <span class="ftag">Weekday morning</span></span><span class="fc g">+24</span></div>
+        <div class="feed-row"><span class="ft">Today 10:00</span><span class="fi bud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="fx"><b>Raised daily budget</b> · 6 campaigns · $200 → $260 <span class="ftag">Weekend boost</span></span><span class="fc">+30%</span></div>
+        <div class="feed-row"><span class="ft">Today 06:00</span><span class="fi off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></span><span class="fx"><b>Paused 18 campaigns</b> · Northlane Goods <span class="ftag">Overnight pause</span></span><span class="fc">−18</span></div>
+        <div class="feed-row"><span class="ft">Today 06:00</span><span class="fi alt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="fx"><b>ACOS alert triggered</b> · Harbor Kitchen exceeded 50% for 2 days <span class="ftag">Performance</span></span><span class="fc w">Alert</span></div>
+        <div class="feed-row"><span class="ft">Yesterday</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Restored baseline budgets</b> · All accounts <span class="ftag">Prime Day event</span></span><span class="fc g">Restored</span></div>
+      </div>
+      <div style="padding:8px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">142 entries · last 24 hours · 100% executed</div>
+    </div>
+  </div>
+  <h2 class="h2" id="filter">Searching and filtering</h2>
+  <p class="p">The Change log can be filtered by account, rule type, action type, and date range. Use the search field to find entries by campaign name. Entries are retained indefinitely — you can audit any action Off Hours has ever taken on your account.</p>
+  <h2 class="h2" id="missed">Missed executions</h2>
+  <p class="p">If Off Hours cannot execute a scheduled action — for example, because an Amazon OAuth token has expired — the missed execution is recorded with a note explaining why it did not run. This gives you a clear record of any gaps in automation coverage.</p>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Use the Change log to verify event rule restoration</div><div class="ca-x">The morning after a major event, check the Change log to confirm your event rule fired the restoration actions at midnight. Budget and schedule restores will be listed with the event rule as the source.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('dashboard')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Dashboard →</div></button>
+      <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
+      <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-changelog">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('changelog','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('changelog','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-changelog">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-changelog">
+      <textarea class="feedback-textarea" id="fb-text-changelog" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('changelog')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('team')"><div class="pnc-dir">Next →</div><div class="pnc-title">Team access</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== TEAM ========== -->
+<div class="doc-page" id="page-team">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Team access</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Team access</h1>
+  <p class="pdesc">Invite team members with role-based access. Pro plans support up to 3 members. Agency plans have no limit.</p>
+  <div class="rr"></div>
+  <h2 class="h2 f" id="roles">Roles</h2>
+  <table class="tbl"><thead><tr><th>Role</th><th>What they can do</th></tr></thead><tbody>
+    <tr><td>Owner</td><td>Full access. Manage billing, connect and disconnect Amazon accounts, invite and remove team members, create and delete all rules.</td></tr>
+    <tr><td>Admin</td><td>Create, edit, and delete rules across all accounts. Cannot manage billing or remove the owner.</td></tr>
+    <tr><td>Viewer</td><td>Read-only access to the dashboard, Change log, and rules. Cannot create or modify rules.</td></tr>
+  </tbody></table>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Settings → Team</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div style="padding:10px 16px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.02em;">Team members</div>
+        <div style="padding:6px 12px;border-radius:999px;background:var(--moss);color:var(--cream);font-size:12px;font-weight:500;cursor:pointer;">+ Invite member</div>
+      </div>
+      <div style="padding:0 16px;">
+        <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">A</div>
+          <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Alicia</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">alicia@vallicreative.com</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:var(--moss-tint);color:var(--moss);font-weight:700;text-transform:uppercase;">Owner</div>
+          <div style="width:18px;"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--sky-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">E</div>
+          <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Erica</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">erica@vallicreative.com</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(169,203,214,0.3);color:#2c5866;font-weight:700;text-transform:uppercase;">Admin</div>
+          <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
+        </div>
+        <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">M</div>
+          <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Mike</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">mike@vallicreative.com</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(234,209,115,0.3);color:#7a5c00;font-weight:700;text-transform:uppercase;">Viewer</div>
+          <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2" id="invite">Inviting a team member</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Settings then Team</div><div class="sdesc">Click <strong>Invite member</strong>. Enter their email address and select their role.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">They receive an email invitation</div><div class="sdesc">The invitation comes from Off Hours and includes a link to create their account. The link expires after 7 days.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">They accept and log in</div><div class="sdesc">Once they accept, they appear in your team list and can access the account immediately with the permissions you assigned.</div></div></div>
+  </div>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Agency plans — unlimited team members</div><div class="ca-x">Agency plans have no seat limit. Invite your full team and assign granular roles across multiple brand accounts from a centralized dashboard.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('billing')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">Billing and plans →</div></button>
+      <button class="related-card" onclick="nav('dashboard')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Dashboard →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-team">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('team','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('team','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-team">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-team">
+      <textarea class="feedback-textarea" id="fb-text-team" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('team')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('changelog')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Change log</div></button><button class="pnc r" onclick="nav('billing')"><div class="pnc-dir">Next →</div><div class="pnc-title">Billing and plans</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== BILLING ========== -->
+<div class="doc-page" id="page-billing">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Account</span><span class="sep">/</span><span class="cur">Billing and plans</span></div>
+  <div class="ptag">Account</div>
+  <h1 class="ptitle">Billing and plans</h1>
+  <p class="pdesc">Priced per Amazon Ads account, flat. No percentage of ad spend. No usage fees. No surprises.</p>
+  <div class="rr"></div>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Settings → Billing</div></div>
+    <div class="demo-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--line-mid);border-radius:10px 10px 0 0;"></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Free trial</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--ink);margin-bottom:2px;">14 days</div>
+          <div style="font-size:11px;color:var(--ink-soft);">No card required</div>
+        </div>
+        <div style="background:var(--ink);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);border-radius:10px 10px 0 0;"></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,241,232,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Pro · Current plan</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--cream);margin-bottom:2px;">$149<span style="font-size:11px;font-weight:400;color:rgba(245,241,232,0.5);">/mo/account</span></div>
+          <div style="font-size:11px;color:rgba(245,241,232,0.55);">Up to 3 team members</div>
+        </div>
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--mint-deep);border-radius:10px 10px 0 0;"></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Agency</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--ink);margin-bottom:2px;">From $134<span style="font-size:11px;font-weight:400;color:var(--ink-faint);">/mo</span></div>
+          <div style="font-size:11px;color:var(--ink-soft);">Unlimited members</div>
+        </div>
+      </div>
+      <div style="margin-top:10px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;">Next billing date</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">May 27, 2026 · 1 account · $149.00</div>
+        </div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;cursor:pointer;">Manage billing →</div>
+      </div>
+    </div>
+  </div>
+  <h2 class="h2 f" id="plans">Plans</h2>
+  <table class="tbl"><thead><tr><th>Plan</th><th>Price</th><th>Who it is for</th></tr></thead><tbody>
+    <tr><td>Free trial</td><td>Free for 14 days</td><td>All new accounts. Full access, no credit card required.</td></tr>
+    <tr><td>Pro</td><td>$149 / month / account</td><td>Single-brand operations and smaller agencies. Up to 3 team members per account.</td></tr>
+    <tr><td>Agency</td><td>From $134 / month / account</td><td>Teams managing multiple brand accounts. Unlimited team members, centralized dashboard, priority support. Contact us for volume pricing.</td></tr>
+  </tbody></table>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Annual billing saves 15 percent</div><div class="ca-x">Pro and Agency plans are available on annual billing at a 15 percent discount. Switch at any time from your billing settings.</div></div></div>
+  <h2 class="h2" id="account">What counts as one account</h2>
+  <p class="p">One account is one Amazon Advertising profile — typically one brand in one marketplace. Three brands in the US marketplace is three accounts. One brand in both the US and CA marketplaces is two accounts.</p>
+  <h2 class="h2" id="adding">Adding and removing accounts</h2>
+  <p class="p">Connect additional Amazon Advertising profiles at any time from the Amazon Accounts page. Each new active profile adds one account to your billing at your plan rate, prorated for the remainder of the billing period. To remove an account, disconnect it — billing stops at the end of the current period.</p>
+  <h2 class="h2" id="cancel">Cancellation</h2>
+  <p class="p">Cancel any time from your billing settings. Your account remains active through the end of the current billing period. Rules stop executing after cancellation — campaigns stay in their last state and no further changes are made.</p>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Questions about billing?</div><div class="ca-x">Email hello@off-hours.app. We respond within one business day.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('team')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Team access →</div></button>
+      <button class="related-card" onclick="nav('faq')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">FAQ →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-billing">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('billing','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('billing','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-billing">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-billing">
+      <textarea class="feedback-textarea" id="fb-text-billing" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('billing')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('team')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Team access</div></button><button class="pnc r" onclick="nav('faq')"><div class="pnc-dir">Next →</div><div class="pnc-title">FAQ</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== FAQ ========== -->
+<div class="doc-page" id="page-faq">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Account</span><span class="sep">/</span><span class="cur">FAQ</span></div>
+  <div class="ptag">Account</div>
+  <h1 class="ptitle">Frequently asked questions</h1>
+  <p class="pdesc">The most common questions about Off Hours, answered directly. Can't find what you need? Email us at <a href="mailto:hello@off-hours.app">hello@off-hours.app</a>.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="setup">Getting started</h2>
+  <div class="faq-group">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does Off Hours work with all Amazon ad types?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Currently Off Hours manages Sponsored Products campaigns. Sponsored Brands and Sponsored Display support is on the roadmap. If you need SB/SD support urgently, email us — we can give you an honest timeline.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does setup take?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">From signup to your first running rule takes about five minutes. Connect your Amazon account (one authorization step), describe your rule in the AI builder, confirm, and it's live. No onboarding call, no implementation work.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours is designed for media buyers and account managers, not developers. The AI rule builder lets you describe rules in plain English. There are no API keys, no scripts, and no code anywhere in the product.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every account starts with a 14-day free trial with full access to all four rule types. No credit card required. After 14 days, you can choose to upgrade to Pro ($149/month per account) or your rules stop executing and your data is retained.</div></div></div>
+  </div>
+
+  <h2 class="h2" id="rules">Rules and automation</h2>
+  <div class="faq-group">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How often does Off Hours check and execute rules?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours runs an hourly check and executes any rules scheduled for that hour. Maximum execution lag is 60 minutes from the scheduled time. If a rule is set to fire at midnight, it will execute between midnight and 1:00 AM.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if I pause a campaign manually while a rule is active?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours will re-enable the campaign at the next scheduled enable time according to your dayparting rule. If you want to keep a campaign paused outside of the rule schedule, either pause the specific rule, remove that campaign from the rule, or use the global pause to suspend all automation temporarily.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I layer multiple rules on the same campaigns?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Rules layer cleanly. A dayparting rule, a budget rule, and an event rule can all apply to the same campaigns simultaneously. Event rules take precedence during their active window and restore other rules' behavior automatically when they end. See the layering diagram on the Introduction page for a visual example.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does Off Hours touch keyword bids?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours enables and pauses campaigns and adjusts daily budgets only. Keyword bids, match types, placement modifiers, and targeting settings are never modified. Your bid strategy stays yours.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens when an event rule ends?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours automatically restores your pre-event state at the end of the event window. Budgets return to their original values, dayparting schedules resume, and no manual intervention is needed. The Change log records the restoration actions with timestamps so you can verify everything was restored correctly.</div></div></div>
+  </div>
+
+  <h2 class="h2" id="account">Account and billing</h2>
+  <div class="faq-group">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my Amazon advertising data stored by Off Hours?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours stores your campaign list, rule configurations, and action history. It does not store your keyword-level data, bid history, or full performance reports. We access your data through the Amazon Advertising API only when executing rule checks. See the Privacy Policy for full details.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I connect multiple Amazon accounts?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Each Amazon Advertising profile is one account in Off Hours. You can connect multiple profiles and manage them from a single dashboard. Each active profile is billed at your plan rate per month.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens to my campaigns if I cancel?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">When your account expires, all automation stops. Campaigns remain in whatever state they were last set to — Off Hours will not pause or change anything after cancellation. Your data and rule configurations are retained for 90 days in case you want to reactivate.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I get a refund?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Email hello@off-hours.app within 7 days of your first charge if you are not satisfied. We will work something out. We would rather give you your money back than have an unhappy customer.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer volume pricing for agencies?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. The Agency plan starts at $134 per account per month and volume pricing is available for larger account counts. Email hello@off-hours.app or use the Agency inquiry form to discuss pricing for your specific situation.</div></div></div>
+  </div>
+
+  <h2 class="h2" id="contact">Still have a question?</h2>
+  <p class="p">Email us at <a href="mailto:hello@off-hours.app">hello@off-hours.app</a>. We read every message and respond within one business day. If something in these docs is unclear or missing, let us know — we update them regularly.
+  </p>
+  <div class="feedback" id="fb-faq">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('faq','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('faq','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-faq">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-faq">
+      <textarea class="feedback-textarea" id="fb-text-faq" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('faq')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('billing')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Billing and plans</div></button><div class="pnc r" style="opacity:0.35;pointer-events:none;"><div class="pnc-dir">Next →</div><div class="pnc-title">—</div></div></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a><a href="mailto:hello@off-hours.app">hello@off-hours.app</a></div></div>
+</div>
+
+</main>
+<!-- ON THIS PAGE -->
+<aside class="otp" id="otpPanel">
+  <div class="otp-lbl">On this page</div>
+</aside>
+</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// SEARCH INDEX — all page content
+// ════════════════════════════════════════════
+const searchIndex = [
+  {page:'intro',title:'Introduction',cat:'Getting started',text:'Off Hours schedules automates Amazon Ads campaigns hour by hour. What Off Hours does rule types hourly check layering change log weekly insights global pause campaigns not bids.'},
+  {page:'quickstart',title:'Quick start',cat:'Getting started',text:'From signup to first running rule five minutes. Create account connect Amazon Ads build first rule activate. Pause campaigns midnight 6am weekdays good first rule.'},
+  {page:'connect',title:'Connect Amazon account',cat:'Getting started',text:'Amazon OAuth authorization no API keys no manual setup. advertising campaign_management scope. Reconnect expired token. Remove disconnect account.'},
+  {page:'dayparting',title:'Dayparting',cat:'Rule types',text:'Schedule campaigns run pause hourly schedule. 7 by 24 grid 168 cells. Active hours paused hours. Weekday overnight pause weekend. Recommended schedule 6am midnight. Interacts event rules override restoration.'},
+  {page:'budget',title:'Budget rules',cat:'Rule types',text:'Increase decrease campaign daily budgets recurring schedule. Weekend boost Friday 5pm Sunday reset. Weekday pullback seasonal scaling budget pacing. Percentage adjustments compound layered.'},
+  {page:'event',title:'Event rules',cat:'Rule types',text:'Prime Day Black Friday product launch date range event. Activate automatically restore baseline. Suspend dayparting increase budgets. Event window start end datetime. Verify restoration morning after.'},
+  {page:'performance',title:'Performance rules',cat:'Rule types',text:'Alert act ACOS budget thresholds crossed. Prior day data not real time. Alert only or alert plus pause. 50 percent ACOS threshold. Configure recommended 1.5x to 2x target.'},
+  {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. Identifies rule type configures parameters plain English summary confirm. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
+  {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions accounts. Needs your attention expired OAuth Prime Day approaching. Activity feed timestamped actions. Heatmap 168 hours. Upcoming events. Global pause suspend 24 hours.'},
+  {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend estimate. Conservative 30 day average. Delivery Monday 6am timezone.'},
+  {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every automated action. Timestamp action type campaign account rule previous new value. Search filter account rule type action type date range. Missed executions OAuth expired.'},
+  {page:'team',title:'Team access',cat:'Features',text:'Role based access owner admin viewer. Pro up to 3 members agency unlimited. Invite member email invitation 7 days expire. Settings team.'},
+  {page:'billing',title:'Billing and plans',cat:'Account',text:'Per Amazon Ads account flat no percentage ad spend. Free trial 14 days no credit card. Pro 149 per month per account 3 team members. Agency 134 from per month unlimited members centralized dashboard priority support. Annual billing 15 percent discount. Cancel anytime.'},
+  {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no credit card. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple accounts profiles. Cancel campaigns retain state 90 days. Refund 7 days first charge. Volume pricing agency.'},
+];
+
+// ════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','changelog','team','billing','faq'];
+let cur = 'intro';
+
+function nav(key) {
+  if (!pages.includes(key)) return;
+  document.getElementById('page-' + cur).classList.remove('active');
+  document.getElementById('si-' + cur).classList.remove('active');
+  cur = key;
+  document.getElementById('page-' + cur).classList.add('active');
+  document.getElementById('si-' + cur).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  buildOTP();
+  // reinit animations for the page
+  setTimeout(initPageAnimations, 100);
+}
+
+// ════════════════════════════════════════════
+// OTP — On This Page
+// ════════════════════════════════════════════
+function buildOTP() {
+  const panel = document.getElementById('otpPanel');
+  const pg = document.getElementById('page-' + cur);
+  const h2s = pg.querySelectorAll('.h2');
+  panel.innerHTML = '<div class="otp-lbl">On this page</div>';
+  h2s.forEach(h => {
+    if (!h.id) h.id = h.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    const btn = document.createElement('button');
+    btn.className = 'otp-item';
+    btn.textContent = h.textContent;
+    btn.onclick = () => h.scrollIntoView({ behavior:'smooth', block:'start' });
+    panel.appendChild(btn);
+  });
+}
+
+// Scroll-spy
+window.addEventListener('scroll', () => {
+  const pg = document.getElementById('page-' + cur);
+  if (!pg) return;
+  const h2s = pg.querySelectorAll('.h2');
+  const btns = document.querySelectorAll('.otp-item');
+  let active = '';
+  h2s.forEach(h => { if (window.scrollY >= h.offsetTop - 120) active = h.id; });
+  btns.forEach(b => {
+    const id = b.textContent.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    b.classList.toggle('active', id === active);
+  });
+  // progress bar
+  const d = document.documentElement;
+  document.getElementById('pb').style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+});
+
+// ════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════
+let searchFocusIdx = 0;
+let searchVisible = [];
+
+function openSearch() {
+  document.getElementById('searchOverlay').classList.add('open');
+  setTimeout(() => document.getElementById('searchInput').focus(), 50);
+}
+function closeSearch() {
+  document.getElementById('searchOverlay').classList.remove('open');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchResults').innerHTML = '<div class="search-empty">Type to search across all docs…</div>';
+}
+
+document.getElementById('searchOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('searchOverlay')) closeSearch();
+});
+
+document.querySelector('.nav-search').addEventListener('click', openSearch);
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  const results = document.getElementById('searchResults');
+  if (!q) { results.innerHTML = '<div class="search-empty">Type to search across all docs…</div>'; searchVisible = []; return; }
+  const matches = searchIndex.filter(p => p.title.toLowerCase().includes(q) || p.text.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+  searchVisible = matches;
+  searchFocusIdx = 0;
+  if (!matches.length) { results.innerHTML = '<div class="search-empty">No results for "' + q + '"</div>'; return; }
+  results.innerHTML = matches.map((m, i) => {
+    const words = m.text.split(' ');
+    const idx = words.findIndex(w => w.toLowerCase().includes(q));
+    const preview = words.slice(Math.max(0,idx-3), idx+8).join(' ');
+    const highlighted = preview.replace(new RegExp(q,'gi'), s => '<mark>'+s+'</mark>');
+    return `<div class="search-result${i===0?' focused':''}" onclick="searchNav('${m.page}')"><div class="sr-page">${m.cat}</div><div class="sr-title">${m.title}</div><div class="sr-preview">${highlighted}…</div></div>`;
+  }).join('');
+});
+
+document.getElementById('searchInput').addEventListener('keydown', e => {
+  const items = document.querySelectorAll('.search-result');
+  if (e.key === 'ArrowDown') { e.preventDefault(); searchFocusIdx = Math.min(searchFocusIdx+1, items.length-1); items.forEach((el,i)=>el.classList.toggle('focused',i===searchFocusIdx)); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); searchFocusIdx = Math.max(searchFocusIdx-1, 0); items.forEach((el,i)=>el.classList.toggle('focused',i===searchFocusIdx)); }
+  else if (e.key === 'Enter') { e.preventDefault(); if (searchVisible[searchFocusIdx]) searchNav(searchVisible[searchFocusIdx].page); }
+  else if (e.key === 'Escape') closeSearch();
+});
+
+function searchNav(page) {
+  closeSearch();
+  nav(page);
+}
+
+// ════════════════════════════════════════════
+// KEYBOARD SHORTCUTS
+// ════════════════════════════════════════════
+let gDown = false, gTimeout;
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if ((e.metaKey||e.ctrlKey) && e.key==='k') { e.preventDefault(); openSearch(); return; }
+  if (e.key === 'Escape') { closeSearch(); return; }
+  if (e.key === '/') { e.preventDefault(); openSearch(); return; }
+  // J/K page navigation
+  if (e.key === 'j') { const i = pages.indexOf(cur); if (i < pages.length-1) nav(pages[i+1]); return; }
+  if (e.key === 'k') { const i = pages.indexOf(cur); if (i > 0) nav(pages[i-1]); return; }
+  // g+letter shortcuts
+  if (e.key === 'g' && !gDown) { gDown=true; clearTimeout(gTimeout); gTimeout=setTimeout(()=>gDown=false,1200); return; }
+  if (gDown) {
+    const map={d:'intro',q:'quickstart',c:'connect',p:'dayparting',b:'budget',v:'event',r:'performance',a:'aibuilder',h:'dashboard',i:'insights',l:'changelog',t:'team',f:'faq'};
+    if (map[e.key]) { nav(map[e.key]); gDown=false; }
+  }
+});
+
+// ════════════════════════════════════════════
+// TAB SWITCHER
+// ════════════════════════════════════════════
+function switchTab(t) {
+  document.querySelectorAll('.ntab').forEach(x=>x.classList.remove('active'));
+  document.getElementById('tab-'+t).classList.add('active');
+}
+
+// ════════════════════════════════════════════
+// DARK MODE
+// ════════════════════════════════════════════
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('oh-dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+if (localStorage.getItem('oh-dark') === '1') document.body.classList.add('dark');
+
+// ════════════════════════════════════════════
+// COPY CODE
+// ════════════════════════════════════════════
+function copyCode(text, btn) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+    btn.style.color = 'var(--moss)';
+    setTimeout(() => { btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'; btn.style.color=''; }, 1500);
+  });
+}
+
+// ════════════════════════════════════════════
+// FAQ ACCORDION
+// ════════════════════════════════════════════
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  item.classList.toggle('open', !isOpen);
+}
+
+// ════════════════════════════════════════════
+// FEEDBACK WIDGET
+// ════════════════════════════════════════════
+function fbVote(pid, vote, btn) {
+  const wrap = document.getElementById('fb-'+pid);
+  const btns = wrap.querySelectorAll('.feedback-btn');
+  btns.forEach(b => b.disabled=true);
+  if (vote==='yes') {
+    wrap.querySelector('.feedback-thanks').style.display='block';
+    wrap.querySelector('.feedback-btns').style.display='none';
+  } else {
+    wrap.querySelector('#fb-form-'+pid).style.display='flex';
+    wrap.querySelector('.feedback-btns').style.display='none';
+  }
+}
+function fbSubmit(pid) {
+  const text = document.getElementById('fb-text-'+pid).value;
+  const wrap = document.getElementById('fb-'+pid);
+  wrap.querySelector('#fb-form-'+pid).style.display='none';
+  wrap.querySelector('.feedback-thanks').style.display='block';
+  wrap.querySelector('.feedback-thanks').textContent='Thanks — we'll use this to improve the docs.';
+  // In production: POST to your feedback endpoint
+  console.log('Feedback for', pid, ':', text);
+}
+
+// ════════════════════════════════════════════
+// LIVE AI RULE BUILDER
+// ════════════════════════════════════════════
+const aiResponses = {
+  'default': (prompt) => {
+    const lower = prompt.toLowerCase();
+    if (lower.includes('midnight') || lower.includes('overnight') || lower.includes('pause') || lower.includes('6am') || lower.includes('weekday')) {
+      return `Dayparting rule created. Campaigns pause at midnight and resume at 6:00 AM on weekdays (Monday through Friday). Weekends are unaffected. This rule will execute on the next hourly check. Confirm to go live.`;
+    }
+    if (lower.includes('weekend') || lower.includes('boost') || lower.includes('budget') || lower.includes('friday') || lower.includes('30') || lower.includes('percent') || lower.includes('%')) {
+      return `Budget rule created. Daily budgets increase by 30% every Friday at 5:00 PM and reset to baseline every Sunday at 11:00 PM. Runs automatically each week. Confirm to go live.`;
+    }
+    if (lower.includes('prime day') || lower.includes('event') || lower.includes('24 hour') || lower.includes('double')) {
+      return `Event rule created. Dayparting is suspended and daily budgets double for the Prime Day window. Campaigns run 24 hours. Everything restores automatically when the event ends. Set the dates and confirm to go live.`;
+    }
+    if (lower.includes('acos') || lower.includes('alert') || lower.includes('60') || lower.includes('50') || lower.includes('performance')) {
+      const pct = lower.match(/\d+/)?.[0] || '60';
+      return `Performance rule created. Off Hours will alert you if ACOS exceeds ${pct}% for 2 consecutive days. Alert fires at 6:00 AM the morning after the threshold is crossed. No campaigns are paused automatically unless you add an action. Confirm to go live.`;
+    }
+    return `Rule configured based on your description. Off Hours parsed your request and set up the rule — review the details below and confirm to go live, or edit any field first.`;
+  }
+};
+
+let aiHistory = [];
+
+function fillPrompt(chip) {
+  document.getElementById('aiInput').value = chip.textContent;
+  document.getElementById('aiInput').focus();
+}
+
+function handleAiKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendAiPrompt(); }
+}
+
+async function sendAiPrompt() {
+  const input = document.getElementById('aiInput');
+  const prompt = input.value.trim();
+  if (!prompt) return;
+  const send = document.getElementById('aiSend');
+  const convo = document.getElementById('aiConvo');
+  const reset = document.getElementById('aiReset');
+
+  send.disabled = true;
+  input.disabled = true;
+  document.getElementById('aiChips').style.display='none';
+
+  // User bubble
+  const you = document.createElement('div');
+  you.className='ai-bubble-you';
+  you.textContent = prompt;
+  convo.appendChild(you);
+  input.value='';
+
+  // Typing indicator
+  const typing = document.createElement('div');
+  typing.className='ai-bubble-oh';
+  typing.innerHTML='<div class="ai-typing"><span></span><span></span><span></span></div>';
+  convo.appendChild(typing);
+  convo.scrollIntoView({behavior:'smooth',block:'end'});
+
+  // Call Anthropic API
+  let responseText = '';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:200,
+        system:`You are the Off Hours AI rule builder. Off Hours is an Amazon Ads scheduling tool with four rule types: Dayparting (schedule when campaigns run hour by hour), Budget rules (adjust daily budgets on a schedule), Event rules (date-range overrides for Prime Day, Black Friday etc.), and Performance rules (alert or act when ACOS/budget thresholds are crossed).
+
+When a user describes a rule, respond with a single short paragraph (2-4 sentences) that: names the rule type, summarizes exactly what will happen in plain English, and ends with "Confirm to go live." Be specific about times, days, and percentages mentioned. Stay under 80 words. No preamble.`,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    responseText = data.content?.[0]?.text || aiResponses.default(prompt);
+  } catch(err) {
+    responseText = aiResponses.default(prompt);
+  }
+
+  // Replace typing with response
+  const oh = document.createElement('div');
+  oh.className='ai-bubble-oh';
+  oh.innerHTML=`<div class="ai-oh-tag"><span class="ai-oh-dot"></span>Off Hours · Parsed</div>${responseText}
+  <div class="ai-confirm-row">
+    <button class="ai-confirm-btn p" onclick="aiConfirm()">Confirm and activate</button>
+    <button class="ai-confirm-btn g" onclick="aiEdit()">Edit fields</button>
+    <button class="ai-confirm-btn g" onclick="resetAi()">Try again</button>
+  </div>`;
+  convo.replaceChild(oh, typing);
+  convo.scrollIntoView({behavior:'smooth',block:'end'});
+
+  send.disabled=false;
+  input.disabled=false;
+  reset.style.display='inline-block';
+  aiHistory.push({role:'user',content:prompt},{role:'assistant',content:responseText});
+}
+
+function aiConfirm() {
+  const convo = document.getElementById('aiConvo');
+  const msg = document.createElement('div');
+  msg.className='ai-bubble-you';
+  msg.innerHTML='<strong>Rule activated.</strong> Sign up to deploy this rule to your Amazon Ads account.';
+  convo.appendChild(msg);
+  const cta = document.createElement('div');
+  cta.style.cssText='margin-top:10px;';
+  cta.innerHTML='<a href="https://dashboard.off-hours.app/signup" style="display:inline-flex;align-items:center;gap:8px;padding:10px 8px 10px 18px;border-radius:999px;background:var(--moss);color:var(--cream);font-size:13px;font-weight:500;text-decoration:none;">Start 14-day free trial <span style="width:22px;height:22px;border-radius:50%;background:var(--cream);color:var(--moss);display:grid;place-items:center;font-size:10px;">→</span></a>';
+  convo.appendChild(cta);
+  convo.scrollIntoView({behavior:'smooth',block:'end'});
+}
+
+function aiEdit() {
+  const input = document.getElementById('aiInput');
+  input.focus();
+  input.select();
+}
+
+function resetAi() {
+  document.getElementById('aiConvo').innerHTML='';
+  document.getElementById('aiInput').value='';
+  document.getElementById('aiChips').style.display='flex';
+  document.getElementById('aiReset').style.display='none';
+  aiHistory=[];
+}
+
+// ════════════════════════════════════════════
+// HEATMAP
+// ════════════════════════════════════════════
+function buildHeatmap() {
+  const c = document.getElementById('heatContainer');
+  if (!c) return;
+  const g = document.createElement('div');
+  g.className='hg';
+  const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  g.appendChild(document.createElement('span'));
+  for(let h=0;h<24;h++){const hh=document.createElement('span');hh.className='hh';hh.textContent=h%6===0?h:'';g.appendChild(hh);}
+  function lvl(d,h){
+    if(d<5){if(h<6||h>=23)return 0;if(h<8)return 1;if(h<11)return 2;if(h<14)return 4;if(h<18)return 3;if(h<21)return 5;return 2;}
+    else{if(h<8)return 0;if(h<10)return 1;if(h<13)return 3;if(h<17)return 4;if(h<20)return 3;if(h<23)return 2;return 1;}
+  }
+  const now=new Date();
+  const nd=now.getDay()===0?6:now.getDay()-1;
+  const nh=now.getHours();
+  const lbls=['paused','low','low','active','active','peak'];
+  days.forEach((day,d)=>{
+    const dl=document.createElement('div');dl.className='hday';dl.textContent=day.slice(0,2);g.appendChild(dl);
+    for(let h=0;h<24;h++){
+      const cell=document.createElement('div');cell.className='hcell';
+      const l=lvl(d,h);if(l)cell.classList.add('l'+l);
+      if(d===nd&&h===nh)cell.classList.add('now');
+      cell.title=`${day} ${h}:00 — ${lbls[l]}`;
+      cell.style.cssText='opacity:0;transform:scale(0.7);transition:opacity 0.3s,transform 0.3s;';
+      setTimeout(()=>{cell.style.opacity='';cell.style.transform='';},100+(d*24+h)*2);
+      g.appendChild(cell);
+    }
+  });
+  c.appendChild(g);
+}
+
+// ════════════════════════════════════════════
+// BUDGET VIZ
+// ════════════════════════════════════════════
+function initBudgetViz(){
+  const v=document.getElementById('budgetViz');
+  if(!v||v.hasChildNodes())return;
+  const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const budgets=[200,200,200,200,260,260,260];
+  const max=300;
+  days.forEach((d,i)=>{
+    const isWk=i>=4;
+    const row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;gap:8px;';
+    const lbl=document.createElement('span');
+    lbl.style.cssText='font-family:Space Mono,monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;width:28px;flex-shrink:0;';
+    lbl.textContent=d.slice(0,3);
+    const track=document.createElement('div');
+    track.style.cssText='flex:1;height:16px;background:var(--line);border-radius:4px;overflow:hidden;';
+    const fill=document.createElement('div');
+    fill.style.cssText=`height:100%;width:0%;border-radius:4px;background:${isWk?'var(--butter-deep)':'var(--mint-deep)'};opacity:${isWk?'1':'0.8'};transition:width 0.8s cubic-bezier(0.2,0.8,0.2,1) ${i*0.08}s;`;
+    const val=document.createElement('span');
+    val.style.cssText='font-family:Space Mono,monospace;font-size:9px;color:var(--ink-faint);width:44px;flex-shrink:0;text-align:right;';
+    val.textContent='$'+budgets[i];
+    track.appendChild(fill);
+    row.appendChild(lbl);row.appendChild(track);row.appendChild(val);
+    v.appendChild(row);
+    setTimeout(()=>{fill.style.width=(budgets[i]/max*100)+'%';},100);
+  });
+}
+
+// ════════════════════════════════════════════
+// PAGE-SPECIFIC ANIMATIONS (called on nav)
+// ════════════════════════════════════════════
+function initPageAnimations() {
+  // Budget viz
+  initBudgetViz();
+  // Timeline fill
+  const tf=document.getElementById('timelineFill');
+  if(tf){tf.style.width='0%';setTimeout(()=>{tf.style.width='75%';},200);}
+}
+
+// ════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════
+buildOTP();
+buildHeatmap();
+initBudgetViz();
+setTimeout(()=>{const tf=document.getElementById('timelineFill');if(tf)tf.style.width='75%';},600);
+</script>
+</body>
+</html>
