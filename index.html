@@ -1323,11 +1323,11 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Account</span><span class="sep">/</span><span class="cur">Billing and plans</span></div>
   <div class="ptag">Account</div>
   <h1 class="ptitle">Billing and plans</h1>
-  <p class="pdesc">Priced per Amazon Ads account, flat. No percentage of ad spend. No usage fees. No surprises.</p>
+  <p class="pdesc">Priced per seller, flat. Marketplaces under the same seller are included free. No percentage of ad spend, no usage fees, no surprises.</p>
   <div class="rr"></div>
 
   <div class="demo">
-    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Settings → Billing</div></div>
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app/settings#billing</div></div>
     <div class="demo-body">
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
         <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
@@ -1338,39 +1338,50 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
         </div>
         <div style="background:var(--ink);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);border-radius:10px 10px 0 0;"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,241,232,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Pro · Current plan</div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--cream);margin-bottom:2px;">$149<span style="font-size:11px;font-weight:400;color:rgba(245,241,232,0.5);">/mo/account</span></div>
-          <div style="font-size:11px;color:rgba(245,241,232,0.55);">Up to 3 team members</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:rgba(245,241,232,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Monthly · Current plan</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--cream);margin-bottom:2px;">$149<span style="font-size:11px;font-weight:400;color:rgba(245,241,232,0.5);">/mo/seller</span></div>
+          <div style="font-size:11px;color:rgba(245,241,232,0.55);">All marketplaces included</div>
         </div>
         <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:0;right:0;height:2px;background:var(--mint-deep);border-radius:10px 10px 0 0;"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Agency</div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--ink);margin-bottom:2px;">From $134<span style="font-size:11px;font-weight:400;color:var(--ink-faint);">/mo</span></div>
-          <div style="font-size:11px;color:var(--ink-soft);">Unlimited members</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;">Annual</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:20px;letter-spacing:-0.03em;color:var(--ink);margin-bottom:2px;">$1,520<span style="font-size:11px;font-weight:400;color:var(--ink-faint);">/yr/seller</span></div>
+          <div style="font-size:11px;color:var(--ink-soft);">Save 15 percent</div>
         </div>
       </div>
       <div style="margin-top:10px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
         <div>
           <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;">Next billing date</div>
-          <div style="font-size:13px;font-weight:500;color:var(--ink);">May 27, 2026 · 1 account · $149.00</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);">May 27, 2026 · 1 seller · $149.00</div>
         </div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;cursor:pointer;">Manage billing →</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;cursor:pointer;">Manage in Stripe →</div>
       </div>
     </div>
   </div>
   <h2 class="h2 f" id="plans">Plans</h2>
-  <table class="tbl"><thead><tr><th>Plan</th><th>Price</th><th>Who it is for</th></tr></thead><tbody>
-    <tr><td>Free trial</td><td>Free for 14 days</td><td>All new accounts. Full access, no credit card required.</td></tr>
-    <tr><td>Pro</td><td>$149 / month / account</td><td>Single-brand operations and smaller agencies. Up to 3 team members per account.</td></tr>
-    <tr><td>Agency</td><td>From $134 / month / account</td><td>Teams managing multiple brand accounts. Unlimited team members, centralized dashboard, priority support. Contact us for volume pricing.</td></tr>
+  <table class="tbl"><thead><tr><th>Plan</th><th>Price</th><th>Notes</th></tr></thead><tbody>
+    <tr><td>Free trial</td><td>14 days, free</td><td>Every new seller starts here. Full access to all four rule types. No credit card required.</td></tr>
+    <tr><td>Monthly</td><td>$149 / month / seller</td><td>Includes every marketplace under that seller at no extra cost. Cancel any time from the Stripe Customer Portal.</td></tr>
+    <tr><td>Annual</td><td>$1,520 / year / seller</td><td>Same access as Monthly. Saves 15 percent compared to paying month to month.</td></tr>
   </tbody></table>
-  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Annual billing saves 15 percent</div><div class="ca-x">Pro and Agency plans are available on annual billing at a 15 percent discount. Switch at any time from your billing settings.</div></div></div>
-  <h2 class="h2" id="account">What counts as one account</h2>
-  <p class="p">One account is one Amazon Advertising profile — typically one brand in one marketplace. Three brands in the US marketplace is three accounts. One brand in both the US and CA marketplaces is two accounts.</p>
-  <h2 class="h2" id="adding">Adding and removing accounts</h2>
-  <p class="p">Connect additional Amazon Advertising profiles at any time from the Amazon Accounts page. Each new active profile adds one account to your billing at your plan rate, prorated for the remainder of the billing period. To remove an account, disconnect it — billing stops at the end of the current period.</p>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Annual billing saves 15 percent</div><div class="ca-x">$1,520 per year per seller versus $1,788 paying monthly. Switch between Monthly and Annual at any time from the Stripe Customer Portal.</div></div></div>
+  <h2 class="h2" id="seller">What counts as one seller</h2>
+  <p class="p">A <strong>seller</strong> is the billable unit. One seller is one Amazon Seller Central account, regardless of how many marketplaces it sells in. Two distinct sellers (different brands, different Seller Central logins) are two billable sellers.</p>
+  <p class="p">A <strong>marketplace</strong> is a region under a seller (US, CA, MX, and so on). Marketplaces are included free under their parent seller. One brand selling in the US, CA, and MX marketplaces is one billable seller, not three.</p>
+  <p class="p">An <strong>Attribution Profile</strong> is a separate concept used for tracking off-Amazon attribution. Attribution Profiles are listed in their own section of the dashboard and are excluded from billing entirely. You can connect any number of them at no cost.</p>
+  <h2 class="h2" id="adding">Adding sellers, marketplaces, and Attribution Profiles</h2>
+  <p class="p">Connect another seller from the Sellers page in the sidebar. Each new active seller adds one $149 line to your monthly invoice (or the prorated equivalent of $1,520 if you are on annual billing), starting from the date you activate it.</p>
+  <p class="p">Adding a new marketplace under an existing seller is free. Off Hours imports it automatically when Amazon makes it available, and rules can target it immediately with no billing impact.</p>
+  <p class="p">Adding or removing Attribution Profiles never affects billing.</p>
+  <p class="p">To stop being billed for a seller, deactivate it on the Sellers page. Billing for that seller stops at the end of the current period.</p>
+  <h2 class="h2" id="trial">Trial countdown and the Stripe Customer Portal</h2>
+  <p class="p">During the 14-day free trial, your dashboard shows the number of days remaining. Three days before the trial ends, Off Hours emails the seller's owner. When the trial ends, Off Hours attempts the first charge through Stripe. If you have not added a card, the seller transitions to <code>past_due</code> and a recovery CTA replaces the BillingPicker until you update your payment method.</p>
+  <p class="p">All plan changes (Monthly to Annual, Annual to Monthly, updating card details, downloading invoices, canceling) happen in the Stripe Customer Portal. Click <strong>Manage in Stripe</strong> on the Billing page to open it. You sign in with the email on file and Stripe handles authentication.</p>
+  <h2 class="h2" id="recovery">Recovery states: past due and canceled</h2>
+  <p class="p">If a charge fails, the seller transitions to <code>past_due</code>. Off Hours hides the BillingPicker and shows an <strong>Update payment method</strong> CTA in its place. Rule mutation surfaces (creating, editing, or activating rules) are subdued with a tooltip explaining the seller is past due. Existing rules continue to execute while the payment issue is being resolved.</p>
+  <p class="p">If you cancel and the period ends without resubscribing, the seller transitions to <code>canceled_period_ended</code>. Off Hours hides the BillingPicker and shows a <strong>Resubscribe</strong> CTA. Rule mutation surfaces are subdued. Rules stop executing. Your data and rule configurations remain in place if you choose to resubscribe.</p>
   <h2 class="h2" id="cancel">Cancellation</h2>
-  <p class="p">Cancel any time from your billing settings. Your account remains active through the end of the current billing period. Rules stop executing after cancellation — campaigns stay in their last state and no further changes are made.</p>
+  <p class="p">Cancel any seller from the Stripe Customer Portal. The seller stays active through the end of the current billing period. After that, rules stop executing, campaigns stay in their last set state, and the seller enters <code>canceled_period_ended</code>. No further charges occur.</p>
   <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Questions about billing?</div><div class="ca-x">Email hello@off-hours.app. We respond within one business day.</div></div></div>
 
   <div class="related">
@@ -1474,7 +1485,7 @@ const searchIndex = [
   {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend estimate. Conservative 30 day average. Delivery Monday 6am timezone.'},
   {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every automated action. Timestamp action type campaign account rule previous new value. Search filter account rule type action type date range. Missed executions OAuth expired.'},
   {page:'team',title:'Team access',cat:'Features',text:'Role based access owner admin viewer. Pro up to 3 members agency unlimited. Invite member email invitation 7 days expire. Settings team.'},
-  {page:'billing',title:'Billing and plans',cat:'Account',text:'Per Amazon Ads account flat no percentage ad spend. Free trial 14 days no credit card. Pro 149 per month per account 3 team members. Agency 134 from per month unlimited members centralized dashboard priority support. Annual billing 15 percent discount. Cancel anytime.'},
+  {page:'billing',title:'Billing and plans',cat:'Account',text:'Per seller flat 149 monthly 1520 annual marketplaces included free attribution profiles excluded billing. Free trial 14 days no credit card. Stripe Customer Portal manage subscription cancel update payment method invoices. Trial countdown past_due canceled_period_ended recovery resubscribe BillingPicker. Annual billing saves 15 percent.'},
   {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no credit card. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple accounts profiles. Cancel campaigns retain state 90 days. Refund 7 days first charge. Volume pricing agency.'},
 ];
 
