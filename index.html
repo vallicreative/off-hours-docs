@@ -374,18 +374,6 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .layer-hour-lbl{display:flex;justify-content:space-between;margin-top:4px;padding:0 0 0 90px;}
 .layer-hour-lbl span{font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);}
 
-/* DARK MODE TOGGLE */
-.dm-toggle{display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;cursor:pointer;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);transition:all 0.2s;}
-.dm-toggle:hover{background:var(--cream-deep);color:var(--ink);}
-.dm-toggle svg{width:12px;height:12px;}
-
-body.dark{
-  --cream:#141a14;--cream-deep:#1c241c;--paper:#111911;
-  --ink:#E8F0E8;--ink-soft:#A8C4A8;--ink-faint:#6B8A6B;
-  --line:rgba(168,206,143,0.1);--line-mid:rgba(168,206,143,0.15);--line-strong:rgba(168,206,143,0.25);
-  --moss-tint:rgba(168,206,143,0.08);
-}
-
 /* ESTIMATED TIME badges in sidebar */
 .stime{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);opacity:0.7;}
 
@@ -428,7 +416,6 @@ body.dark{
   <div class="nav-right">
     <div class="status-pill"><span class="sdot"></span>All systems operational</div>
     <a href="https://off-hours.app" class="nlink">← Marketing site</a>
-    <button class="dm-toggle" onclick="toggleDark()" title="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     <a href="https://dashboard.off-hours.app" class="ncta">Go to dashboard <span class="arr">→</span></a>
   </div>
 </nav>
@@ -1629,15 +1616,6 @@ function switchTab(t) {
   document.querySelectorAll('.ntab').forEach(x=>x.classList.remove('active'));
   document.getElementById('tab-'+t).classList.add('active');
 }
-
-// ════════════════════════════════════════════
-// DARK MODE
-// ════════════════════════════════════════════
-function toggleDark() {
-  document.body.classList.toggle('dark');
-  localStorage.setItem('oh-dark', document.body.classList.contains('dark') ? '1' : '0');
-}
-if (localStorage.getItem('oh-dark') === '1') document.body.classList.add('dark');
 
 // ════════════════════════════════════════════
 // COPY CODE
