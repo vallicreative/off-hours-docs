@@ -36,9 +36,6 @@ body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;fon
 .nav-search:hover{border-color:var(--line-strong);}
 .nav-search svg{width:13px;height:13px;flex-shrink:0;}
 .nav-search .kbd{margin-left:auto;font-family:'Space Mono',monospace;font-size:10px;}
-.ntab{font-size:12.5px;color:var(--ink-soft);padding:5px 10px;border-radius:6px;cursor:pointer;border:none;background:transparent;font-family:'Inter',sans-serif;transition:background 0.2s;}
-.ntab:hover{background:var(--moss-tint);color:var(--ink);}
-.ntab.active{background:var(--moss-tint);color:var(--moss);font-weight:500;}
 .nav-right{display:flex;align-items:center;gap:8px;padding:0 20px;}
 .nlink{font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 10px;border-radius:6px;transition:background 0.2s;}
 .nlink:hover{background:var(--moss-tint);color:var(--ink);}
@@ -410,8 +407,6 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Search docs…<span class="kbd">⌘K</span>
     </div>
-    <button class="ntab active" id="tab-user" onclick="switchTab('user')">User Guide</button>
-    <button class="ntab" id="tab-api" onclick="switchTab('api')">API Reference</button>
   </div>
   <div class="nav-right">
     <div class="status-pill"><span class="sdot"></span>All systems operational</div>
@@ -1608,14 +1603,6 @@ document.addEventListener('keydown', e => {
     if (map[e.key]) { nav(map[e.key]); gDown=false; }
   }
 });
-
-// ════════════════════════════════════════════
-// TAB SWITCHER
-// ════════════════════════════════════════════
-function switchTab(t) {
-  document.querySelectorAll('.ntab').forEach(x=>x.classList.remove('active'));
-  document.getElementById('tab-'+t).classList.add('active');
-}
 
 // ════════════════════════════════════════════
 // COPY CODE
