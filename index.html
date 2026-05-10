@@ -1638,11 +1638,21 @@ function toggleFaq(btn) {
 // ════════════════════════════════════════════
 // FEEDBACK WIDGET
 // ════════════════════════════════════════════
+function fbPost(pid, vote, comment) {
+  // Fire and forget. Failures are silent so the widget UX is identical
+  // whether the backend is up or down.
+  fetch('/api/feedback', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({page_id: pid, vote: vote, comment: comment || ''})
+  }).catch(() => {});
+}
 function fbVote(pid, vote, btn) {
   const wrap = document.getElementById('fb-'+pid);
   const btns = wrap.querySelectorAll('.feedback-btn');
   btns.forEach(b => b.disabled=true);
   if (vote==='yes') {
+    fbPost(pid, 'yes', '');
     wrap.querySelector('.feedback-thanks').style.display='block';
     wrap.querySelector('.feedback-btns').style.display='none';
   } else {
@@ -1653,11 +1663,10 @@ function fbVote(pid, vote, btn) {
 function fbSubmit(pid) {
   const text = document.getElementById('fb-text-'+pid).value;
   const wrap = document.getElementById('fb-'+pid);
+  fbPost(pid, 'no', text);
   wrap.querySelector('#fb-form-'+pid).style.display='none';
   wrap.querySelector('.feedback-thanks').style.display='block';
-  wrap.querySelector('.feedback-thanks').textContent="Thanks — we'll use this to improve the docs.";
-  // In production: POST to your feedback endpoint
-  console.log('Feedback for', pid, ':', text);
+  wrap.querySelector('.feedback-thanks').textContent="Thanks. We'll use this to improve the docs.";
 }
 
 // ════════════════════════════════════════════
