@@ -196,7 +196,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .cv-desc{font-size:12.5px;color:var(--ink-soft);max-width:340px;line-height:1.5;}
 
 /* INSIGHTS CARD */
-.ic{background:white;border:1px solid var(--line-mid);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(15,42,30,0.06);}
+.ic{background:var(--cream);border:1px solid var(--line-mid);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(15,42,30,0.06);}
 .ic-head{background:var(--paper);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
 .ic-title{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:13px;letter-spacing:-0.02em;}
 .ic-date{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;}
@@ -1318,48 +1318,154 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 
   <div class="demo">
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Change log</div></div>
-    <div class="demo-body" style="padding:0;">
-      <div style="padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--paper);">
-        <div style="flex:1;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);">Search campaigns, rules, sellers</div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">All sellers ↓</div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">All types ↓</div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">Last 7 days ↓</div>
+    <div class="demo-body" style="padding:0;background:var(--cream);">
+      <!-- Filter bar -->
+      <div style="padding:10px 14px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:140px;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);font-family:'Inter',sans-serif;">Search events...</div>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Account <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Rule <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Actor <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Action <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;padding:3px 11px;border-radius:999px;background:var(--ink);color:var(--cream);font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;border:1px solid var(--ink);">All</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--coral);background:transparent;color:var(--coral);font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"><span style="width:5px;height:5px;border-radius:50%;background:var(--coral);"></span>Errors</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--butter-deep);background:transparent;color:#7a5c00;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Warnings</span>
       </div>
-      <div>
-        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
-          <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--moss);">+24</span></div>
+      <!-- Refresh indicator + layout toggles -->
+      <div style="padding:7px 14px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+        <span>↻ Refreshed 10:33 PM</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;">
+          <span style="width:18px;height:16px;border:1px solid var(--line-mid);border-radius:3px;display:grid;place-items:center;font-size:10px;color:var(--ink);background:var(--cream);">≡</span>
+          <span style="width:18px;height:16px;border:1px solid var(--line-mid);border-radius:3px;display:grid;place-items:center;font-size:9px;color:var(--ink-faint);">▦</span>
+        </span>
+      </div>
+      <!-- Date group header -->
+      <div style="padding:9px 14px;background:var(--cream-deep);display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">
+        <span><span style="color:var(--ink);">Today</span> · May 22, 2026</span>
+        <span>5 events</span>
+      </div>
+      <!-- Entry 1: ALL OK -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">11:00 AM</div>
         </div>
-        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
-          <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink);">+30%</span></div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
-          <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--butter-deep);"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
-          <div style="width:24px;height:24px;border-radius:6px;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--butter-deep);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:#7a5c00;">17 of 18</div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Enabled 10 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">Guidecraft, Inc.</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">1-11pm dayparting schedule</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">A7A063C9</span></span>
+            <span>·</span>
+            <span style="color:var(--moss);">All ok</span>
+          </div>
         </div>
-        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
-          <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--coral);"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
-          <div style="width:24px;height:24px;border-radius:6px;background:var(--coral);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">could not update</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--coral);color:var(--coral);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Error</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--coral);">Retrying</div>
-        </div>
-        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">14:32</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Yesterday</div></div>
-          <div style="width:24px;height:24px;border-radius:6px;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">AV</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">Weekend boost</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink-faint);">+25% to +30%</div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--moss);">
+          <span>+10</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
         </div>
       </div>
-      <div style="padding:10px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;display:flex;justify-content:space-between;align-items:center;">
+      <!-- Entry 2: ALL OK budget raise -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">10:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Raised daily budget on 6 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">d'hair</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Weekend boost</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">B2F184D1</span></span>
+            <span>·</span>
+            <span style="color:var(--moss);">All ok</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--ink);">
+          <span>+30%</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 3: WARNING partial pause -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">06:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--line-mid);color:var(--ink-soft);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Paused 17 of 18 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">Guidecraft, Inc.</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Overnight pause</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">C5E72A0B</span></span>
+            <span>·</span>
+            <span style="color:#7a5c00;">Warning</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:#7a5c00;">
+          <span>17 / 18</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 4: ERROR -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">06:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--coral);color:var(--cream);display:grid;place-items:center;">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Could not update 3 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">d'hair</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Overnight pause</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">D8B194E2</span></span>
+            <span>·</span>
+            <span style="color:var(--coral);">Error</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--coral);">
+          <span>Retrying</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 5: Manual user edit -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">02:32 PM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;letter-spacing:-0.03em;">AV</div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Weekend boost</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Manual edit</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-faint);">
+          <span>+25% to +30%</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div style="padding:10px 14px;border-top:1px solid var(--line);background:var(--paper);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;display:flex;justify-content:space-between;align-items:center;">
         <span>142 entries shown · last 24 hours</span>
         <span>Updated 12s ago</span>
       </div>
@@ -1509,6 +1615,162 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <h1 class="ptitle">Reading the Change Log</h1>
   <p class="pdesc">The Change Log is your primary diagnostic tool. Every action Off Hours takes, and every change a team member makes, is recorded here with enough detail to trace exactly what happened and why.</p>
   <div class="rr"></div>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Change log</div></div>
+    <div class="demo-body" style="padding:0;background:var(--cream);">
+      <!-- Filter bar -->
+      <div style="padding:10px 14px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:140px;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);font-family:'Inter',sans-serif;">Search events...</div>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Account <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Rule <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Actor <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--line-mid);background:transparent;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">Action <span style="color:var(--ink-faint);">All</span> <span style="font-size:8px;color:var(--ink-faint);">↓</span></span>
+        <span style="display:inline-flex;align-items:center;padding:3px 11px;border-radius:999px;background:var(--ink);color:var(--cream);font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;border:1px solid var(--ink);">All</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--coral);background:transparent;color:var(--coral);font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"><span style="width:5px;height:5px;border-radius:50%;background:var(--coral);"></span>Errors</span>
+        <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;border:1px solid var(--butter-deep);background:transparent;color:#7a5c00;font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.06em;"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Warnings</span>
+      </div>
+      <!-- Refresh indicator + layout toggles -->
+      <div style="padding:7px 14px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+        <span>↻ Refreshed 10:33 PM</span>
+        <span style="display:inline-flex;align-items:center;gap:5px;">
+          <span style="width:18px;height:16px;border:1px solid var(--line-mid);border-radius:3px;display:grid;place-items:center;font-size:10px;color:var(--ink);background:var(--cream);">≡</span>
+          <span style="width:18px;height:16px;border:1px solid var(--line-mid);border-radius:3px;display:grid;place-items:center;font-size:9px;color:var(--ink-faint);">▦</span>
+        </span>
+      </div>
+      <!-- Date group header -->
+      <div style="padding:9px 14px;background:var(--cream-deep);display:flex;align-items:center;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--line);">
+        <span><span style="color:var(--ink);">Today</span> · May 22, 2026</span>
+        <span>5 events</span>
+      </div>
+      <!-- Entry 1: ALL OK -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">11:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Enabled 10 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">Guidecraft, Inc.</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">1-11pm dayparting schedule</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">A7A063C9</span></span>
+            <span>·</span>
+            <span style="color:var(--moss);">All ok</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--moss);">
+          <span>+10</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 2: ALL OK budget raise -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">10:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Raised daily budget on 6 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">d'hair</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Weekend boost</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">B2F184D1</span></span>
+            <span>·</span>
+            <span style="color:var(--moss);">All ok</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--ink);">
+          <span>+30%</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 3: WARNING partial pause -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">06:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--line-mid);color:var(--ink-soft);display:grid;place-items:center;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Paused 17 of 18 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">Guidecraft, Inc.</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Overnight pause</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">C5E72A0B</span></span>
+            <span>·</span>
+            <span style="color:#7a5c00;">Warning</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:#7a5c00;">
+          <span>17 / 18</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 4: ERROR -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">06:00 AM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--coral);color:var(--cream);display:grid;place-items:center;">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Could not update 3 campaigns</span> <span style="color:var(--ink-soft);">·</span> <span style="color:var(--ink-soft);">d'hair</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Overnight pause</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Tick <span style="color:var(--ink);">D8B194E2</span></span>
+            <span>·</span>
+            <span style="color:var(--coral);">Error</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--coral);">
+          <span>Retrying</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Entry 5: Manual user edit -->
+      <div style="display:grid;grid-template-columns:80px 28px 1fr auto;gap:12px;align-items:start;padding:12px 14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;line-height:1.35;">
+          <div>Today</div>
+          <div style="color:var(--ink);font-size:11px;margin-top:1px;">02:32 PM</div>
+        </div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;letter-spacing:-0.03em;">AV</div>
+        <div style="min-width:0;">
+          <div style="font-size:13px;color:var(--ink);display:flex;flex-wrap:wrap;align-items:center;gap:6px;">
+            <span><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span></span>
+            <span style="display:inline-flex;align-items:center;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);">Weekend boost</span>
+          </div>
+          <div style="margin-top:5px;display:flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:9.5px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">
+            <span>Manual edit</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-faint);">
+          <span>+25% to +30%</span>
+          <span style="color:var(--ink-faint);font-size:12px;">›</span>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div style="padding:10px 14px;border-top:1px solid var(--line);background:var(--paper);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;display:flex;justify-content:space-between;align-items:center;">
+        <span>142 entries shown · last 24 hours</span>
+        <span>Updated 12s ago</span>
+      </div>
+    </div>
+  </div>
 
   <h2 class="h2 f" id="anatomy">Anatomy of a log entry</h2>
   <p class="p">Each entry shows:</p>
