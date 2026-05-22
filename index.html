@@ -432,7 +432,9 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <button class="si" id="si-aibuilder" onclick="nav('aibuilder')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>AI rule builder<span class="stime">3 min</span></button>
   <button class="si" id="si-dashboard" onclick="nav('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dashboard<span class="stime">4 min</span></button>
   <button class="si" id="si-insights" onclick="nav('insights')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Weekly insights<span class="stime">3 min</span></button>
-  <button class="si" id="si-changelog" onclick="nav('changelog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">2 min</span></button>
+  <button class="si" id="si-changelog" onclick="nav('changelog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">3 min</span></button>
+  <button class="si" id="si-troubleshooting" onclick="nav('troubleshooting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Troubleshooting<span class="stime">7 min</span></button>
+  <button class="si" id="si-readlog" onclick="nav('readlog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Reading the Change Log<span class="stime">4 min</span></button>
   <button class="si" id="si-team" onclick="nav('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Team access<span class="sbadge">Agency</span></button>
   <div class="sdiv"></div>
   <span class="sl">Account</span>
@@ -448,7 +450,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Introduction</span></div>
   <div class="ptag">Getting started</div>
   <h1 class="ptitle">Welcome to Off Hours</h1>
-  <p class="pdesc">Off Hours schedules and automates your Amazon Ads campaigns — hour by hour, across every account. From signup to your first running rule in under five minutes.</p>
+  <p class="pdesc">Most Amazon advertisers run campaigns 24 hours a day, 7 days a week, including the hours when their customers aren't buying. Off Hours automates the rules that fix that. Pause overnight. Boost for weekends. React to ACOS spikes. Restore budgets after events. All of it runs automatically, every hour, while you focus on strategy.</p>
   <div class="rr"></div>
   <div class="demo">
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app</div></div>
@@ -477,6 +479,13 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <button class="rcard c3" onclick="nav('event')"><div class="rc-lbl">Events</div><div class="rc-title">Event rules</div><div class="rc-desc">Handle Prime Day, Black Friday, and product launches. Rules restore automatically.</div></button>
     <button class="rcard c4" onclick="nav('performance')"><div class="rc-lbl">Performance</div><div class="rc-title">Performance rules</div><div class="rc-desc">Alert or act when ACOS or budget thresholds are crossed.</div></button>
   </div>
+
+  <h2 class="h2" id="who">Who uses Off Hours</h2>
+  <ul class="ul">
+    <li><strong>Solo sellers.</strong> Set up a dayparting schedule once and stop thinking about it. Your campaigns pause when customers sleep and run when they shop.</li>
+    <li><strong>Growing brands.</strong> Layer budget rules on top of dayparting to control spend precisely across peak and off-peak windows without touching campaigns manually.</li>
+    <li><strong>Agencies.</strong> Connect multiple sellers and manage rules across all of them from one dashboard. Each seller is billed independently, so adding clients scales your ARPU without scaling your workload.</li>
+  </ul>
 
   <h2 class="h2" id="layering">How rules layer</h2>
   <p class="p">Multiple rules can apply to the same campaigns at the same time. This is how they interact across a typical week:</p>
@@ -571,7 +580,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Quick start</span></div>
   <div class="ptag">Getting started</div>
   <h1 class="ptitle">Quick start</h1>
-  <p class="pdesc">From signup to your first running rule in under five minutes.</p>
+  <p class="pdesc">Most users have their first rule running within 20 minutes of connecting their Amazon account. Here's exactly what that looks like.</p>
   <div class="rr"></div>
   <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><div><div class="ca-t">You will need</div><div class="ca-x">An Amazon Advertising account with at least one active Sponsored Products campaign. No API keys required — Off Hours connects via your Amazon Ads login.</div></div></div>
   <h2 class="h2 f" id="steps">Steps</h2>
@@ -582,12 +591,14 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="step"><div class="snum">4</div><div><div class="stitle">Activate and watch it run</div><div class="sdesc">Click <strong>Confirm and activate</strong>. Off Hours will execute the rule on its next hourly check. Watch every action in the Activity feed on your dashboard.</div></div></div>
   </div>
   <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Good first rule for most accounts</div><div class="ca-x">Pause all campaigns midnight to 6am on weekdays. Conservative, low risk, and for most categories immediately profitable. Tighten the schedule after reviewing your first week of data.</div></div></div>
-  <h2 class="h2" id="next">What to do next</h2>
-  <p class="p">Once your first dayparting rule is running, the logical next steps in order:</p>
+  <h2 class="h2" id="after">After your first rule</h2>
+  <p class="p">Once your first rule is active, Off Hours checks every hour and logs every action in the Change Log. You'll know it's working when you see the first entry appear, usually within an hour of your first scheduled window opening.</p>
+  <p class="p">Next steps most users take:</p>
   <ul class="ul">
-    <li>Add a <button class="dl" onclick="nav('budget')">budget rule</button> for weekend boosts or seasonal pullbacks</li>
-    <li>Set up an <button class="dl" onclick="nav('event')">event rule</button> for the next major shopping event on your calendar</li>
-    <li>Configure a <button class="dl" onclick="nav('performance')">performance rule</button> to alert you if ACOS exceeds your threshold</li>
+    <li>Add a <button class="dl" onclick="nav('budget')">budget rule</button> to control spend during peak hours</li>
+    <li>Set up an <button class="dl" onclick="nav('event')">event rule</button> before the next Prime Day or BFCM</li>
+    <li>Configure a <button class="dl" onclick="nav('performance')">performance rule</button> to flag ACOS that crosses your threshold</li>
+    <li>Invite a teammate under <strong>Workspace → Team</strong></li>
     <li>Review your first <button class="dl" onclick="nav('insights')">weekly insights</button> email the following Monday</li>
   </ul>
 
@@ -701,6 +712,14 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <h2 class="h2" id="events">How dayparting interacts with event rules</h2>
   <p class="p">Event rules can override your dayparting schedule during their active window. A Prime Day event rule can suspend your overnight pause so campaigns run 24 hours, then restore your normal dayparting schedule automatically when the event ends. You do not need to manually disable dayparting rules for events.</p>
 
+  <h2 class="h2" id="issues">Common issues</h2>
+  <p class="p"><strong>Why isn't my rule firing?</strong></p>
+  <p class="p">The three most common reasons: (1) Amazon connection needs reauth, check Amazon Accounts for a reconnect banner. (2) The schedule's timezone doesn't match what you intended, edit the rule and verify. (3) The campaign isn't in the rule's scope, edit the rule and check the campaign selection.</p>
+  <p class="p"><strong>How do I know it's working?</strong></p>
+  <p class="p">Check the Change Log filtered by your schedule name. You should see hourly entries during your paused windows. The first entry appears at the next scheduled hour after you activate the rule.</p>
+  <p class="p"><strong>Can I have multiple dayparting schedules?</strong></p>
+  <p class="p">Yes. Each schedule manages its own set of campaigns independently. If two schedules include the same campaign, the most recent action wins. Use the Change Log to trace which schedule last touched a campaign.</p>
+
   <div class="related">
     <div class="related-label">Related pages</div>
     <div class="related-grid">
@@ -773,6 +792,14 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="step"><div class="snum">4</div><div><div class="stitle">Activate</div><div class="sdesc">Confirm the rule summary and activate. The first execution happens at the next scheduled time.</div></div></div>
   </div>
   <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Percentage adjustments compound if layered</div><div class="ca-x">If two budget rules both apply a percentage increase to the same campaign, each is calculated relative to the budget at the time it fires — not the original baseline. Be intentional when layering budget rules on the same campaigns.</div></div></div>
+
+  <h2 class="h2" id="issues">Common issues</h2>
+  <p class="p"><strong>Why didn't my budget change?</strong></p>
+  <p class="p">Check the Change Log for the rule's tick at the scheduled time. No tick means the rule wasn't active or the schedule window hadn't opened. An error tick means the Amazon connection needs attention.</p>
+  <p class="p"><strong>Why is my budget higher than expected?</strong></p>
+  <p class="p">Percentage adjustments compound if multiple rules apply to the same campaigns. Each rule calculates against the budget at the time it fires, not the original baseline. Review your active rules for overlapping scopes.</p>
+  <p class="p"><strong>Will my budget always restore?</strong></p>
+  <p class="p">Yes, as long as the rule is still active when the window closes. If you delete or deactivate the rule before restoration, the budget stays at the adjusted value. Check the Change Log for a "Restored baseline" entry to confirm restoration happened.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -875,6 +902,14 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   </div>
   <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Verify restoration the morning after</div><div class="ca-x">Log in the morning after a major event and confirm your dashboard looks like it did before — normal budgets, normal dayparting. The Change log shows the restoration actions Off Hours took at midnight.</div></div></div>
 
+  <h2 class="h2" id="issues">Common issues</h2>
+  <p class="p"><strong>My rule didn't fire at the event start.</strong></p>
+  <p class="p">The rule must be Active before the event window opens. It won't backfill. Also verify the start datetime is set in the correct timezone. Check the Dashboard's Upcoming events section to confirm the rule is scheduled.</p>
+  <p class="p"><strong>Campaigns didn't restore after the event.</strong></p>
+  <p class="p">Off Hours restores at the exact end datetime. Check the Change Log for a restoration entry. If none exists and the end time has passed, contact hello@off-hours.app with the rule name and tick ID.</p>
+  <p class="p"><strong>Should I disable dayparting during events?</strong></p>
+  <p class="p">You don't have to. Event rules automatically override dayparting schedules during the event window, running campaigns 24 hours regardless of the dayparting schedule. Your dayparting schedule resumes automatically when the event ends.</p>
+
   <div class="related">
     <div class="related-label">Related pages</div>
     <div class="related-grid">
@@ -973,6 +1008,14 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <li>Do not configure auto-pause rules for Prime Day or major events — abnormal traffic produces false positives</li>
     <li>Review alert history weekly to calibrate thresholds over time</li>
   </ul>
+
+  <h2 class="h2" id="issues">Common issues</h2>
+  <p class="p"><strong>My alert didn't fire even though ACOS was high.</strong></p>
+  <p class="p">Performance rules use prior-day data. ACOS that crossed your threshold today will trigger an alert tomorrow morning at around 6 AM in the account timezone, not in real time.</p>
+  <p class="p"><strong>I'm getting too many alerts.</strong></p>
+  <p class="p">Set your threshold to 1.5x to 2x your target ACOS, not at your target. Normal campaign volatility will cross a threshold set at exactly your target frequently. Review alert history weekly and adjust the threshold based on patterns.</p>
+  <p class="p"><strong>A rule paused campaigns I didn't expect.</strong></p>
+  <p class="p">If the rule scope is set to all campaigns, it applies broadly. Check the Change Log, expand the relevant tick, and review which campaigns were affected. Edit the rule to narrow the scope.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1349,7 +1392,171 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('changelog')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('team')"><div class="pnc-dir">Next →</div><div class="pnc-title">Team access</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('troubleshooting')"><div class="pnc-dir">Next →</div><div class="pnc-title">Troubleshooting</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== TROUBLESHOOTING ========== -->
+<div class="doc-page" id="page-troubleshooting">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Troubleshooting</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Troubleshooting</h1>
+  <p class="pdesc">Organized by symptom, not feature. If something isn't behaving the way you expect, start here. Each item lists what to check, in order.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="amazon">Amazon connection issues</h2>
+
+  <p class="p"><strong>My Amazon connection expired.</strong></p>
+  <p class="p">Your OAuth token expires periodically. Go to <strong>Amazon Accounts</strong> in the sidebar. If a seller shows a reconnect banner, click <strong>Reconnect</strong> and complete the OAuth flow. All rules for that seller resume automatically on the next hourly check.</p>
+
+  <p class="p"><strong>I connected my Amazon account but no campaigns are showing.</strong></p>
+  <p class="p">Make sure the marketplace toggle is set to <strong>Active in app</strong>. If it is, wait up to 30 minutes for the initial campaign import. If campaigns still don't appear, disconnect and reconnect the seller.</p>
+
+  <p class="p"><strong>I have multiple marketplaces but only one is showing campaigns.</strong></p>
+  <p class="p">Each marketplace (US, MX, CA) is imported separately. Go to <strong>Amazon Accounts</strong>, expand the seller, and verify each marketplace is toggled <strong>Active in app</strong>.</p>
+
+  <h2 class="h2" id="dayparting-issues">Dayparting issues</h2>
+
+  <p class="p"><strong>My campaigns didn't pause at the scheduled time.</strong></p>
+  <p class="p">Check three things. (1) The schedule's timezone: Off Hours uses the timezone set on the schedule, not your local time. (2) The campaign scope: if the schedule is set to a subset, verify the affected campaigns are included. (3) The Change Log: filter by the schedule name and check whether the tick fired and what it returned.</p>
+
+  <p class="p"><strong>My rule is active but nothing is happening.</strong></p>
+  <p class="p">If your Amazon connection needs reauth, rules will not fire. Check <strong>Amazon Accounts</strong> for a reconnect banner. Also verify the schedule has at least one paused hour. A schedule where all hours are active will never trigger a pause action.</p>
+
+  <p class="p"><strong>Campaigns are pausing at the wrong time.</strong></p>
+  <p class="p">This is almost always a timezone mismatch. The schedule runs in the timezone configured when the rule was created. Edit the rule and verify the timezone matches your campaigns' target region.</p>
+
+  <p class="p"><strong>My schedule shows Active but campaigns are still running during paused hours.</strong></p>
+  <p class="p">Off Hours checks every hour on the hour. If a campaign was enabled manually in Amazon Ads after the last check, it will run until the next hourly check fires. Check the Change Log for the next expected tick.</p>
+
+  <h2 class="h2" id="budget-issues">Budget rule issues</h2>
+
+  <p class="p"><strong>My budget didn't increase at the scheduled time.</strong></p>
+  <p class="p">Check the Change Log for that rule's tick. If the tick shows an error, your Amazon connection may need reauth. If there's no tick at all, verify the rule is set to <strong>Active</strong> and the schedule window includes the current time.</p>
+
+  <p class="p"><strong>My budget didn't restore after the window ended.</strong></p>
+  <p class="p">Budget rules restore automatically when the rule window closes. Check the Change Log for a <strong>Restored baseline</strong> entry. If none exists, the rule may still be within its active window. Check the rule's end time.</p>
+
+  <p class="p"><strong>My budget went higher than I expected.</strong></p>
+  <p class="p">If two budget rules apply percentage increases to the same campaigns, they compound. Each increase is calculated against the budget at the time it fires, not the original baseline. Review your active rules for overlapping campaign scopes.</p>
+
+  <h2 class="h2" id="event-issues">Event rule issues</h2>
+
+  <p class="p"><strong>My event rule didn't fire at the start of the event window.</strong></p>
+  <p class="p">Event rules fire at the exact start datetime in the rule's configured timezone. Verify the start time is set correctly and that the rule was <strong>Active</strong> before the window opened. Rules activated after the window starts will not backfill.</p>
+
+  <p class="p"><strong>Campaigns didn't restore after the event ended.</strong></p>
+  <p class="p">Check the Change Log for a restoration entry at the event end time. If none exists, verify the rule's end datetime was set correctly. If the end time has passed and no restoration occurred, contact hello@off-hours.app with the rule name and tick ID from the Change Log.</p>
+
+  <p class="p"><strong>I set up a Prime Day rule but it's not appearing in the Change Log.</strong></p>
+  <p class="p">The rule won't appear in the Change Log until it fires at the configured start time. Use the <strong>Upcoming events</strong> section on the Dashboard to confirm the rule is scheduled correctly.</p>
+
+  <h2 class="h2" id="performance-issues">Performance rule issues</h2>
+
+  <p class="p"><strong>My ACOS alert didn't trigger even though ACOS exceeded my threshold.</strong></p>
+  <p class="p">Performance rules use prior-day data, not real time. If ACOS crossed your threshold today, the alert will fire tomorrow morning at around 6 AM in the account's timezone, not immediately.</p>
+
+  <p class="p"><strong>I'm getting too many alerts.</strong></p>
+  <p class="p">Set your threshold higher. 1.5x to 2x your target ACOS is a good starting point. Alerts at exactly your target will fire frequently during normal volatility. You can also switch to alert-only mode so no campaigns are paused automatically.</p>
+
+  <p class="p"><strong>A performance rule paused campaigns I didn't expect.</strong></p>
+  <p class="p">Check the rule's campaign scope. If set to all campaigns, it applies broadly. Review the Change Log for the specific tick and expand it to see which campaigns were affected. Edit the rule to narrow the scope if needed.</p>
+
+  <h2 class="h2" id="billing-issues">Billing and access issues</h2>
+
+  <p class="p"><strong>My dashboard is in read-only mode.</strong></p>
+  <p class="p">Read-only mode activates when your trial ends or a payment fails. Rules stop executing. Go to <strong>Settings → Billing</strong> to add a payment method or resubscribe. Rule execution resumes automatically on the next hourly check after Stripe processes the payment.</p>
+
+  <p class="p"><strong>I added a payment method but the dashboard is still read-only.</strong></p>
+  <p class="p">Stripe may take a few minutes to process. Hard refresh the page after 2 to 3 minutes. If read-only persists after 10 minutes, contact hello@off-hours.app.</p>
+
+  <p class="p"><strong>I'm not receiving weekly insight emails.</strong></p>
+  <p class="p">Insights are sent every Monday at 7:00 AM UTC. Check your spam folder first. If you're consistently not receiving them, verify your notification settings under <strong>Settings → Notifications</strong>.</p>
+
+  <p class="p"><strong>A team member can't access the dashboard.</strong></p>
+  <p class="p">Invites expire after 7 days. If the invite expired, go to <strong>Workspace → Team</strong> and resend it. If the invite was accepted but access looks wrong, verify the role assigned matches what they need. Viewers cannot create or edit rules.</p>
+
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Still stuck?</div><div class="ca-x">Email hello@off-hours.app. Include the rule name and tick ID from the Change Log if the issue involves a specific execution. We respond within one business day.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('readlog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Reading the Change Log →</div></button>
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('faq')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">FAQ →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-troubleshooting">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('troubleshooting','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('troubleshooting','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-troubleshooting">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-troubleshooting">
+      <textarea class="feedback-textarea" id="fb-text-troubleshooting" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('troubleshooting')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('changelog')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Change log</div></button><button class="pnc r" onclick="nav('readlog')"><div class="pnc-dir">Next →</div><div class="pnc-title">Reading the Change Log</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== READING THE CHANGE LOG ========== -->
+<div class="doc-page" id="page-readlog">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Reading the Change Log</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Reading the Change Log</h1>
+  <p class="pdesc">The Change Log is your primary diagnostic tool. Every action Off Hours takes, and every change a team member makes, is recorded here with enough detail to trace exactly what happened and why.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="anatomy">Anatomy of a log entry</h2>
+  <p class="p">Each entry shows:</p>
+  <ul class="ul">
+    <li><strong>Time.</strong> When the action occurred, in your local browser timezone.</li>
+    <li><strong>Status icon.</strong> Green checkmark for success, amber plus for budget increase, gray pause for paused or decreased, coral triangle for alert or error.</li>
+    <li><strong>Action.</strong> What happened: "Enabled 10 campaigns · Guidecraft, Inc." with the rule name that triggered it.</li>
+    <li><strong>Status badge.</strong> <strong>ALL OK</strong> (every campaign updated successfully), <strong>WARNING</strong> (partial success, some campaigns skipped), <strong>ERROR</strong> (execution failed, Off Hours will retry).</li>
+    <li><strong>Delta.</strong> The net change: +10 campaigns enabled, -10 paused, +30% budget increase, Alert, Restored.</li>
+    <li><strong>Tick ID.</strong> A unique ID for each execution, visible when you expand a row. Include this when contacting support.</li>
+  </ul>
+
+  <h2 class="h2" id="diagnose">How to diagnose a problem</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Change Log in the sidebar</div><div class="sdesc">The full audit history loads with the most recent entries first.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Filter by the rule name or seller where you expected an action</div><div class="sdesc">Use the filter bar at the top to narrow the view.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Find the time window when the action should have occurred</div><div class="sdesc">Scroll or filter to the date range in question.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">If there's no entry</div><div class="sdesc">The rule either wasn't active, the schedule window hadn't started, or the Amazon connection was interrupted. Check <strong>Amazon Accounts</strong> for a reconnect banner.</div></div></div>
+    <div class="step"><div class="snum">5</div><div><div class="stitle">If there's an entry with a WARNING or ERROR badge</div><div class="sdesc">Expand the row to see which campaigns were skipped and why.</div></div></div>
+    <div class="step"><div class="snum">6</div><div><div class="stitle">If the entry shows ALL OK but campaigns don't reflect the change</div><div class="sdesc">The change may have been overridden manually in Amazon Ads after the tick fired. Check Amazon Ads directly to see the current campaign state.</div></div></div>
+  </div>
+
+  <h2 class="h2" id="tick">Using tick IDs for support</h2>
+  <p class="p">Every execution has a unique tick ID visible in the expanded row detail. If you contact support about a specific execution, include the tick ID. It lets the team locate the exact execution instantly without asking follow-up questions.</p>
+
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Verify event restoration the morning after</div><div class="ca-x">After a major event like Prime Day, check the Change Log the morning after to confirm your event rule fired the restoration action at midnight. Look for "Restored baseline budgets" entries with your event rule name.</div></div></div>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('troubleshooting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Troubleshooting →</div></button>
+      <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-readlog">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('readlog','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('readlog','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-readlog">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-readlog">
+      <textarea class="feedback-textarea" id="fb-text-readlog" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('readlog')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('troubleshooting')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Troubleshooting</div></button><button class="pnc r" onclick="nav('team')"><div class="pnc-dir">Next →</div><div class="pnc-title">Team access</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -1430,7 +1637,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('team')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('changelog')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Change log</div></button><button class="pnc r" onclick="nav('billing')"><div class="pnc-dir">Next →</div><div class="pnc-title">Billing and plans</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('readlog')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Reading the Change Log</div></button><button class="pnc r" onclick="nav('billing')"><div class="pnc-dir">Next →</div><div class="pnc-title">Billing and plans</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -1537,6 +1744,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does setup take?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">From signup to your first running rule takes about five minutes. Connect your Amazon account (one authorization step), describe your rule in the AI builder, confirm, and it's live. No onboarding call, no implementation work.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours is designed for media buyers and account managers, not developers. The AI rule builder lets you describe rules in plain English. There are no API keys, no scripts, and no code anywhere in the product.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every new seller starts with a 14-day free trial with full access to all four rule types. No credit card required. Pricing is $149 per month per seller. At the end of the trial, add a card in Settings then Billing to keep your automation running. Without a card on file, the seller enters read-only mode and rules stop executing.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly do rules take effect?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours checks every hour on the hour. A rule you activate now will first fire at the next hourly check. For event rules, the first action fires at the exact start datetime you set.</div></div></div>
   </div>
 
   <h2 class="h2" id="rules">Rules and automation</h2>
@@ -1546,13 +1754,17 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I layer multiple rules on the same campaigns?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Rules layer cleanly. A dayparting rule, a budget rule, and an event rule can all apply to the same campaigns simultaneously. Event rules take precedence during their active window and restore other rules' behavior automatically when they end. See the layering diagram on the Introduction page for a visual example.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does Off Hours touch keyword bids?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours enables and pauses campaigns and adjusts daily budgets only. Keyword bids, match types, placement modifiers, and targeting settings are never modified. Your bid strategy stays yours.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens when an event rule ends?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours automatically restores your pre-event state at the end of the event window. Budgets return to their original values, dayparting schedules resume, and no manual intervention is needed. The Change log records the restoration actions with timestamps so you can verify everything was restored correctly.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens if my Amazon connection expires while a rule is running?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Rules will not fire while the connection is interrupted. No campaigns will be paused or enabled by Off Hours during this period. Reconnect your seller in Amazon Accounts. Rules resume automatically on the next hourly check after reconnection.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will Off Hours conflict with my Amazon campaign manager or other tools?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours makes the same API calls a human would in Amazon Ads. It enables or pauses campaigns and adjusts daily budgets. If another tool or team member makes changes to the same campaigns, the most recent change wins. Use the Change Log to trace which system last touched a campaign.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I know Off Hours is actually working?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Check the Change Log. Every action Off Hours takes is logged with a timestamp, the rule that triggered it, the campaigns affected, and whether it succeeded. If you see entries appearing during your scheduled windows, it's working.</div></div></div>
   </div>
 
   <h2 class="h2" id="account">Account and billing</h2>
   <div class="faq-group">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my Amazon advertising data stored by Off Hours?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours stores your campaign list, rule configurations, and action history. It does not store your keyword-level data, bid history, or full performance reports. We access your data through the Amazon Advertising API only when executing rule checks. See the Privacy Policy for full details.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I connect multiple Amazon accounts?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Each seller you connect is billed at $149 per month. Marketplaces (US, MX, CA, and so on) within a seller are included free, no matter how many you add. Attribution Profiles are connected separately and are excluded from billing entirely.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens to my campaigns if I cancel?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">When your account expires, all automation stops. Campaigns remain in whatever state they were last set to — Off Hours will not pause or change anything after cancellation. Your data and rule configurations are retained for 90 days in case you want to reactivate.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I use Off Hours if I manage campaigns for multiple clients?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Connect each client's Amazon Ads account as a separate seller. Each seller has its own rules, Change Log, and billing. You can switch between sellers from the account selector in the top bar.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens to my campaigns if I cancel?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">All rules stop executing immediately. Campaigns remain in whatever state they were last set to by Off Hours. Nothing is automatically restored on cancellation. Your Change Log and rule configurations are retained for 90 days.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I get a refund?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Email hello@off-hours.app within 7 days of your first charge if you are not satisfied. We will work something out. We would rather give you your money back than have an unhappy customer.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer volume pricing for agencies?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">We price per seller, which scales naturally for agencies. Each seller is $149 per month, every marketplace under it included free, and Attribution Profiles are not billed. For enterprise pricing, contact hello@off-hours.app and we will work out a number that fits your seller count.</div></div></div>
   </div>
@@ -1589,26 +1801,28 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 // SEARCH INDEX — all page content
 // ════════════════════════════════════════════
 const searchIndex = [
-  {page:'intro',title:'Introduction',cat:'Getting started',text:'Off Hours schedules automates Amazon Ads campaigns hour by hour across sellers marketplaces. What Off Hours does rule types hourly check layering change log weekly insights global pause until manual resume campaigns not bids. 14 day trial no card required.'},
-  {page:'quickstart',title:'Quick start',cat:'Getting started',text:'From signup to first running rule five minutes. Create account connect Amazon seller build first rule activate. Pause campaigns midnight 6am weekdays good first rule.'},
+  {page:'intro',title:'Introduction',cat:'Getting started',text:'Off Hours automates Amazon Ads campaigns hour by hour across sellers marketplaces. Pause overnight boost weekends react ACOS spikes restore budgets after events. Who uses Off Hours solo sellers growing brands agencies. Rule types hourly check layering change log weekly insights global pause until manual resume campaigns not bids. 14 day trial no card required.'},
+  {page:'quickstart',title:'Quick start',cat:'Getting started',text:'Most users have first rule running within 20 minutes. Create account connect Amazon seller build first rule activate. Pause campaigns midnight 6am weekdays good first rule. After your first rule Change Log first entry hour. Next steps budget rule event rule Prime Day BFCM invite teammate Workspace Team weekly insights Monday.'},
   {page:'connect',title:'Connect Amazon account',cat:'Getting started',text:'Amazon OAuth authorization no API keys no manual setup. Sellers marketplaces US MX CA. One seller billable. Attribution Profiles excluded. advertising campaign_management scope. Reconnect expired seller token banner. Active toggle per marketplace.'},
-  {page:'dayparting',title:'Dayparting',cat:'Rule types',text:'Schedule campaigns run pause hourly schedule. 7 by 24 grid 168 cells. Active hours paused hours. Weekday overnight pause weekend. Recommended schedule 6am midnight. Interacts event rules override restoration.'},
-  {page:'budget',title:'Budget rules',cat:'Rule types',text:'Increase decrease campaign daily budgets recurring schedule. Weekend boost Friday 5pm Sunday reset. Weekday pullback seasonal scaling budget pacing. Percentage adjustments compound layered.'},
-  {page:'event',title:'Event rules',cat:'Rule types',text:'Prime Day Black Friday product launch date range event. Activate automatically restore baseline. Suspend dayparting increase budgets. Event window start end datetime. Verify restoration morning after.'},
-  {page:'performance',title:'Performance rules',cat:'Rule types',text:'Alert act ACOS budget thresholds crossed. Prior day data not real time. Alert only or alert plus pause. 50 percent ACOS threshold. Configure recommended 1.5x to 2x target.'},
+  {page:'dayparting',title:'Dayparting',cat:'Rule types',text:'Schedule campaigns run pause hourly schedule. 7 by 24 grid 168 cells. Active hours paused hours. Weekday overnight pause weekend. Recommended schedule 6am midnight. Interacts event rules override restoration. Common issues rule not firing reauth timezone campaign scope multiple schedules.'},
+  {page:'budget',title:'Budget rules',cat:'Rule types',text:'Increase decrease campaign daily budgets recurring schedule. Weekend boost Friday 5pm Sunday reset. Weekday pullback seasonal scaling budget pacing. Percentage adjustments compound layered. Common issues budget did not change check Change Log tick higher than expected overlapping rules restoration baseline.'},
+  {page:'event',title:'Event rules',cat:'Rule types',text:'Prime Day Black Friday product launch date range event. Activate automatically restore baseline. Suspend dayparting increase budgets. Event window start end datetime. Verify restoration morning after. Common issues did not fire at event start no backfill restoration tick ID dayparting override.'},
+  {page:'performance',title:'Performance rules',cat:'Rule types',text:'Alert act ACOS budget thresholds crossed. Prior day data not real time. Alert only or alert plus pause. 50 percent ACOS threshold. Configure recommended 1.5x to 2x target. Common issues alert did not fire prior day data too many alerts threshold rule paused campaigns unexpected scope.'},
   {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. AI Assistant bar build button parses prompt pre-fills new rule form review activate. No confirm preview the form is the confirmation step. Multi seller picker. Or start from scratch. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
   {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions sellers marketplaces. Needs your attention expired OAuth Prime Day approaching. Activity feed action first text inline rule pill status delta timestamp OH avatar. Heatmap 168 hours. Upcoming events. Read only mode trial ended past due recovery banner add payment resubscribe Stripe Customer Portal. Global pause avatar menu suspends until manual resume.'},
   {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend AI generated estimate directional signal. Delivery Monday 7am UTC team members email notifications. Recommendations page sidebar Settings Notifications.'},
   {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every action Off Hours and teammates. Timestamp actor type system Off Hours user initials action target campaign count rule name pill rule type severity info warning error All ok badge moss butter coral execution tick ID expanded detail delta. Search filter seller rule type action type actor severity date range. Missed executions OAuth expired retry.'},
+  {page:'troubleshooting',title:'Troubleshooting',cat:'Features',text:'Organized by symptom. Amazon connection expired reconnect banner OAuth. Campaigns not showing marketplace active toggle import 30 minutes. Multiple marketplaces US MX CA. Dayparting campaigns did not pause timezone scope Change Log tick. Rule active nothing happening reauth schedule paused hour. Wrong time timezone mismatch. Manual enable hourly check. Budget did not increase tick error reauth. Budget did not restore window end. Budget higher than expected compound. Event rule did not fire start backfill. Campaigns did not restore tick ID. Prime Day not in Change Log Upcoming events. ACOS alert did not trigger prior day data 6am. Too many alerts threshold 1.5x 2x. Performance rule paused unexpected scope. Read only mode trial ended payment failed Settings Billing add resubscribe Stripe. Added payment still read only refresh. Not receiving weekly insight emails 7am UTC spam Settings Notifications. Team member cannot access invite expired 7 days resend Workspace Team role Viewer.'},
+  {page:'readlog',title:'Reading the Change Log',cat:'Features',text:'Primary diagnostic tool. Anatomy log entry time local browser timezone status icon green amber gray coral action rule name status badge ALL OK WARNING ERROR delta tick ID expand row include support. Diagnose problem filter rule name seller find time window no entry rule not active reauth WARNING ERROR badge expand skipped why ALL OK manual override Amazon Ads. Tick IDs for support unique expanded detail locate execution instantly. Restoration baseline budgets event rule Prime Day morning after.'},
   {page:'team',title:'Team access',cat:'Features',text:'Role based access Owner Admin Member Viewer no seat caps. Workspace Team. Invite member email invitation 7 days expire resend revoke. Per seller pricing not per team member.'},
   {page:'billing',title:'Billing and plans',cat:'Account',text:'Per seller flat 149 monthly 1520 annual marketplaces included free attribution profiles excluded billing. Free trial 14 days no credit card. Stripe Customer Portal manage subscription cancel update payment method invoices. Trial countdown past_due canceled_period_ended recovery resubscribe BillingPicker. Annual billing saves 15 percent.'},
-  {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no card required pricing 149 per seller add card Settings Billing read only mode. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple sellers marketplaces US MX CA included free Attribution Profiles excluded. Cancel campaigns retain state 90 days. Refund 7 days first charge. Per seller pricing scales for agencies enterprise contact.'},
+  {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no card required pricing 149 per seller add card Settings Billing read only mode. Rules take effect next hourly check event rules exact start. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Connection expires no firing reconnect resume. Conflict with other tools most recent change wins Change Log trace. How do I know it is working Change Log entries. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple sellers marketplaces US MX CA included free Attribution Profiles excluded. Manage multiple clients separate sellers account selector top bar. Cancel rules stop immediately campaigns last state 90 days. Refund 7 days first charge. Per seller pricing scales for agencies enterprise contact.'},
 ];
 
 // ════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════
-const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','changelog','team','billing','faq'];
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','changelog','troubleshooting','readlog','team','billing','faq'];
 let cur = 'intro';
 
 function nav(key) {
