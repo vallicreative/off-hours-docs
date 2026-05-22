@@ -1825,18 +1825,29 @@ const searchIndex = [
 const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','changelog','troubleshooting','readlog','team','billing','faq'];
 let cur = 'intro';
 
-function nav(key) {
+function nav(key, pushState = true) {
   if (!pages.includes(key)) return;
   document.getElementById('page-' + cur).classList.remove('active');
   document.getElementById('si-' + cur).classList.remove('active');
   cur = key;
   document.getElementById('page-' + cur).classList.add('active');
   document.getElementById('si-' + cur).classList.add('active');
+  if (pushState) {
+    window.history.pushState({ page: key }, '', '/' + key);
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
   buildOTP();
   // reinit animations for the page
   setTimeout(initPageAnimations, 100);
 }
+
+// Browser back/forward — restore the page recorded in history state.
+// pushState=false so we don't push a duplicate entry onto the stack.
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.page && pages.includes(e.state.page)) {
+    nav(e.state.page, false);
+  }
+});
 
 // ════════════════════════════════════════════
 // OTP — On This Page
@@ -2203,6 +2214,16 @@ function initPageAnimations() {
 // ════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════
+// Restore the page from the URL on initial load. Strip the leading slash;
+// if it matches a known page, navigate there without pushing a duplicate
+// history entry. Always replaceState so a subsequent popstate has a
+// {page} object to restore from.
+(function initFromUrl() {
+  const slug = window.location.pathname.replace(/^\//, '');
+  const target = pages.includes(slug) ? slug : 'intro';
+  window.history.replaceState({ page: target }, '', '/' + target);
+  if (target !== 'intro') nav(target, false);
+})();
 buildOTP();
 buildHeatmap();
 initBudgetViz();
