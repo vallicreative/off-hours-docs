@@ -515,7 +515,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <tr><td>Rule layering</td><td>Multiple rules can apply to the same campaigns. Event rules override dayparting during their window, then restore cleanly.</td></tr>
     <tr><td>Change log</td><td>Every automated action is logged with timestamp, rule name, campaign, and account. Full audit trail, always.</td></tr>
     <tr><td>Weekly insights</td><td>Every Monday, Off Hours emails a performance summary with deferred spend estimates and actionable observations.</td></tr>
-    <tr><td>Global pause</td><td>Suspend all automation for 24 hours from the avatar menu. Campaigns stay exactly as they were last set.</td></tr>
+    <tr><td>Global pause</td><td>Suspend all rule execution from the avatar menu. Stays paused until you turn it off manually. Campaigns stay exactly as they were last set.</td></tr>
   </tbody></table>
   <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Off Hours manages campaigns, not bids</div><div class="ca-x">Off Hours enables, pauses, and adjusts daily budgets only. Keyword bids, match types, and targeting settings are never touched.</div></div></div>
 
@@ -619,8 +619,8 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 <div class="doc-page" id="page-connect">
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Getting started</span><span class="sep">/</span><span class="cur">Connect Amazon account</span></div>
   <div class="ptag">Getting started</div>
-  <h1 class="ptitle">Connect your Amazon Ads account</h1>
-  <p class="pdesc">No API keys, no manual setup. Authorize with your Amazon login and your campaigns import automatically.</p>
+  <h1 class="ptitle">Connect your Amazon seller</h1>
+  <p class="pdesc">No API keys, no manual setup. Authorize with your Amazon login and your sellers, marketplaces, and campaigns import automatically.</p>
   <div class="rr"></div>
   <div class="cv">
     <div class="cv-logos">
@@ -628,21 +628,24 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <div class="cv-arrow"><div class="cv-line"></div><div class="cv-lbl">Amazon Ads API</div></div>
       <div class="cv-logo az">az</div>
     </div>
-    <div class="cv-desc">Off Hours connects using Amazon's official OAuth authorization flow. You grant access — Off Hours never sees your Amazon password.</div>
+    <div class="cv-desc">Off Hours connects using Amazon's official OAuth authorization flow. You grant access, Off Hours never sees your Amazon password.</div>
   </div>
-  <h2 class="h2 f" id="how">How to connect</h2>
+  <h2 class="h2 f" id="model">Sellers and marketplaces</h2>
+  <p class="p">Off Hours organizes Amazon Ads access as <strong>sellers</strong> and <strong>marketplaces</strong>. A seller is one Amazon Seller Central account. A marketplace is a region under that seller, US, MX, CA, and so on. One seller is the billable unit at $149 per month. Every marketplace under it is included free. Connect a single seller and Off Hours imports every marketplace tied to it automatically.</p>
+  <p class="p"><strong>Attribution Profiles</strong> are a separate concept. Off Hours imports them too, but they live in their own deemphasized section, are excluded from billing, and are not subject to rule automation.</p>
+  <h2 class="h2" id="how">How to connect</h2>
   <div class="steps">
-    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Amazon Accounts in the sidebar</div><div class="sdesc">Click <strong>Amazon Accounts</strong> in the left sidebar. This shows all currently connected profiles and a button to add a new one.</div></div></div>
-    <div class="step"><div class="snum">2</div><div><div class="stitle">Click Connect account</div><div class="sdesc">You will be redirected to Amazon's authorization page. Log in with the Amazon account that has access to your advertising profiles. If you manage multiple brands, log in as the account with access to all of them.</div></div></div>
-    <div class="step"><div class="snum">3</div><div><div class="stitle">Campaigns import automatically</div><div class="sdesc">Off Hours imports all advertising profiles associated with your account. All active Sponsored Products campaigns are available immediately.</div></div></div>
-    <div class="step"><div class="snum">4</div><div><div class="stitle">Set profiles to active</div><div class="sdesc">Each imported profile has an <strong>Active</strong> toggle. Turn on the profiles you want Off Hours to manage. Inactive profiles are visible but no rules execute against them.</div></div></div>
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Amazon Accounts in the sidebar</div><div class="sdesc">Click <strong>Amazon Accounts</strong> in the left sidebar. This shows all currently connected sellers, grouped with the marketplaces under each one, and a button to add a new seller.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Click Connect seller</div><div class="sdesc">You will be redirected to Amazon's authorization page. Log in with the Amazon Seller Central account you want to manage. If you operate several distinct sellers, you connect each one in turn.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Sellers and marketplaces import automatically</div><div class="sdesc">Off Hours imports the seller, every marketplace tied to that seller, and every active Sponsored Products campaign under each marketplace. Attribution Profiles are imported into a separate, read-only section.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Set marketplaces to active</div><div class="sdesc">Each marketplace under a seller has its own <strong>Active</strong> toggle. Turn on the marketplaces you want Off Hours to manage. Inactive marketplaces are visible but no rules execute against them.</div></div></div>
   </div>
   <h2 class="h2" id="access">What access Off Hours requests</h2>
-  <p class="p">Off Hours requests the <span class="code-wrap"><code>advertising::campaign_management</code><button class="copy-btn" onclick="copyCode('advertising::campaign_management',this)" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span> scope — read and write access to your Sponsored Products campaigns. This is the minimum scope needed to enable, pause, and adjust daily budgets.</p>
+  <p class="p">Off Hours requests the <span class="code-wrap"><code>advertising::campaign_management</code><button class="copy-btn" onclick="copyCode('advertising::campaign_management',this)" title="Copy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></span> scope, read and write access to your Sponsored Products campaigns. This is the minimum scope needed to enable, pause, and adjust daily budgets.</p>
   <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Off Hours does not touch bids, keywords, or targeting</div><div class="ca-x">Your keyword bids, match types, and targeting settings are never modified. Off Hours only touches campaign status and daily budget amounts.</div></div></div>
-  <h2 class="h2" id="reconnect">Reconnecting an expired account</h2>
-  <p class="p">Amazon OAuth tokens expire periodically. When a token expires, Off Hours shows an alert on your dashboard and sends you an email. Go to <strong>Amazon Accounts</strong>, find the expired profile, and click <strong>Reconnect</strong>. Campaigns resume on the next hourly check.</p>
-  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Rules do not execute on expired accounts</div><div class="ca-x">If a token expires, Off Hours suspends all rule execution for that profile until reconnected. No changes are made to campaigns during the gap. The Change log notes missed executions.</div></div></div>
+  <h2 class="h2" id="reconnect">Reconnecting an expired seller</h2>
+  <p class="p">Amazon OAuth tokens expire periodically. When a token expires, a banner appears across the top of the dashboard reading <strong>X sellers need reconnection</strong>, and Off Hours emails the owner. Click the banner or go to <strong>Amazon Accounts</strong>, find the affected seller, and click <strong>Reconnect</strong>. Rules resume on the next hourly check.</p>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Rules do not execute on expired sellers</div><div class="ca-x">If a seller's token expires, Off Hours suspends all rule execution against every marketplace under that seller until you reconnect. No changes are made during the gap. The Change log records missed executions with the reason.</div></div></div>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1000,32 +1003,73 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">AI rule builder</span></div>
   <div class="ptag">Features</div>
   <h1 class="ptitle">AI rule builder</h1>
-  <p class="pdesc">Describe a rule in plain English. Off Hours figures out the type, configures all parameters, and shows you a summary before anything goes live.</p>
+  <p class="pdesc">Describe a rule in plain English. Off Hours figures out the type, pre-fills the form, and lets you review every field before you activate.</p>
   <div class="rr"></div>
   <div class="demo">
-    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Budget Rules → New rule</div></div>
-    <div class="demo-body">
-      <div class="rb">
-        <div class="rb-lbl">AI rule builder</div>
-        <div class="rb-you">Every Friday at 5pm, increase all Sponsored Products budgets by 25 percent and reset them Sunday night.</div>
-        <div class="rb-oh"><div class="rb-tag"><span class="rb-dot"></span>Off Hours · Parsed</div>Budget rule created — all Sponsored Products daily budgets increase by 25 percent every Friday at 5:00 PM and reset to baseline every Sunday at 11:00 PM. Runs automatically each week. Confirm to go live.</div>
-        <div class="rb-acts"><button class="rb-p">Confirm and activate</button><button class="rb-g">Edit fields</button><button class="rb-g">Try again</button></div>
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Budget Rules</div></div>
+    <div class="demo-body" style="padding:0;">
+      <div style="padding:18px 20px;background:var(--paper);border-bottom:1px solid var(--line);">
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border:1px solid var(--line-mid);border-radius:999px;background:var(--cream);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--moss);"></span>AI Assistant
+        </div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px;letter-spacing:-0.025em;color:var(--ink);margin-top:10px;">Build a rule in plain English</div>
+        <div style="display:flex;gap:8px;margin-top:12px;align-items:stretch;">
+          <div style="flex:1;background:var(--cream);border:1px solid var(--line-mid);border-radius:999px;padding:9px 14px;font-size:12.5px;color:var(--ink);">Boost Sponsored Products budgets 25% every Friday 5pm, reset Sunday night</div>
+          <div style="padding:0 16px;border-radius:999px;background:var(--ink);color:var(--cream);font-size:12px;font-weight:500;display:flex;align-items:center;gap:6px;">Build <span style="width:18px;height:18px;border-radius:50%;background:var(--cream);color:var(--ink);display:grid;place-items:center;font-size:10px;">→</span></div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
+          <span style="padding:3px 10px;border-radius:999px;background:var(--cream-deep);border:1px solid var(--line);font-size:11px;color:var(--ink-soft);">Weekend boost</span>
+          <span style="padding:3px 10px;border-radius:999px;background:var(--cream-deep);border:1px solid var(--line);font-size:11px;color:var(--ink-soft);">Weekday pullback</span>
+          <span style="padding:3px 10px;border-radius:999px;background:var(--cream-deep);border:1px solid var(--line);font-size:11px;color:var(--ink-soft);">Seasonal scale</span>
+        </div>
+      </div>
+      <div style="padding:10px 20px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;text-align:center;">Pre-fills the new rule form below ↓</div>
+      <div style="padding:18px 20px;background:var(--cream);">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">New budget rule · pre-filled · editable</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:var(--paper);border:1px solid var(--line-mid);border-radius:8px;padding:10px 12px;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">Adjustment</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">+25%</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--line-mid);border-radius:8px;padding:10px 12px;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">Campaigns</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">All Sponsored Products</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--line-mid);border-radius:8px;padding:10px 12px;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">Start</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Friday 5:00 PM</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--line-mid);border-radius:8px;padding:10px 12px;">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">Reset</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Sunday 11:00 PM</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:14px;justify-content:flex-end;">
+          <button style="padding:7px 14px;border-radius:999px;background:transparent;color:var(--ink-soft);border:1px solid var(--line-mid);font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;">Discard</button>
+          <button style="padding:7px 16px;border-radius:999px;background:var(--moss);color:var(--cream);font-size:12px;font-weight:500;border:none;cursor:pointer;font-family:'Inter',sans-serif;">Activate rule</button>
+        </div>
       </div>
     </div>
   </div>
   <h2 class="h2 f" id="how">How it works</h2>
-  <p class="p">The AI rule builder is available on every rule page. Type what you want in the prompt field and Off Hours will identify the rule type, configure all parameters, show you a plain-English summary, and wait for your confirmation before creating anything.</p>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Type a prompt in the AI Assistant bar</div><div class="sdesc">The bar sits at the top of every rule index page: Dayparting, Budget rules, Event rules, and Performance rules.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Click Build</div><div class="sdesc">Off Hours parses the prompt and identifies the rule type, the target campaigns, the schedule, and the adjustment.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Review the pre-filled form and activate</div><div class="sdesc">You land on the new rule form with every field already filled in. Review, change anything you want, and click <strong>Activate rule</strong> to make it live. The form itself is the confirmation step.</div></div></div>
+  </div>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">The form is the preview</div><div class="ca-x">There is no separate summary screen. The pre-filled form is what the rule will do, exactly. Edit any field before you activate, and edit again after, anytime.</div></div></div>
   <h2 class="h2" id="examples">What to say</h2>
-  <p class="p">Write it the way you would say it to a colleague. You don't need specific terminology — the builder understands intent.</p>
-  <table class="tbl"><thead><tr><th>What you type</th><th>What gets created</th></tr></thead><tbody>
-    <tr><td>"Pause all campaigns midnight to 6am on weekdays"</td><td>Dayparting rule, weeknight pause, 12 AM to 6 AM Mon–Fri</td></tr>
+  <p class="p">Write it the way you would say it to a colleague. You do not need specific terminology. The builder understands intent.</p>
+  <table class="tbl"><thead><tr><th>What you type</th><th>What gets pre-filled</th></tr></thead><tbody>
+    <tr><td>"Pause all campaigns midnight to 6am on weekdays"</td><td>Dayparting rule, weeknight pause, 12 AM to 6 AM Mon to Fri</td></tr>
     <tr><td>"Boost Sponsored Products budgets 30% every weekend"</td><td>Budget rule, +30% Friday 5 PM, reset Sunday 11 PM</td></tr>
-    <tr><td>"Run everything 24 hours during Prime Day"</td><td>Event rule, dayparting suspended for Prime Day window</td></tr>
-    <tr><td>"Alert me if any campaign hits 60% ACOS two days in a row"</td><td>Performance rule, ACOS alert 60%, 2-day consecutive trigger</td></tr>
+    <tr><td>"Run everything 24 hours during Prime Day"</td><td>Event rule, dayparting suspended for the Prime Day window</td></tr>
+    <tr><td>"Alert me if any campaign hits 60% ACOS two days in a row"</td><td>Performance rule, ACOS alert at 60%, 2-day consecutive trigger</td></tr>
   </tbody></table>
-  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">You can always edit after</div><div class="ca-x">The AI creates a starting point. Every field is editable before and after activation — campaigns, hours, percentages, dates, all of it.</div></div></div>
-  <h2 class="h2" id="clarify">When the AI needs more context</h2>
-  <p class="p">If your prompt is ambiguous, Off Hours will ask a clarifying question before generating the rule. If you ask for something Off Hours doesn't support, the builder will say so and suggest what it can do instead.</p>
+  <h2 class="h2" id="multi">If you have multiple Amazon sellers</h2>
+  <p class="p">When you click Build with more than one seller connected, Off Hours asks you to pick which seller the rule applies to before it pre-fills the form. The selection carries through to the form so you do not have to set it again.</p>
+  <h2 class="h2" id="clarify">When the AI cannot parse the prompt</h2>
+  <p class="p">If your prompt is ambiguous, Off Hours returns an error instead of guessing. If you ask for something Off Hours does not support (like keyword bid changes), the builder will say so. In either case you can edit the prompt and try again, or click <strong>Or start from scratch</strong> below the bar to open an empty rule form.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1081,22 +1125,45 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <h2 class="h2" id="attention">Needs your attention</h2>
   <p class="p">This panel surfaces items Off Hours cannot handle automatically — things requiring a human decision. Examples: an expired Amazon account connection, a Prime Day approaching with no event rule configured, or an ACOS spike exceeding your threshold. Items are ranked by urgency.</p>
   <h2 class="h2" id="activity">Activity feed</h2>
-  <p class="p">The activity feed shows every automated action Off Hours took in the last 24 hours. Each entry shows the time, action, campaign group, and which rule triggered it.</p>
+  <p class="p">The activity feed shows every automated action Off Hours took in the last 24 hours. Each entry shows the time, the action, the rule that triggered it, and the delta. The full audit history lives on the Change log page.</p>
   <div class="demo">
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Activity feed</div></div>
-    <div class="demo-body">
-      <div class="feed-row"><span class="ft">11:00 AM</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Enabled 24 campaigns</b> · Parkway Home <span class="ftag">Weekday morning</span></span><span class="fc g">+24</span></div>
-      <div class="feed-row"><span class="ft">10:00 AM</span><span class="fi bud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="fx"><b>Raised daily budget</b> on 6 campaigns <span class="ftag">Weekend boost</span></span><span class="fc">+30%</span></div>
-      <div class="feed-row"><span class="ft">6:00 AM</span><span class="fi off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></span><span class="fx"><b>Paused 18 campaigns</b> <span class="ftag">Overnight pause</span></span><span class="fc">-18</span></div>
-      <div class="feed-row"><span class="ft">6:00 AM</span><span class="fi alt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="fx"><b>ACOS alert triggered</b> <span class="ftag">Performance</span></span><span class="fc w">Alert</span></div>
+    <div class="demo-body" style="padding:0;">
+      <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">3 min ago</div></div>
+        <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--moss);">+24</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">1h ago</div></div>
+        <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink);">+30%</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
+        <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-faint);">-18</div>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;position:relative;">
+        <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--butter-deep);"></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
+        <div style="width:24px;height:24px;border-radius:6px;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">triggered ACOS alert on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--mint-deep);"></span>ACOS threshold</span> <span style="padding:1px 8px;border-radius:999px;background:var(--butter);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7a5c00;">Alert</div>
+      </div>
     </div>
   </div>
   <h2 class="h2" id="heatmap">When campaigns run heatmap</h2>
   <p class="p">The heatmap shows a layered view of your active dayparting and budget rules across all 168 hours of the current week. Hover any cell to see the day, hour, and activity level. It updates as rules change.</p>
   <h2 class="h2" id="upcoming">Upcoming events</h2>
-  <p class="p">The upcoming panel shows scheduled events and rule changes for the next 7 days — event rules about to fire, budget boosts for the weekend, weekly insights due Monday. A forward-looking view of what Off Hours is about to do.</p>
+  <p class="p">The upcoming panel shows scheduled events and rule changes for the next 7 days: event rules about to fire, budget boosts for the weekend, weekly insights due Monday. A forward-looking view of what Off Hours is about to do.</p>
+  <h2 class="h2" id="readonly">Read-only mode</h2>
+  <p class="p">If your trial ends without a card on file, or a Stripe charge fails, the dashboard enters <strong>read-only mode</strong>. Rules stop executing and a recovery banner appears at the top of every page with steps to restore access, either <strong>Add payment method</strong> or <strong>Resubscribe</strong>. Existing rules, sellers, schedules, and the full Change log remain visible. No data is lost. Once payment is resolved through the Stripe Customer Portal, rule execution resumes automatically on the next hourly check.</p>
   <h2 class="h2" id="pause">Global pause</h2>
-  <p class="p">The global pause toggle is in the avatar menu at the top right. Turning it on suspends all rule execution for 24 hours. Campaigns stay exactly as they were last set. A banner confirms the pause is active and when it expires. Use global pause when making manual campaign changes and you want to prevent Off Hours from interfering.</p>
+  <p class="p">The global pause toggle is in the avatar menu at the top right. Turning it on suspends all rule execution until you turn it off manually. Campaigns stay exactly as they were last set. A banner across the top of the dashboard confirms the pause is active. Use global pause when you are making manual campaign changes and want to prevent Off Hours from interfering.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1148,11 +1215,11 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       </div>
     </div>
   </div>
-  <h2 class="h2" id="calc">How the deferred spend estimate is calculated</h2>
-  <p class="p">Deferred spend is calculated as: hours paused multiplied by your average hourly spend per campaign over the prior 30 days. It represents spend that did not happen during your paused windows.</p>
-  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Conservative by design</div><div class="ca-x">Off Hours uses a flat 30-day average rather than hour-specific rates. Hour-specific overnight rates tend to be lower, which would produce a higher estimate. We use the conservative number to avoid overstating impact.</div></div></div>
+  <h2 class="h2" id="calc">How the deferred spend estimate is generated</h2>
+  <p class="p">Deferred spend is an AI-generated estimate based on your campaign activity and paused hours during the week. It is not derived from a fixed formula. The estimate is intended to give you a directional sense of automation impact, not a precise dollar figure.</p>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Use as a directional signal</div><div class="ca-x">Treat the deferred spend number as a directional signal, not a guaranteed savings figure. If you need a precise number for a client report, calculate it from your own ad spend data.</div></div></div>
   <h2 class="h2" id="delivery">Delivery and settings</h2>
-  <p class="p">Insights are sent every Monday at 6:00 AM in your account's timezone to all team members with email notifications enabled. You can view the current week's insights at any time from the Recommendations page in the sidebar. To adjust notification preferences, go to <strong>Settings</strong> then <strong>Notifications</strong>.</p>
+  <p class="p">Insights are sent every Monday at 7:00 AM UTC to all team members with email notifications enabled. You can view the current week's insights at any time from the Recommendations page in the sidebar. To adjust notification preferences, go to <strong>Settings</strong> then <strong>Notifications</strong>.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1183,41 +1250,83 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Change log</span></div>
   <div class="ptag">Features</div>
   <h1 class="ptitle">Change log</h1>
-  <p class="pdesc">A permanent, timestamped record of every automated action Off Hours has taken across your accounts. Full audit trail, always.</p>
+  <p class="pdesc">A permanent, timestamped record of every action Off Hours has taken across your sellers, plus every change you and your teammates make inside the app. Full audit trail, always.</p>
   <div class="rr"></div>
   <h2 class="h2 f" id="what">What is logged</h2>
+  <p class="p">Each row in the log groups every action from a single rule execution into one entry. Click a row to expand the per-campaign breakdown and execution detail.</p>
   <table class="tbl"><thead><tr><th>Field</th><th>What it contains</th></tr></thead><tbody>
-    <tr><td>Timestamp</td><td>The exact time the action was executed, in your account timezone.</td></tr>
-    <tr><td>Action type</td><td>Enable, pause, budget increase, budget decrease, or alert triggered.</td></tr>
-    <tr><td>Campaign</td><td>The name of the campaign affected.</td></tr>
-    <tr><td>Account</td><td>Which Amazon Ads profile the campaign belongs to.</td></tr>
-    <tr><td>Rule</td><td>Which rule triggered the action, with a link to the rule configuration.</td></tr>
-    <tr><td>Previous value</td><td>For budget changes: the budget before the change.</td></tr>
-    <tr><td>New value</td><td>For budget changes: the budget after the change.</td></tr>
+    <tr><td>Timestamp</td><td>The exact time the action was executed, displayed in your local timezone with a relative ago label below.</td></tr>
+    <tr><td>Actor type</td><td>Either <strong>Off Hours</strong> (an automated rule execution, shown with an OH avatar) or a teammate (shown with their initials).</td></tr>
+    <tr><td>Action</td><td>What happened: enabled, paused, budget raised or lowered, alert triggered, rule edited, rule created, rule deleted.</td></tr>
+    <tr><td>Target</td><td>The campaign count or campaign name affected. Multi-campaign actions show the count; you expand the row to see the per-campaign list.</td></tr>
+    <tr><td>Rule name and type</td><td>An inline pill with a colored dot for the rule type (dayparting, budget, event, performance), and the rule's name. Only present on automated entries.</td></tr>
+    <tr><td>Severity</td><td>Info, warning, or error. Warning and error rows show a colored stripe on the left edge and a status badge inline.</td></tr>
+    <tr><td>Delta</td><td>The change summary on the right: +24, +30%, -18, Alert, Restored.</td></tr>
+    <tr><td>Execution tick ID</td><td>A unique identifier for one rule run, visible in the expanded detail view. Useful for support: if you need help tracing a specific execution, include the tick ID and the team can locate it immediately.</td></tr>
   </tbody></table>
+
+  <h2 class="h2" id="badges">Execution status badges</h2>
+  <p class="p">Each automated rule execution is summarized with one of three status badges:</p>
+  <ul class="ul">
+    <li><strong>All ok</strong> in moss green. Every campaign targeted by the rule was actioned without errors. Shown on the right edge of the row.</li>
+    <li><strong>Warning</strong> in butter amber. The execution completed with partial success. Some campaigns updated, others were skipped, often because the campaign was archived, access was restricted, or Amazon returned a transient error. No action required.</li>
+    <li><strong>Error</strong> in coral red. The execution encountered one or more failures. Some or all campaigns may not have been updated. Off Hours retries on the next scheduled run. If errors persist, check the affected seller's connection on the Amazon Accounts page.</li>
+  </ul>
 
   <div class="demo">
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Change log</div></div>
     <div class="demo-body" style="padding:0;">
       <div style="padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;background:var(--paper);">
-        <div style="flex:1;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);">Search campaigns, rules, accounts…</div>
+        <div style="flex:1;background:var(--cream);border:1px solid var(--line-mid);border-radius:6px;padding:5px 10px;font-size:12px;color:var(--ink-faint);">Search campaigns, rules, sellers</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">All sellers ↓</div>
         <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">All types ↓</div>
         <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);padding:5px 8px;border:1px solid var(--line-mid);border-radius:5px;background:var(--cream);">Last 7 days ↓</div>
       </div>
-      <div style="padding:0 16px;">
-        <div class="feed-row"><span class="ft">Today 11:00</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Enabled 24 campaigns</b> · Parkway Home <span class="ftag">Weekday morning</span></span><span class="fc g">+24</span></div>
-        <div class="feed-row"><span class="ft">Today 10:00</span><span class="fi bud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span><span class="fx"><b>Raised daily budget</b> · 6 campaigns · $200 → $260 <span class="ftag">Weekend boost</span></span><span class="fc">+30%</span></div>
-        <div class="feed-row"><span class="ft">Today 06:00</span><span class="fi off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="6" width="12" height="12" rx="1"/></svg></span><span class="fx"><b>Paused 18 campaigns</b> · Northlane Goods <span class="ftag">Overnight pause</span></span><span class="fc">−18</span></div>
-        <div class="feed-row"><span class="ft">Today 06:00</span><span class="fi alt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span><span class="fx"><b>ACOS alert triggered</b> · Harbor Kitchen exceeded 50% for 2 days <span class="ftag">Performance</span></span><span class="fc w">Alert</span></div>
-        <div class="feed-row"><span class="ft">Yesterday</span><span class="fi on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span><span class="fx"><b>Restored baseline budgets</b> · All accounts <span class="ftag">Prime Day event</span></span><span class="fc g">Restored</span></div>
+      <div>
+        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:rgba(168,206,143,0.4);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--moss);">+24</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:rgba(168,206,143,0.4);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink);">+30%</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
+          <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--butter-deep);"></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:var(--butter);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7a5c00;">17 of 18</div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
+          <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--coral);"></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--coral);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">could not update</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:var(--coral);color:var(--cream);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Error</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--coral);">Retrying</div>
+        </div>
+        <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">14:32</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Yesterday</div></div>
+          <div style="width:24px;height:24px;border-radius:6px;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">AV</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">Weekend boost</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-faint);">+25% to +30%</div>
+        </div>
       </div>
-      <div style="padding:8px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">142 entries · last 24 hours · 100% executed</div>
+      <div style="padding:10px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;display:flex;justify-content:space-between;align-items:center;">
+        <span>142 entries shown · last 24 hours</span>
+        <span>Updated 12s ago</span>
+      </div>
     </div>
   </div>
+
   <h2 class="h2" id="filter">Searching and filtering</h2>
-  <p class="p">The Change log can be filtered by account, rule type, action type, and date range. Use the search field to find entries by campaign name. Entries are retained indefinitely — you can audit any action Off Hours has ever taken on your account.</p>
+  <p class="p">Use the filter bar to narrow entries by seller, rule type, action type, actor, severity, and date range. The search field matches against campaign names, rule names, and actor names. Entries are retained indefinitely, so you can audit any action Off Hours has ever taken on your sellers.</p>
   <h2 class="h2" id="missed">Missed executions</h2>
-  <p class="p">If Off Hours cannot execute a scheduled action — for example, because an Amazon OAuth token has expired — the missed execution is recorded with a note explaining why it did not run. This gives you a clear record of any gaps in automation coverage.</p>
+  <p class="p">If Off Hours cannot execute a scheduled action, for example because a seller's Amazon OAuth token has expired, the missed execution is recorded with a note explaining why it did not run. This gives you a clear record of any gaps in automation coverage.</p>
   <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><div><div class="ca-t">Use the Change log to verify event rule restoration</div><div class="ca-x">The morning after a major event, check the Change log to confirm your event rule fired the restoration actions at midnight. Budget and schedule restores will be listed with the event rule as the source.</div></div></div>
 
   <div class="related">
@@ -1249,17 +1358,18 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Team access</span></div>
   <div class="ptag">Features</div>
   <h1 class="ptitle">Team access</h1>
-  <p class="pdesc">Invite team members with role-based access. Pro plans support up to 3 members. Agency plans have no limit.</p>
+  <p class="pdesc">Invite team members with role-based access. Every workspace supports the full set of roles. No seat caps.</p>
   <div class="rr"></div>
   <h2 class="h2 f" id="roles">Roles</h2>
   <table class="tbl"><thead><tr><th>Role</th><th>What they can do</th></tr></thead><tbody>
-    <tr><td>Owner</td><td>Full access. Manage billing, connect and disconnect Amazon accounts, invite and remove team members, create and delete all rules.</td></tr>
-    <tr><td>Admin</td><td>Create, edit, and delete rules across all accounts. Cannot manage billing or remove the owner.</td></tr>
+    <tr><td>Owner</td><td>Full access. Manage billing, connect and disconnect Amazon sellers, invite and remove team members, create and delete all rules.</td></tr>
+    <tr><td>Admin</td><td>Create, edit, and delete rules across all sellers. Invite and remove team members. Cannot manage billing or remove the owner.</td></tr>
+    <tr><td>Member</td><td>Can view and create rules but cannot manage billing, team members, or account settings.</td></tr>
     <tr><td>Viewer</td><td>Read-only access to the dashboard, Change log, and rules. Cannot create or modify rules.</td></tr>
   </tbody></table>
 
   <div class="demo">
-    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Settings → Team</div></div>
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Workspace → Team</div></div>
     <div class="demo-body" style="padding:0;">
       <div style="padding:10px 16px;border-bottom:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:space-between;">
         <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.02em;">Team members</div>
@@ -1278,6 +1388,12 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
           <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(169,203,214,0.3);color:#2c5866;font-weight:700;text-transform:uppercase;">Admin</div>
           <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
         </div>
+        <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--mint-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">J</div>
+          <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Jordan</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">jordan@maplegrovestudio.com</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(168,206,143,0.3);color:var(--moss);font-weight:700;text-transform:uppercase;">Member</div>
+          <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
+        </div>
         <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;">
           <div style="width:30px;height:30px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">M</div>
           <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Marcus</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">marcus@maplegrovestudio.com</div></div>
@@ -1289,11 +1405,11 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   </div>
   <h2 class="h2" id="invite">Inviting a team member</h2>
   <div class="steps">
-    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Settings then Team</div><div class="sdesc">Click <strong>Invite member</strong>. Enter their email address and select their role.</div></div></div>
-    <div class="step"><div class="snum">2</div><div><div class="stitle">They receive an email invitation</div><div class="sdesc">The invitation comes from Off Hours and includes a link to create their account. The link expires after 7 days.</div></div></div>
-    <div class="step"><div class="snum">3</div><div><div class="stitle">They accept and log in</div><div class="sdesc">Once they accept, they appear in your team list and can access the account immediately with the permissions you assigned.</div></div></div>
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Workspace then Team</div><div class="sdesc">Click <strong>Invite member</strong>. Enter their email address and pick a role: Admin, Member, or Viewer.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">They receive an email invitation</div><div class="sdesc">The invitation comes from Off Hours and includes a link to create their account. The link expires after 7 days. You can resend or revoke the invite from the Workspace then Team page at any time.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">They accept and log in</div><div class="sdesc">Once they accept, they appear in your active members list and can access the workspace immediately with the permissions you assigned.</div></div></div>
   </div>
-  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Agency plans — unlimited team members</div><div class="ca-x">Agency plans have no seat limit. Invite your full team and assign granular roles across multiple brand accounts from a centralized dashboard.</div></div></div>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">No seat caps</div><div class="ca-x">Off Hours does not charge per team member. Pricing is per Amazon seller. Invite as many teammates as you need and assign them to the right role for the work they do.</div></div></div>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1420,7 +1536,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does Off Hours work with all Amazon ad types?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Currently Off Hours manages Sponsored Products campaigns. Sponsored Brands and Sponsored Display support is on the roadmap. If you need SB/SD support urgently, email us — we can give you an honest timeline.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does setup take?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">From signup to your first running rule takes about five minutes. Connect your Amazon account (one authorization step), describe your rule in the AI builder, confirm, and it's live. No onboarding call, no implementation work.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours is designed for media buyers and account managers, not developers. The AI rule builder lets you describe rules in plain English. There are no API keys, no scripts, and no code anywhere in the product.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every account starts with a 14-day free trial with full access to all four rule types. No credit card required. After 14 days, you can choose to upgrade to Pro ($149/month per account) or your rules stop executing and your data is retained.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every new seller starts with a 14-day free trial with full access to all four rule types. No credit card required. Pricing is $149 per month per seller. At the end of the trial, add a card in Settings then Billing to keep your automation running. Without a card on file, the seller enters read-only mode and rules stop executing.</div></div></div>
   </div>
 
   <h2 class="h2" id="rules">Rules and automation</h2>
@@ -1435,10 +1551,10 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <h2 class="h2" id="account">Account and billing</h2>
   <div class="faq-group">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my Amazon advertising data stored by Off Hours?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours stores your campaign list, rule configurations, and action history. It does not store your keyword-level data, bid history, or full performance reports. We access your data through the Amazon Advertising API only when executing rule checks. See the Privacy Policy for full details.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I connect multiple Amazon accounts?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Each Amazon Advertising profile is one account in Off Hours. You can connect multiple profiles and manage them from a single dashboard. Each active profile is billed at your plan rate per month.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I connect multiple Amazon accounts?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Each seller you connect is billed at $149 per month. Marketplaces (US, MX, CA, and so on) within a seller are included free, no matter how many you add. Attribution Profiles are connected separately and are excluded from billing entirely.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What happens to my campaigns if I cancel?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">When your account expires, all automation stops. Campaigns remain in whatever state they were last set to — Off Hours will not pause or change anything after cancellation. Your data and rule configurations are retained for 90 days in case you want to reactivate.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can I get a refund?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Email hello@off-hours.app within 7 days of your first charge if you are not satisfied. We will work something out. We would rather give you your money back than have an unhappy customer.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer volume pricing for agencies?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. The Agency plan starts at $134 per account per month and volume pricing is available for larger account counts. Email hello@off-hours.app or use the Agency inquiry form to discuss pricing for your specific situation.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you offer volume pricing for agencies?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">We price per seller, which scales naturally for agencies. Each seller is $149 per month, every marketplace under it included free, and Attribution Profiles are not billed. For enterprise pricing, contact hello@off-hours.app and we will work out a number that fits your seller count.</div></div></div>
   </div>
 
   <h2 class="h2" id="contact">Still have a question?</h2>
@@ -1473,20 +1589,20 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 // SEARCH INDEX — all page content
 // ════════════════════════════════════════════
 const searchIndex = [
-  {page:'intro',title:'Introduction',cat:'Getting started',text:'Off Hours schedules automates Amazon Ads campaigns hour by hour. What Off Hours does rule types hourly check layering change log weekly insights global pause campaigns not bids.'},
-  {page:'quickstart',title:'Quick start',cat:'Getting started',text:'From signup to first running rule five minutes. Create account connect Amazon Ads build first rule activate. Pause campaigns midnight 6am weekdays good first rule.'},
-  {page:'connect',title:'Connect Amazon account',cat:'Getting started',text:'Amazon OAuth authorization no API keys no manual setup. advertising campaign_management scope. Reconnect expired token. Remove disconnect account.'},
+  {page:'intro',title:'Introduction',cat:'Getting started',text:'Off Hours schedules automates Amazon Ads campaigns hour by hour across sellers marketplaces. What Off Hours does rule types hourly check layering change log weekly insights global pause until manual resume campaigns not bids. 14 day trial no card required.'},
+  {page:'quickstart',title:'Quick start',cat:'Getting started',text:'From signup to first running rule five minutes. Create account connect Amazon seller build first rule activate. Pause campaigns midnight 6am weekdays good first rule.'},
+  {page:'connect',title:'Connect Amazon account',cat:'Getting started',text:'Amazon OAuth authorization no API keys no manual setup. Sellers marketplaces US MX CA. One seller billable. Attribution Profiles excluded. advertising campaign_management scope. Reconnect expired seller token banner. Active toggle per marketplace.'},
   {page:'dayparting',title:'Dayparting',cat:'Rule types',text:'Schedule campaigns run pause hourly schedule. 7 by 24 grid 168 cells. Active hours paused hours. Weekday overnight pause weekend. Recommended schedule 6am midnight. Interacts event rules override restoration.'},
   {page:'budget',title:'Budget rules',cat:'Rule types',text:'Increase decrease campaign daily budgets recurring schedule. Weekend boost Friday 5pm Sunday reset. Weekday pullback seasonal scaling budget pacing. Percentage adjustments compound layered.'},
   {page:'event',title:'Event rules',cat:'Rule types',text:'Prime Day Black Friday product launch date range event. Activate automatically restore baseline. Suspend dayparting increase budgets. Event window start end datetime. Verify restoration morning after.'},
   {page:'performance',title:'Performance rules',cat:'Rule types',text:'Alert act ACOS budget thresholds crossed. Prior day data not real time. Alert only or alert plus pause. 50 percent ACOS threshold. Configure recommended 1.5x to 2x target.'},
-  {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. Identifies rule type configures parameters plain English summary confirm. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
-  {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions accounts. Needs your attention expired OAuth Prime Day approaching. Activity feed timestamped actions. Heatmap 168 hours. Upcoming events. Global pause suspend 24 hours.'},
-  {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend estimate. Conservative 30 day average. Delivery Monday 6am timezone.'},
-  {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every automated action. Timestamp action type campaign account rule previous new value. Search filter account rule type action type date range. Missed executions OAuth expired.'},
-  {page:'team',title:'Team access',cat:'Features',text:'Role based access owner admin viewer. Pro up to 3 members agency unlimited. Invite member email invitation 7 days expire. Settings team.'},
+  {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. AI Assistant bar build button parses prompt pre-fills new rule form review activate. No confirm preview the form is the confirmation step. Multi seller picker. Or start from scratch. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
+  {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions sellers marketplaces. Needs your attention expired OAuth Prime Day approaching. Activity feed action first text inline rule pill status delta timestamp OH avatar. Heatmap 168 hours. Upcoming events. Read only mode trial ended past due recovery banner add payment resubscribe Stripe Customer Portal. Global pause avatar menu suspends until manual resume.'},
+  {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend AI generated estimate directional signal. Delivery Monday 7am UTC team members email notifications. Recommendations page sidebar Settings Notifications.'},
+  {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every action Off Hours and teammates. Timestamp actor type system Off Hours user initials action target campaign count rule name pill rule type severity info warning error All ok badge moss butter coral execution tick ID expanded detail delta. Search filter seller rule type action type actor severity date range. Missed executions OAuth expired retry.'},
+  {page:'team',title:'Team access',cat:'Features',text:'Role based access Owner Admin Member Viewer no seat caps. Workspace Team. Invite member email invitation 7 days expire resend revoke. Per seller pricing not per team member.'},
   {page:'billing',title:'Billing and plans',cat:'Account',text:'Per seller flat 149 monthly 1520 annual marketplaces included free attribution profiles excluded billing. Free trial 14 days no credit card. Stripe Customer Portal manage subscription cancel update payment method invoices. Trial countdown past_due canceled_period_ended recovery resubscribe BillingPicker. Annual billing saves 15 percent.'},
-  {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no credit card. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple accounts profiles. Cancel campaigns retain state 90 days. Refund 7 days first charge. Volume pricing agency.'},
+  {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no card required pricing 149 per seller add card Settings Billing read only mode. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple sellers marketplaces US MX CA included free Attribution Profiles excluded. Cancel campaigns retain state 90 days. Refund 7 days first charge. Per seller pricing scales for agencies enterprise contact.'},
 ];
 
 // ════════════════════════════════════════════
