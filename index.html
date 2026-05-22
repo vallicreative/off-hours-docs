@@ -57,8 +57,8 @@ body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;fon
 .si.active::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2.5px;background:var(--moss);border-radius:999px;}
 .si svg{width:14px;height:14px;opacity:0.55;flex-shrink:0;}
 .si.active svg{opacity:1;}
-.sbadge{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:var(--moss-tint);color:var(--moss);font-weight:700;}
-.snew{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:var(--butter);color:#6b4e00;font-weight:700;}
+.sbadge{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-weight:400;text-transform:uppercase;letter-spacing:0.06em;}
+.snew{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid #6b4e00;color:#6b4e00;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;}
 .sdiv{height:1px;background:var(--line);margin:8px 16px;}
 
 /* CONTENT */
@@ -72,7 +72,7 @@ body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;fon
 .bc{display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:24px;}
 .bc .sep{opacity:0.4;}
 .bc .cur{color:var(--ink);}
-.ptag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--moss);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;margin-bottom:12px;}
+.ptag{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--moss);text-transform:uppercase;letter-spacing:0.08em;font-weight:400;margin-bottom:12px;}
 .ptag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);box-shadow:0 0 6px rgba(44,110,82,0.5);}
 .ptitle{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:30px;line-height:1.1;letter-spacing:-0.03em;color:var(--ink);margin-bottom:10px;}
 .pdesc{font-size:15px;color:var(--ink-soft);line-height:1.6;max-width:580px;letter-spacing:-0.005em;margin-bottom:24px;}
@@ -102,7 +102,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .steps{display:flex;flex-direction:column;margin:18px 0;}
 .step{display:flex;gap:16px;padding:18px 0;border-bottom:1px dashed var(--line);}
 .step:last-child{border-bottom:none;}
-.snum{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;margin-top:1px;}
+.snum{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--cream);display:grid;place-items:center;flex-shrink:0;font-family:'Space Mono',monospace;font-size:11px;font-weight:400;margin-top:1px;}
 .stitle{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:-0.005em;}
 .sdesc{font-size:13.5px;color:var(--ink-soft);line-height:1.65;letter-spacing:-0.005em;}
 
@@ -127,7 +127,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .dm{background:var(--cream);font-size:11px;}
 .dm-top{background:var(--ink);color:var(--cream);padding:14px 18px;position:relative;overflow:hidden;}
 .dm-top::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);}
-.dm-status{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:999px;background:rgba(168,206,143,0.18);font-family:'Space Mono',monospace;font-size:9px;color:#A8CE8F;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.dm-status{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border-radius:999px;background:transparent;border:1px solid #A8CE8F;font-family:'Space Mono',monospace;font-size:9px;color:#A8CE8F;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;font-weight:400;}
 .dm-pulse{width:5px;height:5px;border-radius:50%;background:#A8CE8F;box-shadow:0 0 6px rgba(168,206,143,0.8);animation:pulse 2.2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
 .dm-hl{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;letter-spacing:-0.02em;}
@@ -205,7 +205,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .ic-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px;}
 .ic-text{font-size:12.5px;color:var(--ink-soft);line-height:1.5;}
 .ic-text b{color:var(--ink);font-weight:500;}
-.ic-cta{font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;margin-top:3px;}
+.ic-cta{font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:400;margin-top:3px;}
 
 /* RULE CARDS */
 .rcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;}
@@ -276,7 +276,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .ai-live-head{background:var(--ink);padding:14px 18px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;}
 .ai-live-head::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--rainbow);}
 .ai-live-title{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;color:var(--cream);letter-spacing:-0.02em;}
-.ai-live-badge{font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:999px;background:rgba(168,206,143,0.2);color:#A8CE8F;text-transform:uppercase;letter-spacing:0.06em;font-weight:700;}
+.ai-live-badge{font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:999px;background:transparent;border:1px solid #A8CE8F;color:#A8CE8F;text-transform:uppercase;letter-spacing:0.06em;font-weight:400;}
 .ai-live-body{padding:16px;}
 .ai-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
 .ai-chip{padding:5px 11px;border-radius:999px;background:var(--cream);border:1px solid var(--line-mid);font-size:12px;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif;}
@@ -348,7 +348,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .rc-arr{font-size:11px;color:var(--ink-faint);margin-top:2px;}
 
 /* STATUS PILL in nav */
-.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:rgba(168,206,143,0.15);border:1px solid rgba(168,206,143,0.3);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;}
+.status-pill{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:999px;background:transparent;border:1px solid var(--moss);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:400;}
 .status-pill .sdot{width:5px;height:5px;border-radius:50%;background:var(--mint-deep);box-shadow:0 0 5px rgba(168,206,143,0.7);animation:pulse 2.2s ease-in-out infinite;}
 
 /* COPY BUTTON */
@@ -364,9 +364,9 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .layer-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;position:relative;}
 .layer-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;width:80px;flex-shrink:0;text-align:right;}
 .layer-track{flex:1;height:28px;border-radius:6px;position:relative;overflow:hidden;display:flex;}
-.layer-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;transition:opacity 0.3s;}
+.layer-seg{height:100%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;transition:opacity 0.3s;}
 .layer-seg.on{opacity:1;}.layer-seg.off{opacity:0.25;}
-.layer-override{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:700;color:white;letter-spacing:0.06em;}
+.layer-override{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:8px;font-weight:400;color:white;letter-spacing:0.06em;}
 .layer-hours{flex:1;display:flex;}
 .layer-hour-lbl{display:flex;justify-content:space-between;margin-top:4px;padding:0 0 0 90px;}
 .layer-hour-lbl span{font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);}
@@ -432,7 +432,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <button class="si" id="si-aibuilder" onclick="nav('aibuilder')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>AI rule builder<span class="stime">3 min</span></button>
   <button class="si" id="si-dashboard" onclick="nav('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dashboard<span class="stime">4 min</span></button>
   <button class="si" id="si-insights" onclick="nav('insights')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Weekly insights<span class="stime">3 min</span></button>
-  <button class="si" id="si-changelog" onclick="nav('changelog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">3 min</span></button>
+  <button class="si" id="si-change-log" onclick="nav('change-log')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">3 min</span></button>
   <button class="si" id="si-troubleshooting" onclick="nav('troubleshooting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Troubleshooting<span class="stime">7 min</span></button>
   <button class="si" id="si-readlog" onclick="nav('readlog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Reading the Change Log<span class="stime">4 min</span></button>
   <button class="si" id="si-team" onclick="nav('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Team access<span class="sbadge">Agency</span></button>
@@ -663,7 +663,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-grid">
       <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
       <button class="related-card" onclick="nav('quickstart')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Getting started</div><div class="rc-name">Quick start →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
     </div>
   </div>
   <div class="feedback" id="fb-connect">
@@ -768,7 +768,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
           <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px;">Weekend boost rule</div>
           <div style="font-size:13px;font-weight:500;color:var(--ink);">+30% every Fri 5 PM → Sun 11 PM</div>
         </div>
-        <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:rgba(168,206,143,0.2);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;font-weight:700;">
+        <div style="display:flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;background:transparent;border:1px solid var(--moss);font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:400;">
           <span style="width:5px;height:5px;border-radius:50%;background:var(--moss);display:inline-block;"></span>Active
         </div>
       </div>
@@ -855,7 +855,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
               <div style="width:14px;height:14px;border-radius:50%;background:var(--coral);border:2px solid var(--cream);z-index:1;position:relative;box-shadow:0 0 10px rgba(255,138,102,0.6);animation:pulseEvent 1.8s ease-in-out infinite;"></div>
-              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--coral);text-transform:uppercase;font-weight:700;margin-top:18px;">T-0</div>
+              <div style="font-family:'Space Mono',monospace;font-size:8px;color:var(--coral);text-transform:uppercase;font-weight:400;margin-top:18px;">T-0</div>
               <div style="font-size:10px;color:var(--coral);font-weight:500;">Event</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
@@ -915,7 +915,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-grid">
       <button class="related-card" onclick="nav('dayparting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Dayparting →</div></button>
       <button class="related-card" onclick="nav('budget')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Budget rules →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
     </div>
   </div>
   <div class="feedback" id="fb-event">
@@ -970,17 +970,17 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
           </div>
           <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
             <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:71%;animation:barUp 0.5s 0.5s both;position:relative;">
-              <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:Space Mono,monospace;font-size:8px;font-weight:700;color:var(--coral);white-space:nowrap;">71%</div>
+              <div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:Space Mono,monospace;font-size:8px;font-weight:400;color:var(--coral);white-space:nowrap;">71%</div>
             </div>
-            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">F</span>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:400;">F</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
             <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:68%;animation:barUp 0.5s 0.6s both;"></div>
-            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">S</span>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:400;">S</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;">
             <div style="width:100%;background:var(--coral);border-radius:3px 3px 0 0;height:64%;animation:barUp 0.5s 0.7s both;"></div>
-            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:700;">S</span>
+            <span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--coral);font-weight:400;">S</span>
           </div>
         </div>
         <div style="display:flex;align-items:center;gap:6px;margin-top:6px;font-family:'Space Mono',monospace;font-size:9px;">
@@ -1021,7 +1021,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-label">Related pages</div>
     <div class="related-grid">
       <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
       <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
     </div>
   </div>
@@ -1173,29 +1173,29 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Activity feed</div></div>
     <div class="demo-body" style="padding:0;">
       <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">3 min ago</div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">3 min ago</div></div>
         <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--moss);">+24</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--moss);">+24</div>
       </div>
       <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">1h ago</div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">1h ago</div></div>
         <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink);">+30%</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink);">+30%</div>
       </div>
       <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
         <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span></div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-faint);">-18</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink-faint);">-18</div>
       </div>
       <div style="display:grid;grid-template-columns:64px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;position:relative;">
         <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--butter-deep);"></div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">5h ago</div></div>
         <div style="width:24px;height:24px;border-radius:6px;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">triggered ACOS alert on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--mint-deep);"></span>ACOS threshold</span> <span style="padding:1px 8px;border-radius:999px;background:var(--butter);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
-        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7a5c00;">Alert</div>
+        <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">triggered ACOS alert on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--mint-deep);"></span>ACOS threshold</span> <span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--butter-deep);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:#7a5c00;">Alert</div>
       </div>
     </div>
   </div>
@@ -1212,7 +1212,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-label">Related pages</div>
     <div class="related-grid">
       <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
       <button class="related-card" onclick="nav('performance')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Performance rules →</div></button>
     </div>
   </div>
@@ -1269,7 +1269,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-grid">
       <button class="related-card" onclick="nav('dashboard')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Dashboard →</div></button>
       <button class="related-card" onclick="nav('performance')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Performance rules →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
     </div>
   </div>
   <div class="feedback" id="fb-insights">
@@ -1284,12 +1284,12 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('insights')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('dashboard')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dashboard</div></button><button class="pnc r" onclick="nav('changelog')"><div class="pnc-dir">Next →</div><div class="pnc-title">Change log</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('dashboard')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dashboard</div></button><button class="pnc r" onclick="nav('change-log')"><div class="pnc-dir">Next →</div><div class="pnc-title">Change log</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
 <!-- ========== CHANGE LOG ========== -->
-<div class="doc-page" id="page-changelog">
+<div class="doc-page" id="page-change-log">
   <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Change log</span></div>
   <div class="ptag">Features</div>
   <h1 class="ptitle">Change log</h1>
@@ -1327,36 +1327,36 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       </div>
       <div>
         <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">11:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
           <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:rgba(168,206,143,0.4);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--moss);">+24</span></div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">enabled</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">24 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Weekday morning</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--moss);">+24</span></div>
         </div>
         <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">10:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
           <div style="width:24px;height:24px;border-radius:6px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
-          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:rgba(168,206,143,0.4);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink);">+30%</span></div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">raised daily budget on</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">6 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--butter-deep);"></span>Weekend boost</span></div>
+          <div style="display:flex;align-items:center;gap:6px;"><span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;display:inline-flex;align-items:center;gap:5px;"><span style="width:5px;height:5px;border-radius:50%;background:var(--moss-bright);"></span>All ok</span><span style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink);">+30%</span></div>
         </div>
         <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
           <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--butter-deep);"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
           <div style="width:24px;height:24px;border-radius:6px;background:var(--butter-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:var(--butter);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7a5c00;">17 of 18</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">paused</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">18 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--butter-deep);color:#7a5c00;font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Warning</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:#7a5c00;">17 of 18</div>
         </div>
         <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:relative;">
           <div aria-hidden style="position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 999px 999px 0;background:var(--coral);"></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;padding-left:8px;"><div style="color:var(--ink);">06:00</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Today</div></div>
           <div style="width:24px;height:24px;border-radius:6px;background:var(--coral);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">OH</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">could not update</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:var(--cream-deep);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:var(--coral);color:var(--cream);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;">Error</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--coral);">Retrying</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Off Hours</span> <span style="color:var(--ink-soft);">could not update</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">3 campaigns</span> <span style="display:inline-flex;align-items:center;gap:5px;padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--line-mid);font-family:'Space Mono',monospace;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.04em;color:var(--ink-soft);"><span style="width:5px;height:5px;border-radius:50%;background:var(--peach-deep);"></span>Overnight pause</span> <span style="padding:1px 8px;border-radius:999px;background:transparent;border:1px solid var(--coral);color:var(--coral);font-family:'Space Mono',monospace;font-size:9.5px;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Error</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--coral);">Retrying</div>
         </div>
         <div style="display:grid;grid-template-columns:72px 28px 1fr auto;gap:12px;align-items:center;padding:12px 16px;">
-          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:700;"><div style="color:var(--ink);">14:32</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Yesterday</div></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.04em;font-weight:400;"><div style="color:var(--ink);">14:32</div><div style="font-size:9.5px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink-faint);">Yesterday</div></div>
           <div style="width:24px;height:24px;border-radius:6px;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:10px;">AV</div>
-          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:1px 5px;border-radius:4px;background:var(--cream-deep);">Weekend boost</span></div>
-          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-faint);">+25% to +30%</div>
+          <div style="font-size:13px;color:var(--ink);"><span style="font-weight:500;">Avery</span> <span style="color:var(--ink-soft);">edited rule</span> <span style="font-family:'Space Mono',monospace;font-size:12px;font-weight:400;padding:1px 5px;border-radius:4px;background:transparent;border:1px solid var(--line-mid);">Weekend boost</span></div>
+          <div style="font-family:'Space Mono',monospace;font-size:10px;font-weight:400;color:var(--ink-faint);">+25% to +30%</div>
         </div>
       </div>
       <div style="padding:10px 16px;border-top:1px solid var(--line);font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;display:flex;justify-content:space-between;align-items:center;">
@@ -1380,16 +1380,16 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
     </div>
   </div>
-  <div class="feedback" id="fb-changelog">
+  <div class="feedback" id="fb-change-log">
     <div class="feedback-q">Was this page helpful?</div>
     <div class="feedback-btns">
-      <button class="feedback-btn yes" onclick="fbVote('changelog','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
-      <button class="feedback-btn no" onclick="fbVote('changelog','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+      <button class="feedback-btn yes" onclick="fbVote('change-log','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('change-log','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
     </div>
-    <div class="feedback-thanks" id="fb-thanks-changelog">Thanks for the feedback.</div>
-    <div class="feedback-form" id="fb-form-changelog">
-      <textarea class="feedback-textarea" id="fb-text-changelog" placeholder="What could be clearer? (optional)"></textarea>
-      <button class="feedback-submit" onclick="fbSubmit('changelog')">Send feedback</button>
+    <div class="feedback-thanks" id="fb-thanks-change-log">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-change-log">
+      <textarea class="feedback-textarea" id="fb-text-change-log" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('change-log')">Send feedback</button>
     </div>
   </div>
   <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('troubleshooting')"><div class="pnc-dir">Next →</div><div class="pnc-title">Troubleshooting</div></button></div>
@@ -1482,7 +1482,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="related-label">Related pages</div>
     <div class="related-grid">
       <button class="related-card" onclick="nav('readlog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Reading the Change Log →</div></button>
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
       <button class="related-card" onclick="nav('faq')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">FAQ →</div></button>
     </div>
   </div>
@@ -1498,7 +1498,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('troubleshooting')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('changelog')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Change log</div></button><button class="pnc r" onclick="nav('readlog')"><div class="pnc-dir">Next →</div><div class="pnc-title">Reading the Change Log</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('change-log')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Change log</div></button><button class="pnc r" onclick="nav('readlog')"><div class="pnc-dir">Next →</div><div class="pnc-title">Reading the Change Log</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -1539,7 +1539,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <div class="related">
     <div class="related-label">Related pages</div>
     <div class="related-grid">
-      <button class="related-card" onclick="nav('changelog')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
       <button class="related-card" onclick="nav('troubleshooting')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Troubleshooting →</div></button>
       <button class="related-card" onclick="nav('event')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Event rules →</div></button>
     </div>
@@ -1586,25 +1586,25 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
         <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
           <div style="width:30px;height:30px;border-radius:50%;background:var(--moss);color:var(--cream);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">A</div>
           <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Avery</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">avery@maplegrovestudio.com</div></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:var(--moss-tint);color:var(--moss);font-weight:700;text-transform:uppercase;">Owner</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:transparent;border:1px solid var(--moss);color:var(--moss);font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Owner</div>
           <div style="width:18px;"></div>
         </div>
         <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
           <div style="width:30px;height:30px;border-radius:50%;background:var(--sky-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">E</div>
           <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Elena</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">elena@maplegrovestudio.com</div></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(169,203,214,0.3);color:#2c5866;font-weight:700;text-transform:uppercase;">Admin</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:transparent;border:1px solid #2c5866;color:#2c5866;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Admin</div>
           <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
         </div>
         <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line);">
           <div style="width:30px;height:30px;border-radius:50%;background:var(--mint-deep);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">J</div>
           <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Jordan</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">jordan@maplegrovestudio.com</div></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(168,206,143,0.3);color:var(--moss);font-weight:700;text-transform:uppercase;">Member</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:transparent;border:1px solid var(--mint-deep);color:var(--mint-deep);font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Member</div>
           <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
         </div>
         <div style="display:grid;grid-template-columns:32px 1fr auto auto;gap:10px;align-items:center;padding:12px 0;">
           <div style="width:30px;height:30px;border-radius:50%;background:var(--butter);color:var(--ink);display:grid;place-items:center;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:12px;">M</div>
           <div><div style="font-size:13px;font-weight:500;color:var(--ink);">Marcus</div><div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);">marcus@maplegrovestudio.com</div></div>
-          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(234,209,115,0.3);color:#7a5c00;font-weight:700;text-transform:uppercase;">Viewer</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;padding:2px 7px;border-radius:4px;background:transparent;border:1px solid #7a5c00;color:#7a5c00;font-weight:400;text-transform:uppercase;letter-spacing:0.06em;">Viewer</div>
           <div style="color:var(--ink-faint);font-size:16px;cursor:pointer;">⋯</div>
         </div>
       </div>
@@ -1677,7 +1677,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
           <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:2px;">Next billing date</div>
           <div style="font-size:13px;font-weight:500;color:var(--ink);">May 27, 2026 · 1 seller · $149.00</div>
         </div>
-        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:700;cursor:pointer;">Manage in Stripe →</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--moss);text-transform:uppercase;letter-spacing:0.06em;font-weight:400;cursor:pointer;">Manage in Stripe →</div>
       </div>
     </div>
   </div>
@@ -1811,7 +1811,7 @@ const searchIndex = [
   {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. AI Assistant bar build button parses prompt pre-fills new rule form review activate. No confirm preview the form is the confirmation step. Multi seller picker. Or start from scratch. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
   {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions sellers marketplaces. Needs your attention expired OAuth Prime Day approaching. Activity feed action first text inline rule pill status delta timestamp OH avatar. Heatmap 168 hours. Upcoming events. Read only mode trial ended past due recovery banner add payment resubscribe Stripe Customer Portal. Global pause avatar menu suspends until manual resume.'},
   {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend AI generated estimate directional signal. Delivery Monday 7am UTC team members email notifications. Recommendations page sidebar Settings Notifications.'},
-  {page:'changelog',title:'Change log',cat:'Features',text:'Permanent timestamped record every action Off Hours and teammates. Timestamp actor type system Off Hours user initials action target campaign count rule name pill rule type severity info warning error All ok badge moss butter coral execution tick ID expanded detail delta. Search filter seller rule type action type actor severity date range. Missed executions OAuth expired retry.'},
+  {page:'change-log',title:'Change log',cat:'Features',text:'Permanent timestamped record every action Off Hours and teammates. Timestamp actor type system Off Hours user initials action target campaign count rule name pill rule type severity info warning error All ok badge moss butter coral execution tick ID expanded detail delta. Search filter seller rule type action type actor severity date range. Missed executions OAuth expired retry.'},
   {page:'troubleshooting',title:'Troubleshooting',cat:'Features',text:'Organized by symptom. Amazon connection expired reconnect banner OAuth. Campaigns not showing marketplace active toggle import 30 minutes. Multiple marketplaces US MX CA. Dayparting campaigns did not pause timezone scope Change Log tick. Rule active nothing happening reauth schedule paused hour. Wrong time timezone mismatch. Manual enable hourly check. Budget did not increase tick error reauth. Budget did not restore window end. Budget higher than expected compound. Event rule did not fire start backfill. Campaigns did not restore tick ID. Prime Day not in Change Log Upcoming events. ACOS alert did not trigger prior day data 6am. Too many alerts threshold 1.5x 2x. Performance rule paused unexpected scope. Read only mode trial ended payment failed Settings Billing add resubscribe Stripe. Added payment still read only refresh. Not receiving weekly insight emails 7am UTC spam Settings Notifications. Team member cannot access invite expired 7 days resend Workspace Team role Viewer.'},
   {page:'readlog',title:'Reading the Change Log',cat:'Features',text:'Primary diagnostic tool. Anatomy log entry time local browser timezone status icon green amber gray coral action rule name status badge ALL OK WARNING ERROR delta tick ID expand row include support. Diagnose problem filter rule name seller find time window no entry rule not active reauth WARNING ERROR badge expand skipped why ALL OK manual override Amazon Ads. Tick IDs for support unique expanded detail locate execution instantly. Restoration baseline budgets event rule Prime Day morning after.'},
   {page:'team',title:'Team access',cat:'Features',text:'Role based access Owner Admin Member Viewer no seat caps. Workspace Team. Invite member email invitation 7 days expire resend revoke. Per seller pricing not per team member.'},
@@ -1822,7 +1822,7 @@ const searchIndex = [
 // ════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════
-const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','changelog','troubleshooting','readlog','team','billing','faq'];
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','change-log','troubleshooting','readlog','team','billing','faq'];
 let cur = 'intro';
 
 function nav(key, pushState = true) {
@@ -1951,7 +1951,7 @@ document.addEventListener('keydown', e => {
   // g+letter shortcuts
   if (e.key === 'g' && !gDown) { gDown=true; clearTimeout(gTimeout); gTimeout=setTimeout(()=>gDown=false,1200); return; }
   if (gDown) {
-    const map={d:'intro',q:'quickstart',c:'connect',p:'dayparting',b:'budget',v:'event',r:'performance',a:'aibuilder',h:'dashboard',i:'insights',l:'changelog',t:'team',f:'faq'};
+    const map={d:'intro',q:'quickstart',c:'connect',p:'dayparting',b:'budget',v:'event',r:'performance',a:'aibuilder',h:'dashboard',i:'insights',l:'change-log',t:'team',f:'faq'};
     if (map[e.key]) { nav(map[e.key]); gDown=false; }
   }
 });
