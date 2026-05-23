@@ -644,6 +644,75 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <h2 class="h2 f" id="model">Sellers and marketplaces</h2>
   <p class="p">Off Hours organizes Amazon Ads access as <strong>sellers</strong> and <strong>marketplaces</strong>. A seller is one Amazon Seller Central account. A marketplace is a region under that seller, US, MX, CA, and so on. One seller is the billable unit at $149 per month. Every marketplace under it is included free. Connect a single seller and Off Hours imports every marketplace tied to it automatically.</p>
   <p class="p"><strong>Attribution Profiles</strong> are a separate concept. Off Hours imports them too, but they live in their own deemphasized section, are excluded from billing, and are not subject to rule automation.</p>
+
+  <h2 class="h2" id="switcher">Switching scope from the topbar</h2>
+  <p class="p">The dashboard's topbar (top right of every page) includes a seller switcher. Click the active scope label to open a dropdown listing every seller you have connected, grouped by name, with the marketplaces under each seller listed underneath. The active scope name shows in the topbar button so you always know which seller and marketplace you are viewing.</p>
+  <p class="p">Selection operates at the marketplace level, not the seller level. Click a marketplace to scope the dashboard to that marketplace alone: the rule lists, Change log, dashboard widgets, and weekly insights all update to show only that marketplace's data. Click <strong>All accounts</strong> at the top of the dropdown to switch back to the aggregate view across every seller and marketplace.</p>
+  <p class="p">Below the seller list, the dropdown shows a separate <strong>Attribution Profiles</strong> section. Attribution Profiles are dimmed because they are billing-excluded and do not participate in rule automation. They appear here so you can confirm they imported correctly, but you cannot scope rules to them.</p>
+
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → topbar account dropdown</div></div>
+    <div class="demo-body" style="padding:0;background:var(--cream);">
+      <!-- All accounts row -->
+      <div style="padding:10px 12px;background:var(--moss-tint);display:flex;align-items:center;gap:10px;">
+        <span style="display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--moss) 0%,var(--moss-bright) 100%);color:var(--cream);font-family:'Space Grotesk',sans-serif;font-size:9px;font-weight:600;letter-spacing:-0.03em;">ALL</span>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:12.5px;font-weight:500;color:var(--moss);">All accounts</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-faint);">aggregated</div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--line);"></div>
+      <!-- Northlane Goods seller group -->
+      <div style="padding:8px 12px 4px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-faint);padding:6px 4px 4px;">Northlane Goods, Inc. <span style="opacity:0.65;">· 2 marketplaces</span></div>
+        <div style="margin-left:10px;border-left:1px solid var(--line);padding-left:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);">
+            <span style="flex:1;min-width:0;">US</span>
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--moss-bright);"></span>
+              <span style="padding:1px 6px;border-radius:4px;background:var(--cream-deep);border:1px solid var(--line);font-size:9px;color:var(--ink-faint);">healthy</span>
+            </span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);">
+            <span style="flex:1;min-width:0;">MX</span>
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--moss-bright);"></span>
+              <span style="padding:1px 6px;border-radius:4px;background:var(--cream-deep);border:1px solid var(--line);font-size:9px;color:var(--ink-faint);">healthy</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Maison Bleu seller group -->
+      <div style="padding:4px 12px 8px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-faint);padding:6px 4px 4px;">Maison Bleu <span style="opacity:0.65;">· 1 marketplace</span></div>
+        <div style="margin-left:10px;border-left:1px solid var(--line);padding-left:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);">
+            <span style="flex:1;min-width:0;">US</span>
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--coral);"></span>
+              <span style="padding:1px 6px;border-radius:4px;background:var(--cream-deep);border:1px solid var(--line);font-size:9px;color:var(--ink-faint);">reconnect</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div style="height:1px;background:var(--line);margin:0 12px;"></div>
+      <!-- Attribution Profiles section -->
+      <div style="padding:8px 12px 10px;opacity:0.7;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;font-weight:400;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-faint);padding:4px 4px 4px;">Attribution profiles · billing-excluded</div>
+        <div style="font-family:'Space Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-faint);padding:6px 4px 4px;">Maison Bleu Attribution <span style="opacity:0.65;">· 1 profile</span></div>
+        <div style="margin-left:10px;border-left:1px solid var(--line);padding-left:6px;">
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:8px;font-family:'Space Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);">
+            <span style="flex:1;min-width:0;">US</span>
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--moss-bright);"></span>
+              <span style="padding:1px 6px;border-radius:4px;background:var(--cream-deep);border:1px solid var(--line);font-size:9px;color:var(--ink-faint);">healthy</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <h2 class="h2" id="how">How to connect</h2>
   <div class="steps">
     <div class="step"><div class="snum">1</div><div><div class="stitle">Go to Amazon Accounts in the sidebar</div><div class="sdesc">Click <strong>Amazon Accounts</strong> in the left sidebar. This shows all currently connected sellers, grouped with the marketplaces under each one, and a button to add a new seller.</div></div></div>
