@@ -788,6 +788,8 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <p class="p">Check the Change Log filtered by your schedule name. You should see hourly entries during your paused windows. The first entry appears at the next scheduled hour after you activate the rule.</p>
   <p class="p"><strong>Can I have multiple dayparting schedules?</strong></p>
   <p class="p">Yes. Each schedule manages its own set of campaigns independently. If two schedules include the same campaign, the most recent action wins. Use the Change Log to trace which schedule last touched a campaign.</p>
+  <p class="p"><strong>My dashboard says read-only mode, can I still create or edit rules?</strong></p>
+  <p class="p">No. While the seller is in read-only mode, rule creation and editing are dimmed across all rule types. Existing rules continue to execute during <code>past_due</code> (Stripe is retrying a failed payment) but stop during <code>canceled_period_ended</code>. Restore billing in <strong>Settings → Billing</strong> to re-enable rule edits.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -869,6 +871,8 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <p class="p">Percentage adjustments compound if multiple rules apply to the same campaigns. Each rule calculates against the budget at the time it fires, not the original baseline. Review your active rules for overlapping scopes.</p>
   <p class="p"><strong>Will my budget always restore?</strong></p>
   <p class="p">Yes, as long as the rule is still active when the window closes. If you delete or deactivate the rule before restoration, the budget stays at the adjusted value. Check the Change Log for a "Restored baseline" entry to confirm restoration happened.</p>
+  <p class="p"><strong>My dashboard says read-only mode, can I still create or edit rules?</strong></p>
+  <p class="p">No. While the seller is in read-only mode, rule creation and editing are dimmed across all rule types. Existing rules continue to execute during <code>past_due</code> (Stripe is retrying a failed payment) but stop during <code>canceled_period_ended</code>. Restore billing in <strong>Settings → Billing</strong> to re-enable rule edits.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -978,6 +982,8 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <p class="p">Off Hours restores at the exact end datetime. Check the Change Log for a restoration entry. If none exists and the end time has passed, contact hello@off-hours.app with the rule name and tick ID.</p>
   <p class="p"><strong>Should I disable dayparting during events?</strong></p>
   <p class="p">You don't have to. Event rules automatically override dayparting schedules during the event window, running campaigns 24 hours regardless of the dayparting schedule. Your dayparting schedule resumes automatically when the event ends.</p>
+  <p class="p"><strong>My dashboard says read-only mode, can I still create or edit rules?</strong></p>
+  <p class="p">No. While the seller is in read-only mode, rule creation and editing are dimmed across all rule types. Existing rules continue to execute during <code>past_due</code> (Stripe is retrying a failed payment) but stop during <code>canceled_period_ended</code>. Restore billing in <strong>Settings → Billing</strong> to re-enable rule edits.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1085,6 +1091,8 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <p class="p">Set your threshold to 1.5x to 2x your target ACOS, not at your target. Normal campaign volatility will cross a threshold set at exactly your target frequently. Review alert history weekly and adjust the threshold based on patterns.</p>
   <p class="p"><strong>A rule paused campaigns I didn't expect.</strong></p>
   <p class="p">If the rule scope is set to all campaigns, it applies broadly. Check the Change Log, expand the relevant tick, and review which campaigns were affected. Edit the rule to narrow the scope.</p>
+  <p class="p"><strong>My dashboard says read-only mode, can I still create or edit rules?</strong></p>
+  <p class="p">No. While the seller is in read-only mode, rule creation and editing are dimmed across all rule types. Existing rules continue to execute during <code>past_due</code> (Stripe is retrying a failed payment) but stop during <code>canceled_period_ended</code>. Restore billing in <strong>Settings → Billing</strong> to re-enable rule edits.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1331,7 +1339,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <p class="p">Deferred spend is an AI-generated estimate based on your campaign activity and paused hours during the week. It is not derived from a fixed formula. The estimate is intended to give you a directional sense of automation impact, not a precise dollar figure.</p>
   <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Use as a directional signal</div><div class="ca-x">Treat the deferred spend number as a directional signal, not a guaranteed savings figure. If you need a precise number for a client report, calculate it from your own ad spend data.</div></div></div>
   <h2 class="h2" id="delivery">Delivery and settings</h2>
-  <p class="p">Insights are sent every Monday at 7:00 AM UTC to all team members with email notifications enabled. You can view the current week's insights at any time from the Recommendations page in the sidebar. To adjust notification preferences, go to <strong>Settings</strong> then <strong>Notifications</strong>.</p>
+  <p class="p">Insights are sent every Monday at 7:00 AM UTC to all team members with email notifications enabled. You can view the current week's insights at any time from the Recommendations page in the sidebar. To adjust notification preferences, go to <strong>Settings → Notifications</strong>.</p>
 
   <div class="related">
     <div class="related-label">Related pages</div>
@@ -1903,6 +1911,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <tr><td>Member</td><td>Can view and create rules but cannot manage billing, team members, or account settings.</td></tr>
     <tr><td>Viewer</td><td>Read-only access to the dashboard, Change log, and rules. Cannot create or modify rules.</td></tr>
   </tbody></table>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Read-only mode pauses team changes</div><div class="ca-x">When the workspace is in read-only mode (trial ended without a card on file, or a failed payment), invites and role changes are paused. Existing members keep their access. Restore billing in <strong>Settings → Billing</strong> to resume team management.</div></div></div>
 
   <div class="demo">
     <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Workspace → Team</div></div>
@@ -2072,7 +2081,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Does Off Hours work with all Amazon ad types?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Currently Off Hours manages Sponsored Products campaigns. Sponsored Brands and Sponsored Display support is on the roadmap. If you need SB/SD support urgently, email us — we can give you an honest timeline.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does setup take?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">From signup to your first running rule takes about five minutes. Connect your Amazon account (one authorization step), describe your rule in the AI builder, confirm, and it's live. No onboarding call, no implementation work.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need any technical knowledge?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">No. Off Hours is designed for media buyers and account managers, not developers. The AI rule builder lets you describe rules in plain English. There are no API keys, no scripts, and no code anywhere in the product.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every new seller starts with a 14-day free trial with full access to all four rule types. No credit card required. Pricing is $149 per month per seller. At the end of the trial, add a card in Settings then Billing to keep your automation running. Without a card on file, the seller enters read-only mode and rules stop executing.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is there a free trial?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Yes. Every new seller starts with a 14-day free trial with full access to all four rule types. No credit card required. Pricing is $149 per month per seller. At the end of the trial, add a card in <strong>Settings → Billing</strong> to keep your automation running. Without a card on file, the seller enters read-only mode and rules stop executing.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly do rules take effect?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq-a"><div class="faq-a-inner">Off Hours checks every hour on the hour. A rule you activate now will first fire at the next hourly check. For event rules, the first action fires at the exact start datetime you set.</div></div></div>
   </div>
 
