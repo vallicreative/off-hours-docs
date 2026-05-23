@@ -1,14 +1,15 @@
 // api/feedback.js
-// Receives docs feedback (page rating + optional comment) and forwards
-// to hello@off-hours.app via Resend. No persistence, no admin dashboard.
+// Receives docs feedback (page rating + optional comment) and writes
+// to the shared Supabase Postgres (docs_feedback table) using the
+// service role key. Admins read submissions via the
+// dashboard.off-hours.app/admin/docs-feedback page.
 // Pattern mirrors off-hours-site/api/partner-apply.js (Edge runtime,
-// direct REST call to Resend, same RESEND_API_KEY env var).
+// direct REST call to Supabase, same SUPABASE_URL + service role envs).
 
 export const config = { runtime: 'edge' };
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const NOTIFY_EMAIL = 'hello@off-hours.app';
-const FROM_EMAIL = 'Off Hours Docs <hello@off-hours.app>';
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 // Light rate limit: max 10 requests per IP per 60-second sliding window.
 // Module-level Map persists across invocations on the same Edge instance
@@ -63,46 +64,34 @@ export default async function handler(req) {
   if (vote !== 'yes' && vote !== 'no') {
     return new Response('Invalid vote', { status: 400 });
   }
-  const commentText = typeof comment === 'string' ? comment : '';
+  const commentValue =
+    typeof comment === 'string' && comment.trim() ? comment.trim() : null;
 
-  const emoji = vote === 'yes' ? '👍' : '👎';
-  const subject = `[Docs feedback] ${emoji} on ${page_id}`;
-  const userAgent = req.headers.get('user-agent') || 'unknown';
-  const text = [
-    `Page: ${page_id}`,
-    `Vote: ${vote}`,
-    '',
-    'Comment:',
-    commentText.trim() || '(no comment)',
-    '',
-    '---',
-    `Submitted: ${new Date().toISOString()}`,
-    `User agent: ${userAgent}`,
-  ].join('\n');
-
-  // Per spec: return 200 even if Resend fails. Log server-side, don't
-  // surface backend errors to users — the widget UX should be identical
-  // whether the email pipeline is healthy or not.
+  // Per spec: return 200 even if the Supabase insert fails. Log
+  // server-side, don't surface backend errors to users. The widget UX
+  // should be identical whether the pipeline is healthy or not.
   try {
-    const res = await fetch('https://api.resend.com/emails', {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/docs_feedback`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
+        apikey: SUPABASE_SERVICE_ROLE_KEY,
+        Authorization: `Bearer ${SUPABASE_SERVICE_ROLE_KEY}`,
+        Prefer: 'return=minimal',
       },
       body: JSON.stringify({
-        from: FROM_EMAIL,
-        to: [NOTIFY_EMAIL],
-        subject,
-        text,
+        page_id,
+        vote,
+        comment: commentValue,
+        user_agent: req.headers.get('user-agent') || null,
       }),
     });
     if (!res.ok) {
       const errText = await res.text();
-      console.error('[feedback] Resend non-2xx:', res.status, errText);
+      console.error('[feedback] Supabase insert non-2xx:', res.status, errText);
     }
   } catch (err) {
-    console.error('[feedback] Resend fetch error:', err);
+    console.error('[feedback] Supabase fetch error:', err);
   }
 
   return new Response(JSON.stringify({ ok: true }), {
