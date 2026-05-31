@@ -432,6 +432,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <button class="si" id="si-aibuilder" onclick="nav('aibuilder')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>AI rule builder<span class="stime">3 min</span></button>
   <button class="si" id="si-dashboard" onclick="nav('dashboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dashboard<span class="stime">4 min</span></button>
   <button class="si" id="si-insights" onclick="nav('insights')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>Weekly insights<span class="stime">3 min</span></button>
+  <button class="si" id="si-slack" onclick="nav('slack')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>Slack notifications<span class="stime">3 min</span></button>
   <button class="si" id="si-change-log" onclick="nav('change-log')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg>Change log<span class="stime">3 min</span></button>
   <button class="si" id="si-troubleshooting" onclick="nav('troubleshooting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Troubleshooting<span class="stime">10 min</span></button>
   <button class="si" id="si-readlog" onclick="nav('readlog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Reading the Change Log<span class="stime">4 min</span></button>
@@ -1365,7 +1366,63 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('insights')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('dashboard')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dashboard</div></button><button class="pnc r" onclick="nav('change-log')"><div class="pnc-dir">Next →</div><div class="pnc-title">Change log</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('dashboard')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Dashboard</div></button><button class="pnc r" onclick="nav('slack')"><div class="pnc-dir">Next →</div><div class="pnc-title">Slack notifications</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== SLACK NOTIFICATIONS ========== -->
+<div class="doc-page" id="page-slack">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Features</span><span class="sep">/</span><span class="cur">Slack notifications</span></div>
+  <div class="ptag">Features</div>
+  <h1 class="ptitle">Slack Notifications</h1>
+  <p class="pdesc">Connect your Slack workspace to receive Off Hours alerts directly in a channel. Choose which events trigger a Slack message, which stay email-only, or both.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="connect">How to connect</h2>
+  <p class="p">Go to <strong>Settings → Notifications</strong> and scroll to the Slack notifications section. Click <strong>Connect Slack workspace</strong>, authorize Off Hours to access your Slack workspace, then enter the channel name where you want to receive alerts (for example, <code>#offhours-alerts</code>) and click <strong>Save</strong>.</p>
+  <p class="p">Before saving your channel, invite the Off Hours app to that channel in Slack. Open the channel in Slack and type <code>/invite @Off Hours</code>. If you skip this step, notifications will fail silently.</p>
+  <div class="ca warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><div class="ca-t">Invite the Off Hours app to your channel before saving</div><div class="ca-x">Open the channel in Slack and type <code>/invite @Off Hours</code>. Notifications will not arrive in a channel the app has not been invited to.</div></div></div>
+
+  <h2 class="h2" id="preferences">Notification preferences</h2>
+  <p class="p">Once connected, you can control how each notification is delivered. Email, Slack, both, or neither. Changes take effect immediately.</p>
+  <table class="tbl"><thead><tr><th>Notification</th><th>Default</th></tr></thead><tbody>
+    <tr><td>Rule failures</td><td>Email on, Slack on</td></tr>
+    <tr><td>Amazon disconnects</td><td>Email on, Slack on</td></tr>
+    <tr><td>Trial expiring</td><td>Email on, Slack on</td></tr>
+    <tr><td>Rule executions</td><td>Both off (can be frequent)</td></tr>
+    <tr><td>Weekly digest</td><td>Email on, Slack off</td></tr>
+    <tr><td>Onboarding emails</td><td>Email only</td></tr>
+    <tr><td>Marketing emails</td><td>Email only</td></tr>
+  </tbody></table>
+  <p class="p">Security and billing emails always send regardless of your notification preferences and cannot be turned off.</p>
+
+  <h2 class="h2" id="disconnect">Disconnecting</h2>
+  <p class="p">Go to <strong>Settings → Notifications</strong> and click <strong>Disconnect</strong> under the Slack section. Your email preferences are not affected when you disconnect Slack.</p>
+
+  <h2 class="h2" id="troubleshooting">Troubleshooting</h2>
+  <p class="p">If notifications are not arriving in Slack, confirm the Off Hours app has been invited to your channel. Open the channel in Slack and type <code>/invite @Off Hours</code>. If the issue persists, disconnect and reconnect your workspace from <strong>Settings → Notifications</strong>.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('insights')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Weekly insights →</div></button>
+      <button class="related-card" onclick="nav('team')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Team access →</div></button>
+      <button class="related-card" onclick="nav('billing')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">Billing and plans →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-slack">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('slack','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('slack','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-slack">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-slack">
+      <textarea class="feedback-textarea" id="fb-text-slack" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('slack')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('change-log')"><div class="pnc-dir">Next →</div><div class="pnc-title">Change log</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -1579,7 +1636,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('change-log')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('insights')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Weekly insights</div></button><button class="pnc r" onclick="nav('troubleshooting')"><div class="pnc-dir">Next →</div><div class="pnc-title">Troubleshooting</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('slack')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Slack notifications</div></button><button class="pnc r" onclick="nav('troubleshooting')"><div class="pnc-dir">Next →</div><div class="pnc-title">Troubleshooting</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -2271,6 +2328,7 @@ const searchIndex = [
   {page:'aibuilder',title:'AI rule builder',cat:'Features',text:'Describe rule plain English. AI Assistant bar build button parses prompt pre-fills new rule form review activate. No confirm preview the form is the confirmation step. Multi seller picker. Or start from scratch. Pause campaigns midnight weekdays boost budgets 30 percent weekend Prime Day 24 hours ACOS alert 60 percent.'},
   {page:'dashboard',title:'Dashboard',cat:'Features',text:'Automation control room system health active rules activity feed attention. Health hero status executed actions sellers marketplaces. Needs your attention expired OAuth Prime Day approaching. Activity feed action first text inline rule pill status delta timestamp OH avatar. Heatmap 168 hours. Upcoming events. Read only mode trial ended past due recovery banner add payment resubscribe Stripe Customer Portal. Global pause avatar menu suspends until manual resume.'},
   {page:'insights',title:'Weekly insights',cat:'Features',text:'Monday morning performance review. Budget exhaustion ACOS anomalies upcoming events automation impact deferred spend AI generated estimate directional signal. Delivery Monday 7am UTC team members email notifications. Recommendations page sidebar Settings Notifications.'},
+  {page:'slack',title:'Slack notifications',cat:'Features',text:'Slack, notifications, alerts, connect Slack, channel, workspace, rule failures, Amazon disconnects, weekly digest, disconnect Slack, invite Off Hours. Connect Slack workspace receive Off Hours alerts in channel. Settings Notifications Connect Slack workspace authorize channel name #offhours-alerts Save. Invite Off Hours app /invite @Off Hours before saving notifications fail silently. Notification preferences email Slack both neither immediate. Rule failures Amazon disconnects Trial expiring email on Slack on. Rule executions both off frequent. Weekly digest email on Slack off. Onboarding marketing emails email only. Security billing emails always send cannot turn off. Disconnect Settings Notifications email preferences unaffected. Troubleshooting confirm app invited channel disconnect reconnect workspace.'},
   {page:'change-log',title:'Change log',cat:'Features',text:'Permanent timestamped record every action Off Hours and teammates audit trail. Timestamp actor type system automated Off Hours user initials manual edit action target campaign count rule name pill rule type severity info warning error ALL OK WARNING ERROR badge moss butter coral execution tick ID expand row expanded detail delta seller date group. Search filter seller rule type action type actor severity date range. Missed executions OAuth expired retry.'},
   {page:'troubleshooting',title:'Troubleshooting',cat:'Features',text:'Organized by symptom accordion FAQ. Amazon connection expired reconnect banner OAuth reconnect needed seller status OAuth expiring normal cadence 30 90 days reauthorization. Campaigns not showing marketplace active toggle import 30 minutes. Multiple marketplaces US MX CA. Dayparting campaigns did not pause timezone scope Change Log tick. Rule active nothing happening reauth schedule paused hour. Wrong time timezone mismatch. Manual enable hourly check. Different schedules different campaigns same seller scope filter. Budget did not increase tick error reauth. Budget did not restore window end. Budget higher than expected compound. Budget did not change warning partial paused archived target amount. ALL OK no budget change Amazon console 15 minutes refresh. Minimum budget floor never too low. Event rule did not fire start backfill. Campaigns did not restore tick ID. Prime Day not in Change Log Upcoming events. Event rule wrong day timezone Active draft. Event rule did not revert revert action explicitly configured. ACOS alert did not trigger prior day data 6am. Too many alerts threshold 1.5x 2x. Performance rule paused unexpected scope. ACOS threshold definition Advertising Cost of Sale ad spend divided ad revenue percentage. Performance metrics check frequency hourly. Unexpected trigger Change Log execution ACOS value campaign unusual spend revenue day. Read only mode trial ended payment failed Settings Billing add resubscribe Stripe. Added payment still read only refresh. Not receiving weekly insight emails 7am UTC spam Settings Notifications. Team member cannot access invite expired 7 days resend Workspace Team role Viewer. Cancel rules immediately configurations retained resubscribe. Add team member without billing access Member role Owner only billing. Free trial 14 days end three days email reminder no credit card. Cancel vs delete account 30 day soft delete window hello@off-hours.app. General why rule not run Draft Active marketplace Active in app OAuth expired Change Log. How do I know rule working Change Log filter rule name status ALL OK WARNING ERROR dashboard activity feed last 24 hours. Test rule before live Draft mode no sandbox execution mode. Time zone per rule no global timezone dayparting event performance.'},
   {page:'readlog',title:'Reading the Change Log',cat:'Features',text:'Primary diagnostic tool. Anatomy log entry time local browser timezone status icon green amber gray coral action rule name status badge ALL OK WARNING ERROR delta tick ID expand row include support actor automated manual edit. Diagnose problem filter rule name seller find time window no entry rule not active reauth WARNING ERROR badge expand skipped why ALL OK manual override Amazon Ads. Tick IDs for support unique expanded detail locate execution instantly. Restoration baseline budgets event rule Prime Day morning after.'},
@@ -2284,7 +2342,7 @@ const searchIndex = [
 // ════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════
-const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','change-log','troubleshooting','readlog','team','billing','faq','agency-partner','referral-program'];
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','slack','change-log','troubleshooting','readlog','team','billing','faq','agency-partner','referral-program'];
 let cur = 'intro';
 
 function nav(key, pushState = true) {
