@@ -440,6 +440,10 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <span class="sl">Account</span>
   <button class="si" id="si-billing" onclick="nav('billing')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Billing and plans<span class="stime">3 min</span></button>
   <button class="si" id="si-faq" onclick="nav('faq')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>FAQ</button>
+  <div class="sdiv"></div>
+  <span class="sl">Programs</span>
+  <button class="si" id="si-agency-partner" onclick="nav('agency-partner')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>Agency partner program</button>
+  <button class="si" id="si-referral-program" onclick="nav('referral-program')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Referral program</button>
 </aside>
 
 <div class="cwrap">
@@ -2122,7 +2126,125 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('faq')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('billing')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Billing and plans</div></button><div class="pnc r" style="opacity:0.35;pointer-events:none;"><div class="pnc-dir">Next →</div><div class="pnc-title">—</div></div></div>
+  <div class="pnav"><button class="pnc" onclick="nav('billing')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Billing and plans</div></button><button class="pnc r" onclick="nav('agency-partner')"><div class="pnc-dir">Next →</div><div class="pnc-title">Agency partner program</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a><a href="mailto:hello@off-hours.app">hello@off-hours.app</a></div></div>
+</div>
+
+<!-- ========== AGENCY PARTNER PROGRAM ========== -->
+<div class="doc-page" id="page-agency-partner">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Programs</span><span class="sep">/</span><span class="cur">Agency Partner Program</span></div>
+  <div class="ptag">Programs</div>
+  <h1 class="ptitle">Agency Partner Program</h1>
+  <p class="pdesc">Earn 20 percent recurring commission for every Amazon Ads client you refer to Off Hours. Paid monthly to your Stripe account, for as long as they stay a customer.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="what">What it is</h2>
+  <p class="p">The Agency Partner Program is for Amazon Ads agencies that want to earn recurring commission by referring their clients to Off Hours. You earn 20 percent of monthly recurring revenue for every client account you refer, paid monthly to your Stripe account, for as long as they stay a customer.</p>
+  <p class="p">This is not a one-time bounty. It is a recurring revenue share.</p>
+
+  <h2 class="h2" id="commission">How commission works</h2>
+  <p class="p">Each referred client account pays $149/month. Your commission is 20 percent of that: $29.80 per account per month. There are no tiers and no cap. Refer 5 clients and earn $149/month passively. Refer 20 and earn $596/month.</p>
+  <p class="p">Commission is paid monthly, within the first week of each calendar month for the prior month's commissions. The minimum payout threshold is $50. Anything below that rolls forward to the next month with no loss of earnings. There are no clawbacks on commission already paid.</p>
+
+  <h2 class="h2" id="benefits">What you get as a partner</h2>
+  <ul class="ul">
+    <li><strong>20 percent recurring commission.</strong> $29.80 per account per month, every month referred clients stay active.</li>
+    <li><strong>Unique referral link</strong> with automatic attribution tracking.</li>
+    <li><strong>Priority support</strong> for your accounts and referred clients.</li>
+    <li><strong>Early access</strong> to new rule types and product features before general release.</li>
+    <li><strong>Monthly Stripe payouts</strong>, no invoicing required.</li>
+    <li><strong>Co-marketing opportunities</strong> as the program grows.</li>
+  </ul>
+
+  <h2 class="h2" id="tracking">How referral tracking works</h2>
+  <p class="p">You receive a unique referral link. When someone signs up through your link, they are attributed to your partner account permanently. Attribution is cookie-based with a 90-day window. Off Hours also tracks by email for cases where the cookie is cleared.</p>
+  <p class="p">Commission only applies to new accounts. Existing Off Hours customers cannot be retroactively attributed to your partner account.</p>
+
+  <h2 class="h2" id="cancel">What happens if a client cancels</h2>
+  <p class="p">Commission stops when the account goes inactive. There are no clawbacks on commission already paid. If a client cancels and later resubscribes through your link, you earn again from that point forward.</p>
+
+  <h2 class="h2" id="apply">How to apply</h2>
+  <p class="p">Apply at <a href="https://off-hours.app/agency" target="_blank">off-hours.app/agency</a>. The application asks about your agency and how many Amazon Ads accounts you manage. Off Hours reviews applications within one business day and sends a confirmation email immediately on submission.</p>
+
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Already managing client accounts in Off Hours?</div><div class="ca-x">The Agency Partner Program is separate from your own subscription. Your commission tracks referred clients, not your own accounts.</div></div></div>
+
+  <p class="p">Not an agency? The <button class="dl" onclick="nav('referral-program')">Referral Program</button> pays $50 cash per converted referral, quarterly.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('referral-program')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Programs</div><div class="rc-name">Referral program →</div></button>
+      <button class="related-card" onclick="nav('billing')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">Billing and plans →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-agency-partner">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('agency-partner','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('agency-partner','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-agency-partner">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-agency-partner">
+      <textarea class="feedback-textarea" id="fb-text-agency-partner" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('agency-partner')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('faq')"><div class="pnc-dir">← Previous</div><div class="pnc-title">FAQ</div></button><button class="pnc r" onclick="nav('referral-program')"><div class="pnc-dir">Next →</div><div class="pnc-title">Referral program</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a><a href="mailto:hello@off-hours.app">hello@off-hours.app</a></div></div>
+</div>
+
+<!-- ========== REFERRAL PROGRAM ========== -->
+<div class="doc-page" id="page-referral-program">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Programs</span><span class="sep">/</span><span class="cur">Referral Program</span></div>
+  <div class="ptag">Programs</div>
+  <h1 class="ptitle">Referral Program</h1>
+  <p class="pdesc">Earn $50 cash for every Amazon brand or seller you refer who converts to a paid Off Hours plan. Paid quarterly to your Stripe account. No limit on referrals, earnings stack.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="what">What it is</h2>
+  <p class="p">The Referral Program is for Off Hours customers who want to earn cash by referring Amazon brands or sellers. When someone signs up through your unique referral link and converts to a paid account, you earn $50 cash paid to your Stripe account at the end of the quarter. No limit on referrals, earnings stack.</p>
+
+  <h2 class="h2" id="payouts">How payouts work</h2>
+  <p class="p">Referral earnings accumulate throughout each calendar quarter. Within 7 days of quarter end, Off Hours pays all earned commissions via Stripe. Quarter end dates are March 31, June 30, September 30, and December 31.</p>
+  <p class="p">The minimum payout threshold is $50. If you are under the threshold at quarter end, earnings roll forward to the next quarter and never expire.</p>
+
+  <h2 class="h2" id="example">Example</h2>
+  <p class="p">Refer 3 brands in Q1. All three convert to paid. Your Q1 payout is $150, paid to your Stripe account within 7 days of March 31.</p>
+
+  <h2 class="h2" id="eligibility">Who can apply</h2>
+  <p class="p">You need to be on a paid Off Hours plan to earn referral credits, since payouts go to your Stripe account. If you are currently in a free trial you can apply and your link will be ready when you convert.</p>
+
+  <h2 class="h2" id="conversion">What counts as a converted referral</h2>
+  <p class="p">A referral converts when someone signs up through your unique link and upgrades to a paid Off Hours plan. Free trial signups do not count. Only paid conversions earn the $50 credit.</p>
+
+  <h2 class="h2" id="existing">Existing customers cannot be referred</h2>
+  <p class="p">Referral credits only apply to new accounts signing up for the first time through your link. Existing Off Hours customers cannot be retroactively attributed.</p>
+
+  <h2 class="h2" id="apply">How to apply</h2>
+  <p class="p">Apply at <a href="https://off-hours.app/referral" target="_blank">off-hours.app/referral</a>. Off Hours responds within one business day with your unique referral link and instructions.</p>
+
+  <p class="p">Running an agency managing multiple Amazon Ads accounts? The <button class="dl" onclick="nav('agency-partner')">Agency Partner Program</button> pays 20 percent recurring MRR commission, paid monthly.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('agency-partner')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Programs</div><div class="rc-name">Agency partner program →</div></button>
+      <button class="related-card" onclick="nav('billing')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Account</div><div class="rc-name">Billing and plans →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-referral-program">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('referral-program','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('referral-program','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-referral-program">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-referral-program">
+      <textarea class="feedback-textarea" id="fb-text-referral-program" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('referral-program')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('agency-partner')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Agency partner program</div></button><div class="pnc r" style="opacity:0.35;pointer-events:none;"><div class="pnc-dir">Next →</div><div class="pnc-title">—</div></div></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a><a href="mailto:hello@off-hours.app">hello@off-hours.app</a></div></div>
 </div>
 
@@ -2155,12 +2277,14 @@ const searchIndex = [
   {page:'team',title:'Team access',cat:'Features',text:'Role based access Owner Admin Member Viewer no seat caps. Workspace Team. Invite member email invitation 7 days expire resend revoke. Per seller pricing not per team member.'},
   {page:'billing',title:'Billing and plans',cat:'Account',text:'Per seller flat 149 monthly 1520 annual marketplaces included free attribution profiles excluded billing. Free trial 14 days no credit card. Stripe Customer Portal manage subscription cancel update payment method invoices. Trial countdown past_due canceled_period_ended recovery resubscribe BillingPicker. Annual billing saves 15 percent.'},
   {page:'faq',title:'FAQ',cat:'Account',text:'Sponsored Products Sponsored Brands Display roadmap. Setup five minutes no technical knowledge. Free trial 14 days no card required pricing 149 per seller add card Settings Billing read only mode. Rules take effect next hourly check event rules exact start. Hourly check 60 minutes execution lag. Manual pause re-enable next scheduled time. Layer multiple rules event rule precedence. Connection expires no firing reconnect resume. Conflict with other tools most recent change wins Change Log trace. How do I know it is working Change Log entries. Bids keywords targeting never modified. Data stored campaign list rules action history. Multiple sellers marketplaces US MX CA included free Attribution Profiles excluded. Manage multiple clients separate sellers account selector top bar. Cancel rules stop immediately campaigns last state 90 days. Refund 7 days first charge. Per seller pricing scales for agencies enterprise contact.'},
+  {page:'agency-partner',title:'Agency partner program',cat:'Programs',text:'agency partner program, commission, 20 percent, MRR, recurring, referral link, Stripe payout, monthly commission, partner. Amazon Ads agencies earn recurring revenue share referring clients to Off Hours. 20 percent of 149 monthly equals $29.80 per account per month no cap no tiers. Monthly Stripe payouts first week of calendar month $50 minimum threshold rolls forward no clawbacks. Unique referral link 90 day cookie attribution email backup new accounts only no retroactive existing customers. Priority support early access co-marketing. Cancel commission stops no clawbacks resubscribe earns again. Apply off-hours.app/agency one business day review.'},
+  {page:'referral-program',title:'Referral program',cat:'Programs',text:'referral program, $50, cash, quarterly payout, Stripe, refer a friend, referral link, converted referral. Off Hours customers earn cash referring Amazon brands or sellers. $50 per converted referral paid quarterly to Stripe. Quarter end March 31 June 30 September 30 December 31 within 7 days. $50 minimum payout threshold rolls forward never expires. Free trial signups do not count only paid conversions. Existing customers cannot be retroactively attributed. Need paid plan to earn trial users can apply link ready on conversion. Apply off-hours.app/referral one business day response.'},
 ];
 
 // ════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════
-const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','change-log','troubleshooting','readlog','team','billing','faq'];
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','insights','change-log','troubleshooting','readlog','team','billing','faq','agency-partner','referral-program'];
 let cur = 'intro';
 
 function nav(key, pushState = true) {
