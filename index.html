@@ -220,7 +220,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
 .rcard{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden;cursor:pointer;transition:transform 0.2s,border-color 0.2s;text-align:left;border-top:none;}
 .rcard:hover{transform:translateY(-2px);border-color:var(--line-strong);}
 .rcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2.5px;}
-.rcard.c1::before{background:#F7B894;}.rcard.c2::before{background:#EAD173;}.rcard.c3::before{background:#A9CBD6;}.rcard.c4::before{background:#A8CE8F;}
+.rcard.c1::before{background:#F7B894;}.rcard.c2::before{background:#EAD173;}.rcard.c3::before{background:#A9CBD6;}.rcard.c4::before{background:#A8CE8F;}.rcard.c5::before{background:#B9A9D9;}
 .rc-lbl{font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
 .rc-title{font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:14px;letter-spacing:-0.02em;color:var(--ink);margin-bottom:4px;}
 .rc-desc{font-size:12px;color:var(--ink-soft);line-height:1.4;}
@@ -444,6 +444,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   <button class="si" id="si-budget" onclick="nav('budget')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M8 15h4"/></svg>Budget rules<span class="stime">3 min</span></button>
   <button class="si" id="si-event" onclick="nav('event')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Event rules<span class="stime">3 min</span></button>
   <button class="si" id="si-performance" onclick="nav('performance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>Performance rules<span class="stime">3 min</span></button>
+  <button class="si" id="si-bid-adjustments" onclick="nav('bid-adjustments')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h5v-5h5v-5h5V5"/><path d="M15 5h3v3"/></svg>Bid adjustments<span class="snew">New</span></button>
   <div class="sdiv"></div>
   <span class="sl">Features</span>
   <button class="si" id="si-aibuilder" onclick="nav('aibuilder')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"/></svg>AI rule builder<span class="stime">3 min</span></button>
@@ -502,6 +503,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
     <button class="rcard c2" onclick="nav('budget')"><div class="rc-lbl">Budget</div><div class="rc-title">Budget rules</div><div class="rc-desc">Increase or decrease daily budgets on a recurring schedule.</div></button>
     <button class="rcard c3" onclick="nav('event')"><div class="rc-lbl">Events</div><div class="rc-title">Event rules</div><div class="rc-desc">Handle Prime Day, Black Friday, and product launches. Rules restore automatically.</div></button>
     <button class="rcard c4" onclick="nav('performance')"><div class="rc-lbl">Performance</div><div class="rc-title">Performance rules</div><div class="rc-desc">Alert or act when ACOS or budget thresholds are crossed.</div></button>
+    <button class="rcard c5" onclick="nav('bid-adjustments')"><div class="rc-lbl">New · Bids</div><div class="rc-title">Bid adjustments</div><div class="rc-desc">Step keyword and target bids up or down on their own trailing ROAS, within the cap you set.</div></button>
   </div>
 
   <h2 class="h2" id="who">Who uses Off Hours</h2>
@@ -1153,7 +1155,133 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('performance')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('event')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Event rules</div></button><button class="pnc r" onclick="nav('aibuilder')"><div class="pnc-dir">Next →</div><div class="pnc-title">AI rule builder</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('event')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Event rules</div></button><button class="pnc r" onclick="nav('bid-adjustments')"><div class="pnc-dir">Next →</div><div class="pnc-title">Bid adjustments</div></button></div>
+  <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
+</div>
+
+<!-- ========== BID ADJUSTMENTS ========== -->
+<div class="doc-page" id="page-bid-adjustments">
+  <div class="bc"><span>Docs</span><span class="sep">/</span><span>Rule types</span><span class="sep">/</span><span class="cur">Bid adjustments</span></div>
+  <div class="ptag">Rule types</div>
+  <h1 class="ptitle">Bid adjustments</h1>
+  <p class="pdesc">Step keyword and target bids up or down on each target's own trailing ROAS. One step per target per cooldown, never past the ceiling or floor you set, every change undoable.</p>
+  <div class="rr"></div>
+
+  <h2 class="h2 f" id="what">What bid adjustment rules do</h2>
+  <p class="p">A bid rule watches each keyword, product target or auto target in the campaigns you choose, on its own trailing ROAS, orders and clicks. When a target clears the trigger, the rule moves its bid one step in the direction you chose. It is the only rule type that works below the campaign level, and it moves one lever only: the base bid on a target.</p>
+  <p class="p">A rule reads like a sentence: <strong>if 14-day ROAS is at or above 5x with 4 or more orders, raise the bid 10%, at most once every 7 days, never above $2.50.</strong> Every part of that sentence is a field.</p>
+  <div class="ca info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg><div><div class="ca-t">Not a bid algorithm</div><div class="ca-x">Nothing here optimizes on your behalf. The rule moves one step at a time, stops at your cap and emails you once when it gets there, and every change is logged with the bid it replaced. Pausing or deleting a rule leaves bids where they are; undo is per change.</div></div></div>
+
+  <h2 class="h2" id="how">How a bid moves over time</h2>
+  <div class="demo">
+    <div class="demo-bar"><div class="dots"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div><div class="demo-url">dashboard.off-hours.app → Bid Adjustments</div></div>
+    <div class="demo-body">
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;">Bid · wooden train set (exact) · Harbor Kitchen · 8 weeks</div>
+        <div style="position:relative;display:flex;align-items:flex-end;gap:6px;height:96px;border-bottom:1px solid var(--line);border-left:1px solid var(--line);padding:0 4px 0 8px;">
+          <div style="position:absolute;left:0;right:0;bottom:89%;border-top:1.5px dashed var(--ink);opacity:0.35;"></div>
+          <div style="position:absolute;right:6px;bottom:91%;font-family:'Space Mono',monospace;font-size:8px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.06em;">$1.25 ceiling</div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:#D4C8E8;border-radius:3px 3px 0 0;height:60%;animation:barUp 0.5s 0.1s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">.84</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:#C4B5E0;border-radius:3px 3px 0 0;height:66%;animation:barUp 0.5s 0.2s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">.92</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:#C4B5E0;border-radius:3px 3px 0 0;height:72%;animation:barUp 0.5s 0.3s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">1.01</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:#B9A9D9;border-radius:3px 3px 0 0;height:79%;animation:barUp 0.5s 0.4s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">1.11</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:#B9A9D9;border-radius:3px 3px 0 0;height:87%;animation:barUp 0.5s 0.5s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:var(--ink-faint);">1.22</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:var(--butter-deep);border-radius:3px 3px 0 0;height:89%;animation:barUp 0.5s 0.6s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:#6b4e00;">1.25</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:var(--butter-deep);border-radius:3px 3px 0 0;height:89%;animation:barUp 0.5s 0.7s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:#6b4e00;">1.25</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;"><div style="width:100%;background:var(--butter-deep);border-radius:3px 3px 0 0;height:89%;animation:barUp 0.5s 0.8s both;"></div><span style="font-family:'Space Mono',monospace;font-size:7px;color:#6b4e00;">1.25</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);flex-wrap:wrap;">
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#B9A9D9;vertical-align:middle;margin-right:5px;"></span>raised 10%, once a week</span>
+          <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--butter-deep);vertical-align:middle;margin-right:5px;"></span>at your ceiling, holding</span>
+        </div>
+      </div>
+      <div style="background:rgba(185,169,217,0.18);border:1px solid #B9A9D9;border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A4A80" stroke-width="2"><path d="M3 20h5v-5h5v-5h5V5"/><path d="M15 5h3v3"/></svg>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Bid raised · wooden train set (exact) · $0.84 → $0.92</div>
+          <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--ink-faint);text-transform:uppercase;letter-spacing:0.05em;">14-day ROAS 6.4x · 7 orders · 41 clicks · Scale winners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="p">Five steps, one a week, then the rule holds at the ceiling. If the numbers still say go, raising the ceiling on the rule lets it continue from there.</p>
+
+  <h2 class="h2" id="fields">The fields</h2>
+  <table class="tbl"><thead><tr><th>Field</th><th>What it controls</th><th>Range</th></tr></thead><tbody>
+    <tr><td>Direction</td><td>Raise bids on winners, or lower bids on losers. One rule moves one way; run one of each if you want both.</td><td>Raise or lower</td></tr>
+    <tr><td>Data window</td><td>How many trailing days each target is judged on. Lowering rules read only days whose 14-day attribution has settled.</td><td>14 or 30 days</td></tr>
+    <tr><td>ROAS threshold</td><td>Raise when ROAS is at or above it; lower when ROAS is below it.</td><td>Any positive number</td></tr>
+    <tr><td>Minimum orders and clicks</td><td>Traffic floors so a single lucky sale cannot move a bid. At least one must be above zero.</td><td>0 to 100 orders, 0 to 1,000 clicks</td></tr>
+    <tr><td>Step</td><td>How far one move goes: a percent of the current bid, or a fixed amount in the account's currency.</td><td>1 to 50%, or 0.01 to 50.00</td></tr>
+    <tr><td>Cooldown</td><td>The minimum time between two moves on the same target.</td><td>1 to 30 days</td></tr>
+    <tr><td>Ceiling or floor</td><td>The bid a raise rule never exceeds, or a lower rule never goes under. Required. Checked against Amazon's allowed range for the account's currency.</td><td>Your number</td></tr>
+    <tr><td>Target types</td><td>Which kinds of targets the rule may touch.</td><td>Keywords, product targets, auto targets</td></tr>
+  </tbody></table>
+
+  <h2 class="h2" id="presets">Recommended settings</h2>
+  <p class="p">Four starting points ship in the builder. The ceiling or floor is never part of a preset; that number is yours.</p>
+  <table class="tbl"><thead><tr><th>Preset</th><th>Trigger</th><th>Step</th></tr></thead><tbody>
+    <tr><td>Scale winners</td><td>14-day ROAS at 5x or better, 4+ orders, 10+ clicks</td><td>Raise 10%, once every 7 days</td></tr>
+    <tr><td>Scale winners, gently</td><td>Same trigger</td><td>Raise a fixed 5 cents, once every 7 days. For bids under a dollar</td></tr>
+    <tr><td>Trim losers</td><td>Settled 14-day ROAS under 2x, 10+ clicks</td><td>Lower 10%, once every 7 days</td></tr>
+    <tr><td>Trim losers, patiently</td><td>Settled 30-day ROAS under 1.5x, 20+ clicks</td><td>Lower 15%, once every 14 days. For low-traffic catalogs</td></tr>
+  </tbody></table>
+  <div class="ca tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg><div><div class="ca-t">Percent or fixed amount?</div><div class="ca-x">10% of a $0.40 bid is four cents; 10% of a $3.00 bid is thirty. Use the percent step when an account's bids sit in a similar range, and the fixed amount when a few outliers would otherwise move too far too fast.</div></div></div>
+
+  <h2 class="h2" id="setup">Set up your first rule</h2>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div><div class="stitle">Open Bid Adjustments</div><div class="sdesc">In the dashboard sidebar, choose <strong>Bid Adjustments</strong>, then <strong>New bid rule</strong>. Pick the Amazon account and either all campaigns or a selected set.</div></div></div>
+    <div class="step"><div class="snum">2</div><div><div class="stitle">Choose a starting point</div><div class="sdesc">Click a recommended setting. Start with <strong>Scale winners</strong>. The trigger, step and cooldown fill in; adjust any of them.</div></div></div>
+    <div class="step"><div class="snum">3</div><div><div class="stitle">Set your ceiling</div><div class="sdesc">Enter the highest bid you would be comfortable paying for a keyword that is clearly earning it. The rule will not save without it, and you can raise it any time.</div></div></div>
+    <div class="step"><div class="snum">4</div><div><div class="stitle">Read the preview</div><div class="sdesc">The panel on the right runs the rule as written against your last 14 or 30 days of target data and says how many targets it would move today, with up to three named examples. Nothing changes until you save.</div></div></div>
+    <div class="step"><div class="snum">5</div><div><div class="stitle">Save</div><div class="sdesc">The rule runs each morning once the day's targeting report lands. The first time it changes a real bid you get one email saying so. After that, the change log and the Monday report carry the story.</div></div></div>
+  </div>
+
+  <h2 class="h2" id="notify">How you hear about changes</h2>
+  <ul class="ul">
+    <li><strong>First change.</strong> One email per rule, the first time it writes a real bid change, with an example and the ceiling or floor.</li>
+    <li><strong>At the limit.</strong> One email per target when it reaches your ceiling or floor. The rule keeps running on other targets; that target holds until you change the cap.</li>
+    <li><strong>Weekly.</strong> Your Monday performance report includes how many bids were raised and lowered in the last seven days, how many reached the limit, and a few named examples.</li>
+    <li><strong>Change log.</strong> Every change appears as <em>Bid raised</em> or <em>Bid lowered</em> with the previous and new bid and the ROAS, orders and clicks behind it.</li>
+  </ul>
+  <p class="p">There are no per-change emails. A rule that raises forty bids on a Tuesday sends you nothing that day beyond the one first-change email, if that was its first.</p>
+
+  <h2 class="h2" id="undo">Undoing a change</h2>
+  <p class="p">On the Bid Adjustments page, the <strong>Recent bid changes</strong> table lists the last 30 days. Each live change has an <strong>Undo</strong> button. Undo writes the previous bid straight back to Amazon, marks the row reverted, and records a <em>Bid undone</em> event in the change log. Undo is per change; there is no bulk revert, and pausing or deleting a rule does not move bids.</p>
+
+  <h2 class="h2" id="issues">Common issues</h2>
+  <p class="p"><strong>The preview says there is no target data yet.</strong></p>
+  <p class="p">Target-level reporting starts the morning after you connect an account or after this feature reached your account. The first day of data usually appears within 24 hours; a 14-day window fills in over two weeks. The rule can be saved before then and simply has nothing to act on yet.</p>
+  <p class="p"><strong>A winner did not get raised.</strong></p>
+  <p class="p">Check the order and click floors first: the target must clear both. Then the cooldown: a target moved in the last N days holds. Then the ceiling: a target already at it holds and you would have had one email. The preview panel on the rule's edit page breaks these counts out.</p>
+  <p class="p"><strong>A loser did not get lowered even though its ROAS is low.</strong></p>
+  <p class="p">Lowering rules read only days whose 14-day attribution window has closed, so the most recent two weeks do not count yet. A 14-day lowering rule needs about four weeks of history before it has a full settled window. This is deliberate: Amazon keeps crediting sales to a click for two weeks, and a target should not be trimmed for sales that have not landed.</p>
+  <p class="p"><strong>Amazon rejected a bid.</strong></p>
+  <p class="p">Each marketplace has a minimum and maximum bid (for example $0.02 to $1,000 in the US). Off Hours clamps every step to that range and to your ceiling or floor before writing, and the rule form refuses a cap outside Amazon's range for the account's currency. If a write still fails, the change log records the attempt and the target is retried the next morning.</p>
+  <p class="p"><strong>My dashboard says read-only mode.</strong></p>
+  <p class="p">Rule creation, activation and undo are dimmed while the seller is in read-only mode, the same as every other rule type. Restore billing in <strong>Settings → Billing</strong> to re-enable them.</p>
+
+  <div class="related">
+    <div class="related-label">Related pages</div>
+    <div class="related-grid">
+      <button class="related-card" onclick="nav('performance')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Rule types</div><div class="rc-name">Performance rules →</div></button>
+      <button class="related-card" onclick="nav('change-log')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">Change log →</div></button>
+      <button class="related-card" onclick="nav('aibuilder')" style="background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;text-align:left;font-family:'Inter',sans-serif;"><div class="rc-tag">Features</div><div class="rc-name">AI rule builder →</div></button>
+    </div>
+  </div>
+  <div class="feedback" id="fb-bid-adjustments">
+    <div class="feedback-q">Was this page helpful?</div>
+    <div class="feedback-btns">
+      <button class="feedback-btn yes" onclick="fbVote('bid-adjustments','yes',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg> Yes</button>
+      <button class="feedback-btn no" onclick="fbVote('bid-adjustments','no',this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg> Needs work</button>
+    </div>
+    <div class="feedback-thanks" id="fb-thanks-bid-adjustments">Thanks for the feedback.</div>
+    <div class="feedback-form" id="fb-form-bid-adjustments">
+      <textarea class="feedback-textarea" id="fb-text-bid-adjustments" placeholder="What could be clearer? (optional)"></textarea>
+      <button class="feedback-submit" onclick="fbSubmit('bid-adjustments')">Send feedback</button>
+    </div>
+  </div>
+  <div class="pnav"><button class="pnc" onclick="nav('performance')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Performance rules</div></button><button class="pnc r" onclick="nav('aibuilder')"><div class="pnc-dir">Next →</div><div class="pnc-title">AI rule builder</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -1250,7 +1378,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
       <button class="feedback-submit" onclick="fbSubmit('aibuilder')">Send feedback</button>
     </div>
   </div>
-  <div class="pnav"><button class="pnc" onclick="nav('performance')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Performance rules</div></button><button class="pnc r" onclick="nav('dashboard')"><div class="pnc-dir">Next →</div><div class="pnc-title">Dashboard</div></button></div>
+  <div class="pnav"><button class="pnc" onclick="nav('bid-adjustments')"><div class="pnc-dir">← Previous</div><div class="pnc-title">Bid adjustments</div></button><button class="pnc r" onclick="nav('dashboard')"><div class="pnc-dir">Next →</div><div class="pnc-title">Dashboard</div></button></div>
   <div class="pfoot"><div class="pfoot-c">© 2026 Off Hours · A TCN Group product</div><div class="pfoot-l"><a href="https://dashboard.off-hours.app/privacy" target="_blank">Privacy</a><a href="https://dashboard.off-hours.app/terms" target="_blank">Terms</a></div></div>
 </div>
 
@@ -2245,7 +2373,7 @@ code{font-family:'Space Mono',monospace;font-size:12px;background:var(--cream-de
   </div>
   <h2 class="h2 f" id="plans">Plans</h2>
   <table class="tbl"><thead><tr><th>Plan</th><th>Price</th><th>Notes</th></tr></thead><tbody>
-    <tr><td>Free trial</td><td>14 days, free</td><td>Every new seller starts here. Full access to all four rule types. No credit card required.</td></tr>
+    <tr><td>Free trial</td><td>14 days, free</td><td>Every new seller starts here. Full access to all five rule types. No credit card required.</td></tr>
     <tr><td>Monthly</td><td>$149 / month / seller</td><td>Includes every marketplace under that seller at no extra cost. Cancel any time from the Stripe Customer Portal.</td></tr>
     <tr><td>Annual</td><td>$1,520 / year / seller</td><td>Same access as Monthly. Saves 15 percent compared to paying month to month.</td></tr>
   </tbody></table>
@@ -2507,7 +2635,7 @@ const searchIndex = [
 // ════════════════════════════════════════════
 // NAVIGATION
 // ════════════════════════════════════════════
-const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','aibuilder','dashboard','spend-alerts','recommendations','insights','slack','change-log','troubleshooting','readlog','team','billing','faq','agency-partner','referral-program'];
+const pages = ['intro','quickstart','connect','dayparting','budget','event','performance','bid-adjustments','aibuilder','dashboard','spend-alerts','recommendations','insights','slack','change-log','troubleshooting','readlog','team','billing','faq','agency-partner','referral-program'];
 let cur = 'intro';
 
 function nav(key, pushState = true) {
@@ -2801,7 +2929,7 @@ async function sendAiPrompt() {
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:200,
-        system:`You are the Off Hours AI rule builder. Off Hours is an Amazon Ads scheduling tool with four rule types: Dayparting (schedule when campaigns run hour by hour), Budget rules (adjust daily budgets on a schedule), Event rules (date-range overrides for Prime Day, Black Friday etc.), and Performance rules (alert or act when ACOS/budget thresholds are crossed).
+        system:`You are the Off Hours AI rule builder. Off Hours is an Amazon Ads scheduling tool with five rule types: Dayparting (schedule when campaigns run hour by hour), Budget rules (adjust daily budgets on a schedule), Event rules (date-range overrides for Prime Day, Black Friday etc.), Performance rules (alert or act when ACOS/budget thresholds are crossed), and Bid adjustments (step keyword and target bids up or down on trailing ROAS, one step per cooldown, never past a ceiling or floor the user sets).
 
 When a user describes a rule, respond with a single short paragraph (2-4 sentences) that: names the rule type, summarizes exactly what will happen in plain English, and ends with "Confirm to go live." Be specific about times, days, and percentages mentioned. Stay under 80 words. No preamble.`,
         messages:[{role:'user',content:prompt}]
