@@ -1,0 +1,4 @@
+# Internal working documents (audits, briefs). Never deploy them: Vercel serves
+# any file with a dot in its path directly, past the SPA rewrite, so
+# docs-audit-may-2026.md was public at docs.off-hours.app.
+*.md
